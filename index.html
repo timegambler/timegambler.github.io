@@ -152,6 +152,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mongo语法练习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/16/mongo%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/">mongo语法练习</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/16/mongo%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2019-12-16T12:01:53.972Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mongo语法练习"><a href="#mongo语法练习" class="headerlink" title="mongo语法练习"></a>mongo语法练习</h1><p>官方文档：<a href="https://docs.mongodb.com/" target="_blank" rel="noopener">https://docs.mongodb.com/</a></p>
+<p>1、聚集后进行统计，使用两个group</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">db.souhu_three.aggregate([
+    {$group:{_id:</span><span style="color: #800000;">"</span><span style="color: #800000;">$userId</span><span style="color: #800000;">"</span><span style="color: #000000;">}},
+    {$group:{_id:</span><span style="color: #0000ff;">null</span>,count:{$<span style="color: #0000ff;">sum</span>:<span style="color: #800080;">1</span><span style="color: #000000;">}}}
+])</span></pre>
+</div>
+<p>2、根据每个单独进行统计（使用allowDiskUse是因为可能内存溢出）</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">db.souhu_three.aggregate([
+{ </span><span style="color: #800000;">"</span><span style="color: #800000;">$group</span><span style="color: #800000;">"</span><span style="color: #000000;">: {
+        </span><span style="color: #800000;">"</span><span style="color: #800000;">_id</span><span style="color: #800000;">"</span>: <span style="color: #800000;">"</span><span style="color: #800000;">$id</span><span style="color: #800000;">"</span><span style="color: #000000;">,
+        </span><span style="color: #800000;">"</span><span style="color: #800000;">distinctCount</span><span style="color: #800000;">"</span>: { <span style="color: #800000;">"</span><span style="color: #800000;">$sum</span><span style="color: #800000;">"</span>: <span style="color: #800080;">1</span><span style="color: #000000;"> }
+    }}
+],{ allowDiskUse: </span><span style="color: #0000ff;">true</span> })</pre>
+</div>
+<p>3、去重并清洗数据库</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000;">db.souhu_authur_id.aggregate([
+    {
+        $group: { _id: {url: </span><span style="color: #800000;">'</span><span style="color: #800000;">$authorId</span><span style="color: #800000;">'</span>},count: {$sum: <span style="color: #800080;">1</span>},dups: {$addToSet: <span style="color: #800000;">'</span><span style="color: #800000;">$_id</span><span style="color: #800000;">'</span><span style="color: #000000;">}}
+    },
+    {
+        $match: {count: {$gt: </span><span style="color: #800080;">1</span><span style="color: #000000;">}}
+    }
+]).forEach(function(doc){
+    doc.dups.shift();
+    db.test_first.remove({_id: {$</span><span style="color: #0000ff;">in</span><span style="color: #000000;">: doc.dups}});
+})</span></pre>
+</div>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/16/mongo%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
