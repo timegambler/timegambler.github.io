@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mongodb连接问题 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#mongodb连接问题这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查I、检查端口是否开放 netstat -nap #看看监听接口是否开启II、检查配置文件是否允许ip通过 #如果是默认安装，则目录是&#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf vim &#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf  #检查bind_ip 可以设置0.0.0.0，允">
+  <meta name="description" content="mongodb连接问题这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查I、检查端口是否开放 netstat -nap #看看监听接口是否开启II、检查配置文件是否允许ip通过 #如果是默认安装，则目录是&#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf vim &#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf  #检查bind_ip 可以设置0.0.0.0，允许">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongodb连接问题">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#mongodb连接问题这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查I、检查端口是否开放 netstat -nap #看看监听接口是否开启II、检查配置文件是否允许ip通过 #如果是默认安装，则目录是&#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf vim &#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf  #检查bind_ip 可以设置0.0.0.0，允">
+<meta property="og:description" content="mongodb连接问题这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查I、检查端口是否开放 netstat -nap #看看监听接口是否开启II、检查配置文件是否允许ip通过 #如果是默认安装，则目录是&#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf vim &#x2F;var&#x2F;log&#x2F;mongodb&#x2F;mongod.conf  #检查bind_ip 可以设置0.0.0.0，允许">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-20T06:37:40.982Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.212Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.551Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:23.785Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
   
@@ -155,14 +155,14 @@
 
         
         <a href="/mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.982Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#mongodb连接问题<br>这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查<br>I、检查端口是否开放</p>
+        <h1 id="mongodb连接问题"><a href="#mongodb连接问题" class="headerlink" title="mongodb连接问题"></a>mongodb连接问题</h1><p>这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查<br>I、检查端口是否开放</p>
 <pre><code>netstat -nap
 #看看监听接口是否开启</code></pre><p>II、检查配置文件是否允许ip通过</p>
 <pre><code>#如果是默认安装，则目录是/var/log/mongodb/mongod.conf
@@ -290,18 +290,18 @@ mongod --config /etc/mongod.conf</code></pre>
   
 <nav id="article-nav">
   
-    <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/pycharm%E4%BD%BF%E7%94%A8conda%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%83%A8%E5%88%86%E5%8C%85%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E6%88%96%E5%8C%85%E5%90%8D%E6%B2%A1%E6%9C%89%E6%98%BE%E7%A4%BA/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          mysql学习训练记录及笔记（二）
+          pycharm使用conda环境，部分包没有代码提示或包名没有显示
         
       </div>
     </a>
   
   
-    <a href="/mongodb%20%E8%AF%AD%E6%B3%95%E7%BB%83%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mongodb 语法练习</div>
+    <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql学习训练记录及笔记（三）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -328,7 +328,7 @@ mongod --config /etc/mongod.conf</code></pre>
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mongodb连接问题"><span class="toc-number">1.</span> <span class="toc-text">mongodb连接问题</span></a></li></ol>
                     </div>
                 </span>
             </div>

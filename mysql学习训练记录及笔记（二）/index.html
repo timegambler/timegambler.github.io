@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mysql学习训练记录及笔记（二） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#mysql学习训练记录及笔记（二）接着训练一mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、sql训练21、查询不同老师所教不同课程平均分从高到低显示 select     t3.t_id,     t3.t_name,     avg(t1.s_score) as avg_score from     score t1      lef">
+  <meta name="description" content="mysql学习训练记录及笔记（二）接着训练一mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、sql训练21、查询不同老师所教不同课程平均分从高到低显示 select     t3.t_id,     t3.t_name,     avg(t1.s_score) as avg_score from     score t1      left">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql学习训练记录及笔记（二）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#mysql学习训练记录及笔记（二）接着训练一mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、sql训练21、查询不同老师所教不同课程平均分从高到低显示 select     t3.t_id,     t3.t_name,     avg(t1.s_score) as avg_score from     score t1      lef">
+<meta property="og:description" content="mysql学习训练记录及笔记（二）接着训练一mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、sql训练21、查询不同老师所教不同课程平均分从高到低显示 select     t3.t_id,     t3.t_name,     avg(t1.s_score) as avg_score from     score t1      left">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-20T06:37:40.987Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.040Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.551Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:23.535Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
   
@@ -155,14 +155,14 @@
 
         
         <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.987Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#mysql学习训练记录及笔记（二）<br>接着训练一<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、sql训练<br>21、查询不同老师所教不同课程平均分从高到低显示</p>
+        <h1 id="mysql学习训练记录及笔记（二）"><a href="#mysql学习训练记录及笔记（二）" class="headerlink" title="mysql学习训练记录及笔记（二）"></a>mysql学习训练记录及笔记（二）</h1><p>接着训练一<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、sql训练<br>21、查询不同老师所教不同课程平均分从高到低显示</p>
 <pre><code>select
     t3.t_id,
     t3.t_name,
@@ -319,8 +319,8 @@ where t2.c_id in (select c_id from course  natural join teacher where t_name = &
     </a>
   
   
-    <a href="/mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mongodb连接问题</div>
+    <a href="/MongoDB%20bug%E6%B1%87%E6%80%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB bug汇总</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -347,7 +347,7 @@ where t2.c_id in (select c_id from course  natural join teacher where t_name = &
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql学习训练记录及笔记（二）"><span class="toc-number">1.</span> <span class="toc-text">mysql学习训练记录及笔记（二）</span></a></li></ol>
                     </div>
                 </span>
             </div>

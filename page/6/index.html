@@ -140,27 +140,92 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-python中的yield通俗理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/">VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住</a>
+      <a class="article-title" href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/">python中的yield通俗理解</a>
     </h1>
   
 
         
-        <a href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.098Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住<br>来看这篇文章的兄弟肯定都是被这个东西搞得筋疲力尽了吧！！ 哈哈哈，这篇文章将会给你带来光明。<br>首先，不知道禁用了啥还是莫名做了啥，然后突然两个虚拟机都点不动了，到虚拟机目录下，发现了一个windows 7 .vmx.lck文件，删除后 结果还是打开不了，于是开启了度娘姑父之路，悲催啊！！！<br>按照网上搞了很多，结果还是各种不行，但是最后还是被我自己解决了，但是以防大家遇到的问题不同,还是把所有的方案贴在这里，大致解决方案如下：<br>一、删除vmx.lck文件（一般然并卵）<br>二、关闭windows防火墙，或者不关闭防火墙，在防火墙里面找到运行应用通过防火墙<br>三、断网并且删除lck文件，重启VMware<br>四、（推荐）重新创建一个配置完全相同且名字相同的虚拟机，然后将虚拟机的配置文件vmx直接复制过来（建议对比一下，看看那些不同，根据具体情况而定）<br>五、（不推荐，大部分是没什么卵用的）重装一个VMware<br>六、（重点推荐，本人就是通过这个搞好的）如果上面都不行，打开服务，查看VMware中有什么服务被禁止了，全部启动，然后就美滋滋</p>
+        <h1 id="python中的yield通俗理解"><a href="#python中的yield通俗理解" class="headerlink" title="python中的yield通俗理解"></a>python中的yield通俗理解</h1><p>|、第一步放bug</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;c:\programdata\anaconda3\envs\sql\lib\runpy.py&quot;, line 193, in _run_module_as_main
+    &quot;__main__&quot;, mod_spec)
+  File &quot;c:\programdata\anaconda3\envs\sql\lib\runpy.py&quot;, line 85, in _run_code
+    exec(code, run_globals)
+  File &quot;C:\ProgramData\Anaconda3\envs\sql\Scripts\pipreqs.exe\__main__.py&quot;, line 9, in &lt;module&gt;
+  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 470, in main
+    init(args)
+  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 409, in init
+    follow_links=follow_links)
+  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 122, in get_all_imports
+    contents = f.read()
+UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0xab in position 2411: illegal multibyte sequence</code></pre><p>II、解决方案<br>根据bug提示就知道是编码出现问题，所以只需要改变编码<br>1、找到pipreqs包的位置<br>在bug中有提示，已经具体显示到第几行</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191119123033994-1994863568.png" alt></p>
+<p>2、修改编码<br>根据上面提示的行数直接找到源头，修改，完成</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191119123120738-1259322829.png" alt></p>
+<p>保存，ok<br>重新导出<br>I、理解yield，第一步需要理解yield和return的区别</p>
+<pre><code>print(&apos;yield:&apos;)
+def _testyield():
+    for i in range(5):
+        yield i*i
+#这里产生生成器对象,跟java对象意思相同
+generator = _testyield()
+
+for i in range(5):
+    print(next(generator))
+#-----------------------------------------------------------#
+
+print(&apos;return:&apos;)
+def _return(n):
+    # 这里res是一个list[],得出的结果是[1,2,3,4,5]
+    res = [i*i for i in range(n)]    
+    return res
+
+for i in _return(5):
+    print(i)</code></pre><p>上面yield和return生成的结果相同：</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117103029291-475061575.png" alt></p>
+<p>但是这里面的区别在于：<br>return返回的是一个list列表，而yield每次调用只返回一个数值，毫无疑问，使用return空间开销比较大，尤其是操作巨量数据的时候，操作一个大列表时间开销也会得不偿失</p>
+<p>II、yield执行方式</p>
+<pre><code>def foo():
+    print(&quot;starting...&quot;)
+    while True:
+        res = yield 4
+        print(&quot;res:&quot;,res)
+
+
+g = foo()
+#此时未打印出任何信息，说明只是生成了generator对象，并未执行函数
+
+print(&apos;-&apos;*30)
+print(&apos;g_1&apos;,next(g))
+#调用next，开始执行函数，并且到达yield这一步时，返回生成的4
+
+print(&quot;*&quot;*20)
+print(&apos;g_2&apos;,next(g))
+#res：none，说明是接着上一步开始执行，并且第二次循环到达yield这一步
+
+print(&quot;#&quot;*30)
+print(&apos;g_3&apos;,next(g))</code></pre><p>打印结果如下：</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117103549972-290747984.png" alt></p>
+<p>说明：<br>1、调用包含yield函数时，并不会执行函数，而是产生并返回一个生成器对象<br>2、第一次next取出一个值时，会将函数执行到第一个yield，停止<br>3、后面next时，会从上一个yield开始，接着执行，循环到下一个yield<br>后面均参照第三行。</p>
+<p>III、继续深挖yield</p>
+<pre><code>def foo():    print(&quot;starting...&quot;)    for i in range(6):        res = yield 4        print(&quot;res:&quot;,res)    #当我们添加新的yield    for i in range(6):        res = yield 5        print(&quot;res&quot;,res)g = foo()#此时未打印出任何信息，说明只是生成了generator对象，并未执行函数for i in range(7):    print(next(g))</code></pre><p>结果是：</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117104717999-1813811285.png" alt></p>
+<p>上述结果5最后出现，说明yield会按照正常顺序进行执行，不会重新加载函数</p>
 
       
 
@@ -173,7 +238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/">展开全文 >></a>
+          <a class="article-more-a" href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -203,347 +268,61 @@
 
 
   
-    <article id="post-Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-pytorchhub教程之安装pytorch或pytorchversion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/">Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</a>
+      <a class="article-title" href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/">pytorchhub教程之安装pytorch或pytorchversion</a>
     </h1>
   
 
         
-        <a href="/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.093Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载<br>其实出现这类错误，大部分是编译的插件有问题。<br>（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同<br>最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里<br>因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解决方案）那么问题来了，如何根据自己需要的版本编译插件呢？<br>请看我的另一篇博客：<br><a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a></p>
-<p>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9034402.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9034402.html</a><br>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a><br>一、要想在eclipse上运行hadoop，首先要依次解决下面问题：<br>1、安装jdk<br>2、安装ant<br>3、安装eclipse<br>4、安装hadoop<br>5、编译hadoop-eclipse-plugin插件<br>前面四个网上方案很多，但是却参差不齐，很多都是敷衍了事，于是我整理了一些优秀的文章，按照上面来，几乎没什么问题（对于小白，一定要注意路径问题，别到后面自己都不知道自己安装了什么）<br><a href="1、安装jdk">1、安装jdk</a>（注意，这里会出现一些小问题，例如本机已经安装了openjdk，可以百度）<br><a href="2、安装ant">2、安装ant</a>（这个很简单，但是也要记住，在配置文件的时候，也是在前面jdk配置文件（sudo gedit /etc/profile）那里添加）<br><a href="3、安装eclipse">3、安装eclipse</a>（这里jdk就不用重新安装了，选择下载java EE，毕竟什么都有）<br><a href="4、安装hadoop">4、安装hadoop</a>（免密登录，貌似这伙有问题，再贴一个，大家可以参考<a href="这个人">这个人</a>的免密登录）<br>5、编译hadoop-eclipse-plugin（这个很麻烦，而且网上的教程写的很乱，而且大多很老或者没用，主要是版本的更新）<br>二、如何编译hadoop-eclipse-plugin文件<br>1、首先，大家一般都是hadoop-2.*，所以可以在GitHub上下载提供的<a href="hadoop-eclipse-plugin">hadoop-eclipse-plugin</a></p>
-<p>2、下载完之后，直接进行解压，然后打开hadoop2x-eclipse-plugin-master —&gt;ivy —-&gt;libraries.properties<br>打开之后是这样的（当然，这是我更改之后的，我使用的是hadoop-2.7.6，如果你跟我一样，可以直接跳，在文章末尾下载编译好的）</p>
-<pre><code>#   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-#   you may not use this file except in compliance with the License.
-#   You may obtain a copy of the License at
-#
-#       http://www.apache.org/licenses/LICENSE-2.0
-#
-#   Unless required by applicable law or agreed to in writing, software
-#   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#   See the License for the specific language governing permissions and
-#   limitations under the License.
+        <h1 id="pytorchhub教程之安装pytorch或pytorchversion"><a href="#pytorchhub教程之安装pytorch或pytorchversion" class="headerlink" title="pytorchhub教程之安装pytorch或pytorchversion"></a>pytorchhub教程之安装pytorch或pytorchversion</h1><p>出现上述bug是在第一次查看pytorchhub可用模型的时候发生的</p>
+<blockquote>
+<blockquote>
+<p>torch.hub.list(‘pytorch/vision’)</p>
+</blockquote>
+</blockquote>
+<p>没有记录下来，所以没办法重现<br>解决方法是：<br>定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015158051-1377802514.png" alt></p>
+<p>例如：<br>该方法原代码如下：</p>
+<pre><code>def _remove_if_exists(path):
+    if os.path.exists(path):
+        if os.path.isfile(path):
+            os.remove(path)
+        else:
+            shutil.rmtree(path)</code></pre><p>修改为：</p>
+<pre><code>def _remove_if_exists(path):
+    if os.path.exists(path):
+        if os.path.isfile(path):
+           # os.remove(path)
+            pass
+        else:
+            shutil.rmtree(path)</code></pre><p>然后执行</p>
+<blockquote>
+<blockquote>
+<p>torch.hub.list(‘pytorch/vision’)，发现能够成功获取所有模型</p>
+</blockquote>
+</blockquote>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015514003-949947541.png" alt></p>
+<p>最后再将hub.py修改回来即可。<br>最近pytorch发布了pytorch hub，正在学习之中。<br>不过需要先安装pytorch和pytorchversion，但是总是出现各种bug<br>建议直接根据官网步骤安装（相关依赖包很大，建议在网络环境好的情况下下载）<br>第一步<br>首先进入官网：<a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/</a><br>第二步<br>选择自己需要的版本</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614002709934-1557809455.png" alt></p>
+<p>第三步</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003104759-1577962048.png" alt></p>
+<p>安装完成</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003350953-665868823.png" alt></p>
 
-#This properties file lists the versions of the various artifacts used by hadoop and components.
-#It drives ivy and the generation of a maven POM
-
-# This is the version of hadoop we are generating
-hadoop.version=2.7.6
-hadoop-gpl-compression.version=0.1.0
-
-#These are the versions of our dependencies (in alphabetical order)
-apacheant.version=1.7.0
-ant-task.version=2.0.10
-
-asm.version=3.2
-aspectj.version=1.6.5
-aspectj.version=1.6.11
-
-checkstyle.version=4.2
-
-commons-cli.version=1.2
-commons-codec.version=1.4
-commons-collections.version=3.2.2
-commons-configuration.version=1.6
-commons-daemon.version=1.0.13
-commons-httpclient.version=4.2.5
-commons-lang.version=2.6
-commons-logging.version=1.1.3
-commons-logging-api.version=1.0.4
-commons-math.version=2.1
-commons-el.version=1.0
-commons-fileupload.version=1.2
-commons-io.version=2.4
-commons-net.version=3.1
-core.version=3.1.1
-coreplugin.version=1.3.2
-
-hsqldb.version=1.8.0.10
-htrace.version=3.0.4
-
-ivy.version=2.1.0
-
-jasper.version=5.5.12
-jackson.version=1.9.13
-#not able to figureout the version of jsp &amp; jsp-api version to get it resolved throught ivy
-# but still declared here as we are going to have a local copy from the lib folder
-jsp.version=2.1
-jsp-api.version=5.5.12
-jsp-api-2.1.version=6.1.14
-jsp-2.1.version=6.1.14
-jets3t.version=0.9.0
-jetty.version=6.1.26
-jetty-util.version=6.1.26
-jersey-core.version=1.9
-jersey-json.version=1.9
-jersey-server.version=1.9
-junit.version=4.11
-jdeb.version=0.8
-jdiff.version=1.0.9
-json.version=1.0
-
-kfs.version=0.1
-
-log4j.version=1.2.17
-lucene-core.version=2.3.1
-
-mockito-all.version=1.8.5
-jsch.version=0.1.54
-
-oro.version=2.0.8
-
-rats-lib.version=0.5.1
-
-servlet.version=4.0.6
-servlet-api.version=2.5
-slf4j-api.version=1.7.10
-slf4j-log4j12.version=1.7.10
-
-wagon-http.version=1.0-beta-2
-xmlenc.version=0.52
-xerces.version=1.4.4
-
-protobuf.version=2.5.0
-guava.version=11.0.2
-netty.version=3.6.2.Final</code></pre><p>3、找到你最开始放置解压后hadoop文件的地方<br>打开hadoop文件 —-&gt; share —-&gt; hadoop<br>打开后是这样的:</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512140845704-1108835223.png" alt=""></p>
-<p>根据这个来更改版本（重点），比如前面</p>
-<pre><code>log4j.version=1.2.17（最开始我是log4j.version=1.2.10的，但是根据上面最下面一排，左边第三个，发现是1.2.17，所以需要改为log4j.version=1.2.17）这里有个小技巧，你可以一行一行的来查看，先对着libraries.properties，查看版本version，然后打开文件夹/你的hadoop文件夹/share/hadoop/，点击右边的那个放大镜（搜索），输入几个关键字符，这样就可以快速对照更改4、更改build.xml(重点，因为随着版本不同，有些jar包的名称发生改变)打开hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin ----&gt;build.xml(注意，有些版本不同，可能位置会不一样，只要在hadoop2x-eclipse-plugin-master找到eclipse-plugin就行)打开后：</code></pre><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
-
-&lt;!--
-   Licensed to the Apache Software Foundation (ASF) under one or more
-   contributor license agreements.  See the NOTICE file distributed with
-   this work for additional information regarding copyright ownership.
-   The ASF licenses this file to You under the Apache License, Version 2.0
-   (the &quot;License&quot;); you may not use this file except in compliance with
-   the License.  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
---&gt;
-
-&lt;project default=&quot;jar&quot; name=&quot;eclipse-plugin&quot;&gt;
-
-  &lt;import file=&quot;../build-contrib.xml&quot;/&gt;
-
-  &lt;path id=&quot;eclipse-sdk-jars&quot;&gt;
-    &lt;fileset dir=&quot;${eclipse.home}/plugins/&quot;&gt;
-      &lt;include name=&quot;org.eclipse.ui*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.jdt*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.core*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.equinox*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.debug*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.osgi*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.swt*.jar&quot;/&gt;
-      &lt;include name=&quot;org.eclipse.jface*.jar&quot;/&gt;
-
-      &lt;include name=&quot;org.eclipse.team.cvs.ssh2*.jar&quot;/&gt;
-      &lt;include name=&quot;com.jcraft.jsch*.jar&quot;/&gt;
-    &lt;/fileset&gt; 
-  &lt;/path&gt;
-
-  &lt;path id=&quot;hadoop-sdk-jars&quot;&gt;
-    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/mapreduce&quot;&gt;
-      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-    &lt;/fileset&gt; 
-    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/hdfs&quot;&gt;
-      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-    &lt;/fileset&gt; 
-    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/common&quot;&gt;
-      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-    &lt;/fileset&gt; 
-  &lt;/path&gt;
-
-
-
-  &lt;!-- Override classpath to include Eclipse SDK jars --&gt;
-  &lt;path id=&quot;classpath&quot;&gt;
-    &lt;pathelement location=&quot;${build.classes}&quot;/&gt;
-    &lt;!--pathelement location=&quot;${hadoop.root}/build/classes&quot;/--&gt;
-    &lt;path refid=&quot;eclipse-sdk-jars&quot;/&gt;
-    &lt;path refid=&quot;hadoop-sdk-jars&quot;/&gt;
-  &lt;/path&gt;
-
-  &lt;!-- Skip building if eclipse.home is unset. --&gt;
-  &lt;target name=&quot;check-contrib&quot; unless=&quot;eclipse.home&quot;&gt;
-    &lt;property name=&quot;skip.contrib&quot; value=&quot;yes&quot;/&gt;
-    &lt;echo message=&quot;eclipse.home unset: skipping eclipse plugin&quot;/&gt;
-  &lt;/target&gt;
-
- &lt;target name=&quot;compile&quot; depends=&quot;init, ivy-retrieve-common&quot; unless=&quot;skip.contrib&quot;&gt;
-    &lt;echo message=&quot;contrib: ${name}&quot;/&gt;
-    &lt;javac
-     encoding=&quot;${build.encoding}&quot;
-     srcdir=&quot;${src.dir}&quot;
-     includes=&quot;**/*.java&quot;
-     destdir=&quot;${build.classes}&quot;
-     debug=&quot;${javac.debug}&quot;
-     deprecation=&quot;${javac.deprecation}&quot;&gt;
-     &lt;classpath refid=&quot;classpath&quot;/&gt;
-    &lt;/javac&gt;
-  &lt;/target&gt;
-
-  &lt;!-- Override jar target to specify manifest --&gt;
-  &lt;target name=&quot;jar&quot; depends=&quot;compile&quot; unless=&quot;skip.contrib&quot;&gt;
-    &lt;mkdir dir=&quot;${build.dir}/lib&quot;/&gt;
-    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
-          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/mapreduce&quot;&gt;
-           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-          &lt;/fileset&gt;
-    &lt;/copy&gt;
-    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
-          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/common&quot;&gt;
-           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-          &lt;/fileset&gt;
-    &lt;/copy&gt;
-    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
-          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/hdfs&quot;&gt;
-           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-          &lt;/fileset&gt;
-    &lt;/copy&gt;
-    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
-          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/yarn&quot;&gt;
-           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
-          &lt;/fileset&gt;
-    &lt;/copy&gt;
-
-    &lt;copy  todir=&quot;${build.dir}/classes&quot; verbose=&quot;true&quot;&gt;
-          &lt;fileset dir=&quot;${root}/src/java&quot;&gt;
-           &lt;include name=&quot;*.xml&quot;/&gt;
-          &lt;/fileset&gt;
-    &lt;/copy&gt;
-
-
-
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;  
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-
-    &lt;jar
-      jarfile=&quot;${build.dir}/hadoop-${name}-${hadoop.version}.jar&quot;
-      manifest=&quot;${root}/META-INF/MANIFEST.MF&quot;&gt;
-      &lt;manifest&gt;
-   &lt;attribute name=&quot;Bundle-ClassPath&quot; 
-    value=&quot;classes/, 
- lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
- lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
- lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
- lib/hadoop-auth-${hadoop.version}.jar,
- lib/hadoop-common-${hadoop.version}.jar,
- lib/hadoop-hdfs-${hadoop.version}.jar,
- lib/protobuf-java-${protobuf.version}.jar,
- lib/log4j-${log4j.version}.jar,
- lib/commons-cli-${commons-cli.version}.jar,
- lib/commons-configuration-${commons-configuration.version}.jar,
- lib/commons-httpclient-${commons-httpclient.version}.jar,
- lib/commons-lang-${commons-lang.version}.jar,  
- lib/commons-collections-${commons-collections.version}.jar,  
- lib/jackson-core-asl-${jackson.version}.jar,
- lib/jackson-mapper-asl-${jackson.version}.jar,
- lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
- lib/slf4j-api-${slf4j-api.version}.jar,
- lib/guava-${guava.version}.jar,
- lib/netty-${netty.version}.jar,
- lib/htrace-core-${htrace.version}.jar&quot;/&gt;
-   &lt;/manifest&gt;
-      &lt;fileset dir=&quot;${build.dir}&quot; includes=&quot;classes/ lib/&quot;/&gt;
-      &lt;!--fileset dir=&quot;${build.dir}&quot; includes=&quot;*.xml&quot;/--&gt;
-      &lt;fileset dir=&quot;${root}&quot; includes=&quot;resources/ plugin.xml&quot;/&gt;
-    &lt;/jar&gt;
-  &lt;/target&gt;
-
-&lt;/project&gt;
-
-
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;  
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
-
-    &lt;jar
-      jarfile=&quot;${build.dir}/hadoop-${name}-${hadoop.version}.jar&quot;
-      manifest=&quot;${root}/META-INF/MANIFEST.MF&quot;&gt;
-      &lt;manifest&gt;
-   &lt;attribute name=&quot;Bundle-ClassPath&quot; 
-    value=&quot;classes/, 
- lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
- lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
- lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
- lib/hadoop-auth-${hadoop.version}.jar,
- lib/hadoop-common-${hadoop.version}.jar,
- lib/hadoop-hdfs-${hadoop.version}.jar,
- lib/protobuf-java-${protobuf.version}.jar,
- lib/log4j-${log4j.version}.jar,
- lib/commons-cli-${commons-cli.version}.jar,
- lib/commons-configuration-${commons-configuration.version}.jar,
- lib/commons-httpclient-${commons-httpclient.version}.jar,
- lib/commons-lang-${commons-lang.version}.jar,  
- lib/commons-collections-${commons-collections.version}.jar,  
- lib/jackson-core-asl-${jackson.version}.jar,
- lib/jackson-mapper-asl-${jackson.version}.jar,
- lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
- lib/slf4j-api-${slf4j-api.version}.jar,
- lib/guava-${guava.version}.jar,
- lib/netty-${netty.version}.jar,
- lib/htrace-core-${htrace.version}.jar&quot;/&gt;
-   &lt;/manifest&gt;
-      &lt;fileset dir=&quot;${build.dir}&quot; includes=&quot;classes/ lib/&quot;/&gt;
-      &lt;!--fileset dir=&quot;${build.dir}&quot; includes=&quot;*.xml&quot;/--&gt;
-      &lt;fileset dir=&quot;${root}&quot; includes=&quot;resources/ plugin.xml&quot;/&gt;
-    &lt;/jar&gt;
-  &lt;/target&gt;
-
-&lt;/project&gt;</code></pre><pre><code></code></pre><pre><code>（提示：&lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512142453006-849956057.png" alt=""></p>
-<pre><code>在前面的jar包里没有htrace-core-...jar只有htrace-core-3.1.0-incubating.jar，所以更改为：）</code></pre><pre><code>做法：</code></pre><p>找到<target name="jar" depends="compile" unless="skip.contrib">标签，然后添加以下内容</p>
-<pre><code></code></pre><p><copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>    <copy file="${hadoop.home}/share/hadoop/common/lib/servlet-api-${servlet-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar"  todir="${build.dir}/lib" verbose="true"/></p>
-<pre><code></code></pre><p>然后找到标签&lt;attribute name=”Bundle-ClassPath”  ( 在修改之前的配置文件 build.xml 第133行 )在齐总的value的列表中对应的添加和修改lib,如下 ( 删除第154行 lib/htrace-core-${htrace.version}.jar, 添加下面3行 )</p>
-<pre><code></code></pre><pre><code>lib/servlet-api-${servlet-api.version}.jar,  
-lib/commons-io-${commons-io.version}.jar,  
-lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><code>当然，如果出现其他类似错误，对照更改就行（当然，如果报错，先备份后，尝试删除部分，毕竟不是每个都能用到）5、最后开始进行编译工作在hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin文件夹中执行：ant jar -Dversion=2.7.6 -Declipse.home=/opt/eclipse -Dhadoop.home=/home/gambler/hadoop-2.7.6注意 -Dversion=你的hadoop版本，-Declipse.home=你的eclipse文件路径，-Dhadoop=你的hadoop文件路径，还有关键的一点是，它创建jar包的默认路径是hadoop2x-eclipse-plugin-master  ----&gt;build ----&gt;contrib ----&gt;eclipse-plugin，如果没有的话可以提前创建一个，至少需要build文件夹，否则会报错</code></pre><pre><code></code></pre><pre><code>编译完成后出现下面这个表示成功：</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512143356092-1449627996.png" alt=""></p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512144402901-639192465.jpg" alt=""></p>
-<pre><code>三、使用eclipse创建MapReduce工程1、首先将编译好的jar包移动到eclipse ----&gt; plugins中去命令是： sudo mv hadoop-eclipse-plugin-2.7.6 .jar /你的eclipse文件/plugins2、启动eclipse，可以直接在search中搜索eclipse，新建一个工程，找到MapReduce，会出现下面这种问题（invalid Hadoop Runtime specified;please click&apos;Configure Hadoop install directory&apos;）点击右下边的&apos;Configure Hadoop install directory&apos;在里面填入/hadoop的绝对路径/share/hadoop/mapreduce填完之后点击完成，然后就OK了，最后放一张成功的图，博主也是刚刚建好的；好累啊，写完这个，麻烦大伙要是觉得还ok，就点个赞！！！最后的编译完成的后的jar包</code></pre>
       
 
       
@@ -555,7 +334,7 @@ lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><co
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/">展开全文 >></a>
+          <a class="article-more-a" href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/">展开全文 >></a>
         </p>
       
 
@@ -585,42 +364,29 @@ lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><co
 
 
   
-    <article id="post-ubuntu如何使用代理服务器ss+SwitchyOmega" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-pytorchhub教程（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/ubuntu%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8ss+SwitchyOmega/">ubuntu如何使用代理服务器ss+SwitchyOmega</a>
+      <a class="article-title" href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">pytorchhub教程（一）</a>
     </h1>
   
 
         
-        <a href="/ubuntu%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8ss+SwitchyOmega/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.090Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#ubuntu如何使用代理服务器ss+SwitchyOmega<br>首先，我建议大家直接使用GUI的窗口，搞配置文件太过麻烦，毕竟使用窗口不容易出现错误<br>吐槽一小波：看了各种大神的配置，虽然都很流弊，但是就不能多说几句给小白解释一下吗？小白很容易误触各种错误<br>第一步：<br>安装ShadowSocks Qt5图型化窗口<br>sudo add-apt-repository ppa:hzwhuang/ss-qt5<br>sudo apt-get update</p>
-<p>sudo apt-get install shadowsocks-qt5<br>搞定完之后，直接在serch里面敲个qt5就能找到</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505141557270-1117639269.png" alt=""></p>
-<p>打开之后，出现以下小窗口</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505141938627-194584618.png" alt=""></p>
-<p>点击链接，选择添加（这里就是用来配置代理服务器的）<br>提供了四个选项：<br>1、手动<br>2、URI<br>3、二维码导入<br>4、配置文件导入<br>为了方便大家理解，我选择了手动</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505142411278-1990453366.png" alt=""></p>
-<p>这里需要注意的是：<br>1、在服务器端口那里，你需要填写服务器开放的端口<br>2、还有加密方式那里也要根据代理服务器的设置<br>3、其他的不用改动，也不用去搞什么其他的防火墙，系统代理服务器配置啊<br>点击ok后，出现下面这个窗口</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505143038017-1994727699.png" alt=""></p>
-<p>鼠标右键，点击链接，显示连接，并出现延迟，代表连接成功可以进行下一步。<br>第二步<br>安装<a href="SwitchyOmega">SwitchyOmega</a>，点击进去，根据自己的浏览器选择要下载的，下载完成之后，找扩展程序那里直接将下载的文件<br>直接拖进去就好了（谷歌的用户可以输入这个找到扩展程序窗口：chrome://extensions/ ，其他找不到请自行百度）</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505145412796-1626626749.png" alt=""></p>
-<p>默认一个情景模式是proxy，如果没有，就新建一个，在代理服务器那里选择按照上面的填写，填写完之后，在左下角点击应用选项。<br>关键一步：<br>重启！！！<br>重启！！！<br>重启！！！<br>重启完之后，打开浏览器，点击右上角的小圆圈，选择你刚刚配置过的情景模式，我的是proxy</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505145934615-990267679.png" alt=""></p>
-<p>完成这些之后，你就发现可以开开心心的奔向小康之路了！！！</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180505150340956-94363976.png" alt=""></p>
-<p>如果不想使用代理，可以在小圆圈那里选择直接连接（也可以使用过滤，这个暂时不要考虑了），这样访问国内网站的速度会快很多。！！！<br>老铁们，如果对你们有帮助，麻烦增个粉。</p>
+        <h1 id="pytorchhub教程（一）"><a href="#pytorchhub教程（一）" class="headerlink" title="pytorchhub教程（一）"></a>pytorchhub教程（一）</h1><p>如果没有安装pytorch的请先上篇<a href="博客">博客</a>安装一下。<br>pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。<br>相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。<br>而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两者从调用流程及使用方法而言相差不大，但便捷程度pytorch hub明显略胜一筹。<br>不说废话，先来个hub版本的HelloWorld<br>第一步<br>先导入torch<br>import torch<br>第二步<br>得出所有可用模型列表，执行：torch.hub.list(‘pytorch/vision’)<br>第一次执行会默认下载本地仓库，可能会出现多个程序同时占用仓库文件的bug，解决方案见：<a href="https://www.cnblogs.com/gambler/p/11020649.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/11020649.html</a><br>执行后会显示当前可用模型，如下图所示：</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614112401990-969859239.png" alt></p>
+<p>第三步<br>然后加载模型到本地，执行：model = torch.hub.load(‘pytorch/vision’, ‘deeplabv3_resnet101’, pretrained=True)<br>参数说明如下：<br>‘pytorch/vision’反斜杠前面一个表示github仓库的所有者‘pytorch’，反斜杠后面一个表示仓库名‘vision’，<br>‘deeplabv3_resnet101’表示模型名称（模型需要存在在仓库列表中）<br>pretrained表示预训练模型，True表示使用预训练模型，参数权重经过预训练，可用快速方便的使用，False表示不使用预训练模型<br>第四步</p>
 
       
 
@@ -633,404 +399,7 @@ lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><co
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/ubuntu%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8ss+SwitchyOmega/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Ubuntu关于eclipse新插件不显示的解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Ubuntu%E5%85%B3%E4%BA%8Eeclipse%E6%96%B0%E6%8F%92%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Ubuntu关于eclipse新插件不显示的解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/Ubuntu%E5%85%B3%E4%BA%8Eeclipse%E6%96%B0%E6%8F%92%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.086Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Ubuntu关于eclipse新插件不显示的解决方案<br>首先，确定的是eclipse并非每一次都扫描一遍插件。<br>（buntu的eclipse遇到插件不显示问题<br>我遇到的问题是，第一次在plugins里面放入插件Hadoop-eclipse-plugin的时候，是出现了MapReduce的，<br>但是由于插件出现了问题，我将其删掉之后，再次放入，结果eclipse没有显示了）<br>在网上找了很多，方案，以下是比较靠谱的<br>首先（关闭eclipse）找到eclipse的文件目录，（sudo gedit /你的eclipse安装目录/configuration/config.ini），开始编辑<br>将org.eclipse.update.reconcile=false 改为true 然后保存关闭<br>执行  /你的eclipse目录下/ eclipse -clean<br>如果上述方案不成功，请尝试以下方案：<br>1.删除整个目录 /eclipse/configuration/org.eclipse.update/，重启eclipse（双系统我是靠这个成功的）<br>2.在启动eclipse时带上 -clean参数  如：c:/eclipse/eclipse.exe -clean<br>3.在/configuration/config.ini文件中加入一行  osgi.checkconfiguration=true  这样它会寻找并安装插件，开启一次eclipse，成功后删除。（虚拟机我是靠这个成功的）</p>
-<p>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9034438.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9034438.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Ubuntu%E5%85%B3%E4%BA%8Eeclipse%E6%96%B0%E6%8F%92%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ubuntu%E5%87%BA%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81%E6%88%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B0%9A%E6%9C%AA%E9%85%8D%E7%BD%AE%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/ubuntu%E5%87%BA%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81%E6%88%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B0%9A%E6%9C%AA%E9%85%8D%E7%BD%AE%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.082Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法<br>首先，不知道大家有没有跟我一样受尽了网上方案的各种折磨，鱼龙混杂，参差不齐<br>吐槽结束，首先把我遇到的问题摆出来，大家应该都能找到一些影子<br>正在读取软件包列表… 完成正在分析软件包的依赖关系树       正在读取状态信息… 完成       升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。有 2 个软件包没有被完全安装或卸载。需要下载 0 B/4,084 kB 的归档。解压缩后会消耗 0 B 的额外空间。dpkg: 处理软件包 libavcodec-ffmpeg56:amd64 (–configure)时出错： 该软件包正处于非常不稳定的状态；您最好在配置它之前，先重新安装它dpkg: 依赖关系问题使得 libavformat-ffmpeg56:amd64 的配置工作不能继续： libavformat-ffmpeg56:amd64 依赖于 libavcodec-ffmpeg56 (&gt;= 7:2.7) | libavcodec-ffmpeg-extra56 (&gt;= 7:2.7)；然而：  软件包 libavcodec-ffmpeg56:amd64 尚未配置。  未安装软件包 libavcodec-ffmpeg-extra56。<br>因为错误消息指示这是由于上一个问题导致的错误，没有写入 apport 报告。                                                                    dpkg: 处理软件包 libavformat-ffmpeg56:amd64 (–configure)时出错： 依赖关系问题 - 仍未被配置在处理时有错误发生： libavcodec-ffmpeg56:amd64 libavformat-ffmpeg56:amd64E: Sub-process /usr/bin/dpkg returned an error code (1)<br>最开始在网上查找的解决方案是：<br>进行文件的替换（将/var/lib/dpkg中的info文件进行替换）<br>命令行如下：<br>sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old<br>sudo mkdir /var/lib/dpkg/info<br>sudo apt-get update<br>sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old<br>sudo rm -rf /var/lib/dpkg/info<br>sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info<br>以上就是替换方案（其他大体类似，如果这里成功了，那么恭喜你，就不用再往下看了）<br>接下来就是各种苦逼的寻找各种解决方案的时候，但是大多不靠谱<br>于是翻出去看看，终于找到了解决方法（居然发现我TM没看到这一句话）<br>您最好在配置它之前，先重新安装它！！！<br>您最好在配置它之前，先重新安装它！！！<br>您最好在配置它之前，先重新安装它！！！<br>于是故事就结束了！请轻轻的敲下以下一行<br>sudo apt-get –reinstall install libavcodec-ffmpeg56（注意红色的是你出问题的软件名称）<br>sudo apt-get –reinstall install libavformat-ffmpeg56</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ubuntu%E5%87%BA%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81%E6%88%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B0%9A%E6%9C%AA%E9%85%8D%E7%BD%AE%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Ubuntu出现ERR_PROXY_CONNECTION_FAILED错误解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Ubuntu%E5%87%BA%E7%8E%B0ERR_PROXY_CONNECTION_FAILED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Ubuntu出现ERR_PROXY_CONNECTION_FAILED错误解决方案</a>
-    </h1>
-  
-
-        
-        <a href="/Ubuntu%E5%87%BA%E7%8E%B0ERR_PROXY_CONNECTION_FAILED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.078Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Ubuntu出现ERR_PROXY_CONNECTION_FAILED错误解决方案<br>前言：因为想查看国外的资料，然后安装了某灯，结果打开谷歌浏览器出现了ERR_PROXY_CONNECTION_FAILED错误，未连接到互联网，代理服务器出现错误，然后Firefox也用不了，看了网上各种大神的教程，也把我弄的团团转，甚至一度以为需要重装Ubuntu，后来直接暴力简单的直接解决了不能上网的问题。（如果想和谐上网），请移步到我新写的<a href="博客">博客</a>（<br>Ⅰ、首先打开设置，点击网络</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180312161818237-1943639057.png" alt=""></p>
-<p>II、然后在网络里找到网络代理</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180312161855090-1011993886.png" alt=""></p>
-<p>III、然后将方法从手动改为无，并应用到整个系统，就可以愉快的上网了</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180312161957172-1238220659.png" alt=""></p>
-<p>执行完上述步骤后，如果还不能立马联网，请重启！！！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Ubuntu%E5%87%BA%E7%8E%B0ERR_PROXY_CONNECTION_FAILED%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ubuntu 18.04 安装破解pycharm professional 专业版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ubuntu%2018.04%20%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3pycharm%20professional%20%E4%B8%93%E4%B8%9A%E7%89%88/">ubuntu 18.04 安装破解pycharm professional 专业版</a>
-    </h1>
-  
-
-        
-        <a href="/ubuntu%2018.04%20%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3pycharm%20professional%20%E4%B8%93%E4%B8%9A%E7%89%88/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.074Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#ubuntu 18.04 安装破解pycharm professional 专业版<br>第一步，下载（不得不说速度很慢）<br>官网地址：<a href="http://www.jetbrains.com/pycharm/?fromMenu" target="_blank" rel="noopener">http://www.jetbrains.com/pycharm/?fromMenu</a><br>第二步，安装<br>安装的话，只需要解压就行<br>（1）进入你的pycharm-xxx-2019.2.3.tar.gz文件所在的目录</p>
-<pre><code>cd XXX</code></pre><p>（2）直接用解压缩就行</p>
-<pre><code>tar -zxvf pycharm-xxx-2019.2.3.tar.gz</code></pre><p>（3）可以移动到opt目录（这一步随意，我移动过去了）<br>sudo mv pycharm-XXX/ /opt<br>（4）启动一下</p>
-<pre><code>sudo sh /opt/pycharm-XXX/bin/pycharm.sh</code></pre><p>点击试用就行，不用管其他的，这里没什么需要操作的<br>基本算是安装成功了<br>第三步，破解（重点啊！！！我试过很多方法，目前只有这个可行）<br>破解需要一个文件：jetbrains-agent.jar ，文件链接：<a href="https://pan.baidu.com/s/1Z89HKV1VidyZHY0BnOWP7w" target="_blank" rel="noopener">https://pan.baidu.com/s/1Z89HKV1VidyZHY0BnOWP7w</a>    提取码：bn7h<br>下载完成后移动到刚刚解压的在/opt目录的pycharm/bin目录中</p>
-<pre><code>sudo mv jetbrains-agent.jar  /opt/pycharm-XXX/bin</code></pre><p>重点来了！！！</p>
-<pre><code>cd /opt/pycharm-XXX/bin 先进入pycharm的bin目录中ll</code></pre><p>会看到绿框中的两个文件：pycharm64.vmoptions和pycharm.vmoptions，修改这两个文件</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190928130215947-1682549459.png" alt=""></p>
-<p>在这两个文件的最后一行均加上一行内容路径并保存：</p>
-<pre><code>sudo gedit pycharm.vmoptions
-#最后一行 加上-javaagent：/opt/pycharm-XXX/bin/jarbrains-agent.jar
-sudo gedit pycharm64.vmoptions#同上</code></pre><p>-javaagent：/opt/pycharm-XXX/bin/jarbrains-agent.jar( 就是刚刚下载的jar文件路径)<br>保存成功后，重新启动</p>
-<pre><code>sudo sh pycharm.sh</code></pre><p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190928135733740-1948604218.png" alt=""></p>
-<p>出现上述，表示激活成功</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ubuntu%2018.04%20%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3pycharm%20professional%20%E4%B8%93%E4%B8%9A%E7%89%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TensorFlow网站收藏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/TensorFlow%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/">TensorFlow网站收藏</a>
-    </h1>
-  
-
-        
-        <a href="/TensorFlow%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.070Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#TensorFlow网站收藏<br>信息熵，条件熵，相对熵，交叉熵：<a href="https://www.cnblogs.com/kyrieng/p/8694705.html#name" target="_blank" rel="noopener">https://www.cnblogs.com/kyrieng/p/8694705.html#name</a><br>Xavier初始化：<a href="https://www.cnblogs.com/hejunlin1992/p/8723816.html" target="_blank" rel="noopener">https://www.cnblogs.com/hejunlin1992/p/8723816.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/TensorFlow%E7%BD%91%E7%AB%99%E6%94%B6%E8%97%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-TensorFlow实现自编码器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/TensorFlow%E5%AE%9E%E7%8E%B0%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/">TensorFlow实现自编码器</a>
-    </h1>
-  
-
-        
-        <a href="/TensorFlow%E5%AE%9E%E7%8E%B0%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.066Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#TensorFlow实现自编码器<br>自编码器：<br>主要用于无监督学习的情况下，对特征进行编码。<br>因为传统的机器学习往往非常依赖特征工程，比如数值型，日期时间型，种类特征等，例如我们在传统学习随机森林中，需要将种类特征进行one-hot编码，对特征进行各种聚合离散处理，形成高阶特征。<br>这些特征工程需要耗费大量的时间，尤其是对于图像，语音，视频等领域提取特征是非常难的，并且往往要求工程师对有相关领域经验和知识。<br>而深度学习能够一定的程度上解决提取特征的问题，其中自编码器就是非常具有代表性的。<br>自编码器来源于对稀疏编码（sparse coding ）的研究，在很多样本图片的碎片中，如果用原始的16像素x16像素=96，研究后发现，每个图片碎片只需要用64正交边就可以构成。再比如对声音的研究，很显然，声音一般都是模拟信息，转化为数字信息种类非常多，但是研究发现基本结构主要为20种，重构起来就简单多了。也就是只需要用20种基本结构进行组合就能得到源声音的特征。因此自编码器完全可以看成是用高阶特征进行编码自己，从而达到尽量不丧失原本基础特征的情况下大大压缩计算量。<br>也即达到y = f（x） ≈ x，其中f（x）是对原信息进行压缩后，提取到的特征，举个例子，将一个三维物体压缩成二维，再将二维还原成三维，三维到二维，就是提取到了高阶特征（可用的特征），而二维到三维为了保证基础特征不丧失。因此输入输出都是自身，它是无监督学习，因为学习的就是自身。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/TensorFlow%E5%AE%9E%E7%8E%B0%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -1073,14 +442,14 @@ sudo gedit pycharm64.vmoptions#同上</code></pre><p>-javaagent：/opt/pycharm-X
 
         
         <a href="/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.062Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#spring学习笔记<br>1、使用eclipse创建maven过程中，默认为J2SE-1.5,解决办法如下：<br>在pom.xml中插入</p>
+        <h1 id="spring学习笔记"><a href="#spring学习笔记" class="headerlink" title="spring学习笔记"></a>spring学习笔记</h1><p>1、使用eclipse创建maven过程中，默认为J2SE-1.5,解决办法如下：<br>在pom.xml中插入</p>
 <pre><code>&lt;build&gt;
     &lt;plugins&gt;
        &lt;plugin&gt;
@@ -1094,7 +463,7 @@ sudo gedit pycharm64.vmoptions#同上</code></pre><p>-javaagent：/opt/pycharm-X
         &lt;/plugin&gt;
     &lt;/plugins&gt;
     &lt;/build&gt;</code></pre><p>就会默认修改为：</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190405123221822-2076166044.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190405123221822-2076166044.png" alt></p>
 
       
 
@@ -1108,6 +477,424 @@ sudo gedit pycharm64.vmoptions#同上</code></pre><p>-javaagent：/opt/pycharm-X
       
         <p class="article-more-link">
           <a class="article-more-a" href="/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python学习笔记之占位符Python %" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/">Python学习笔记之占位符Python %</a>
+    </h1>
+  
+
+        
+        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.598Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python学习笔记之占位符Python"><a href="#Python学习笔记之占位符Python" class="headerlink" title="Python学习笔记之占位符Python %"></a>Python学习笔记之占位符Python %</h1><p>参考网站：<a href="https://www.cnblogs.com/czqq/p/6108557.html" target="_blank" rel="noopener">https://www.cnblogs.com/czqq/p/6108557.html</a><br>感觉Python学起来有些乱，特别是格式化输出这一块，而格式化输出势必涉及到占位符的使用<br>今天就来总结一下占位符%的使用<br>%[(name)][flags][width].[precision]typecode<br>不要被上面这一大串给吓唬到了，实际上这也是Python的魅力所在<br>一个个分析<br>1、（name）属性，它是用来传入字典值的<br>示例：</p>
+<pre><code>print(&apos;hi %(name)s&apos; %{&apos;name&apos;:&apos;jack&apos;})结果： hi jack</code></pre><p>2、[flags]属性，作为用户对一些格式的选择，只有固定的几个值，以下<br>示例：</p>
+<pre><code>print(&apos;the number is %-d %-d&apos; %(+250,-250))
+print(&apos;the number is %+d %+d&apos; %(+250,-250))
+print(&apos;the number is %0d %0d&apos; %(+250,-250))
+print(&apos;the number is % d % d&apos; %(+250,-250))</code></pre><p>结果：<br>the number is 250 -250the number is +250 -250the number is 250 -250the number is  250 -250</p>
+<p>3、[width]属性，根据名字就可以知道指的是宽度<br>示例：</p>
+<pre><code>print(&apos;my salary is %4d yuan in this month&apos; %(2504637))#set the width to four
+print(&apos;my salary is %9d yuan in this month&apos; %(2504637))#set the width to nine</code></pre><p>结果为：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201808/1343872-20180831172035857-851844151.png" alt></p>
+<p>说明如果设置宽度低于实际字符宽度时，会按照实际的宽度来输出<br>但是如果设置宽度高于字符宽度时，会按照设置的宽度输出，空白符自动补位，右对齐</p>
+<p>4、.[precision]属性，很简单，与c和c++相似，用来表示输出小数点后几位<br>示例：</p>
+<pre><code>print(&apos;the answer to the question is %.3f&apos; % (12.34567))</code></pre><p>结果为：<br>the answer to the question is 12.346<br>这里就不用解释了</p>
+<p>5、typecod属性，用于指定输出类型<br>这里选一个经典示例：<br>比如想一句话中多种格式化输出，多个占位符 %问题，用个‘+’号就可以解决</p>
+<pre><code>print(&apos;a is %s &apos; %(&apos;123&apos;)+&apos;b is %s&apos;%(&apos;456&apos;))
+print(&apos;the speed of %(obj)s &apos;%{&apos;obj&apos;:&apos;light&apos;}+&apos;is %10.2f meters per second&apos; %(299792458))</code></pre><p>结果：<br>a is 123 b is 456the speed of light is 299792458.00 meters per second<br>这就是%号占位符的总结，谢谢各位看客，觉得好的点个赞哦！！！<br>转载请注明<a href="https://www.cnblogs.com/gambler/p/9567165.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/9567165.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python学习笔记之头部文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/">Python学习笔记之头部文件</a>
+    </h1>
+  
+
+        
+        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.598Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python学习笔记之头部文件"><a href="#Python学习笔记之头部文件" class="headerlink" title="Python学习笔记之头部文件"></a>Python学习笔记之头部文件</h1><p>首先是设置Python的运行模式<br>即我们常见的开头那一行#!/usr/bin/python3或者#!/usr/bin/python<br>主要是用来指定运行方式<br>与我们在终端中输入：python3 xxx.py或者python xxx.py是等同的<br>指定这一行可以让我们将其变为可执行程序，即先在终端中给予权限 chmod 777 xxx.py<br>然后双击就可以运行该程序<br>记住必须要放在第一行</p>
+<pre><code>#coding:utf-8
+#!/usr/bin/python
+
+while True:
+    print(&apos;yes&apos;)</code></pre><pre><code>#!/usr/bin/python
+#coding:utf-8
+
+while True:
+    print(&apos;yes&apos;)</code></pre><p>其次是如果是直接在终端执行<br>例如终端中是python xxx.py而该文件中的运行模式是python3，那么会优先终端中的，如果在文件中多次指定，则优先最前面一行的</p>
+<p>然后就是编码格式<br>一般都会设置为utf-8或者utf8（等同）,但有两种风格<br>第一种：</p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="coding=utf-8"></a>coding=utf-8</h1><p>第二种（主流）</p>
+<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 -"></a>-<em>- coding: utf-8 -</em></h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python学习笔记之打包可执行exe文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/">Python学习笔记之打包可执行exe文件</a>
+    </h1>
+  
+
+        
+        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.598Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python学习笔记之打包可执行exe文件"><a href="#Python学习笔记之打包可执行exe文件" class="headerlink" title="Python学习笔记之打包可执行exe文件"></a>Python学习笔记之打包可执行exe文件</h1><p>记住，这里的可执行文件并不能是exe文件<br>在Linux系统下，Python不能被打包成exe文件，只有在Windows系统下才能打包成exe文件！！！<br>就算通过各种模块最后打包成功，大多也是不能执行的！！！<br>感觉这个好坑啊！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python之2018双十一秒杀脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/">python之2018双十一秒杀脚本</a>
+    </h1>
+  
+
+        
+        <a href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.598Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python之2018双十一秒杀脚本"><a href="#python之2018双十一秒杀脚本" class="headerlink" title="python之2018双十一秒杀脚本"></a>python之2018双十一秒杀脚本</h1><p>我发现很多网上的版本都失效了，毕竟人家阿里京东的员工又不是傻子，自然会耍点小手段，所以持续更新很重要<br>代码我就不放出来了（大家懂得，避免被针对），毕竟结果最重要，已经打包成exe文件，这样大家可以直接用，点击一下就ok<br>目前只提供两个主流电商平台的秒杀抢购脚本某宝和某东<br>这是初级版本的，没有进行优化，所以效果一般，如果有兴趣一起研究的可以先留言给我，一起讨论<br>某宝：<a href="https://pan.baidu.com/s/1v69HziQS2P0Mqt2Wk7znEg" target="_blank" rel="noopener">https://pan.baidu.com/s/1v69HziQS2P0Mqt2Wk7znEg</a><br>某东：<a href="https://pan.baidu.com/s/1_3SjfJqZMItMWVfOFun-5w" target="_blank" rel="noopener">https://pan.baidu.com/s/1_3SjfJqZMItMWVfOFun-5w</a><br>转载请注明：<a href="https://i.cnblogs.com/EditPosts.aspx?postid=9843389" target="_blank" rel="noopener">https://i.cnblogs.com/EditPosts.aspx?postid=9843389</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python学习笔记之&#39;geckodriver&#39; executable needs to be in PATH" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/">Python学习笔记之&#39;geckodriver&#39; executable needs to be in PATH</a>
+    </h1>
+  
+
+        
+        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.583Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python学习笔记之’geckodriver’-executable-needs-to-be-in-PATH"><a href="#Python学习笔记之’geckodriver’-executable-needs-to-be-in-PATH" class="headerlink" title="Python学习笔记之’geckodriver’ executable needs to be in PATH"></a>Python学习笔记之’geckodriver’ executable needs to be in PATH</h1><p>出现这个问题，是因为没有加载geckodriver的问题，自然的打不开Firefox<br>先去下载一个最新对应版本的geckodriver：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">https://github.com/mozilla/geckodriver/releases</a><br>我的是Ubuntu 64位<br>然后下载后解压到/usr/bin/目录就好了<br>如果是Windows系统，网上大多有解决方案，这里就不重复造轮子了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Python%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E4%B9%8BOne%20or%20more%20issues%20caused%20the%20setup%20to%20fail.Windows7%E5%AE%89%E8%A3%85Python3.7/">Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7</a>
+    </h1>
+  
+
+        
+        <a href="/Python%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E4%B9%8BOne%20or%20more%20issues%20caused%20the%20setup%20to%20fail.Windows7%E5%AE%89%E8%A3%85Python3.7/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.583Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python安装问题之One-or-more-issues-caused-the-setup-to-fail-Windows7安装Python3-7"><a href="#Python安装问题之One-or-more-issues-caused-the-setup-to-fail-Windows7安装Python3-7" class="headerlink" title="Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7"></a>Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7</h1><p>首先大部分人出现这个问题的主要原因在于安装版本是大于python3.4的，早期的版本对win7都是比较兼容的<br>所以如果需要安装较新的版本，就会出现这个问题，就需要安装Windows 7 Service Pack 1和更新系统<br>第一步、下载并安装Windows 7 Service Pack 1<br>进入网址：<a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=5842，选择中文并点击下载" target="_blank" rel="noopener">https://www.microsoft.com/zh-CN/download/details.aspx?id=5842，选择中文并点击下载</a><br>出现下面这些选项</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902180457688-479230156.png" alt></p>
+<p>选择第三个，根据你的操作系统，我的是64位的，所以选择AMD64FRE，下载完成后，直接安装就好，按照引导，安装位置随意<br>第二步、更新系统<br>如果没有安装更新软件，进入下面界面后，出现提示安装用来进行更新的软件（如果不知道界面在哪里，先点击左下角的那个Windows图标，在输入框里直接输入Windows Update,就会出现这个选项，点击进去就好了）<br>安装完成后就会出现下面的界面，显示尚未更新，点击安装更新，将可选更新也点上</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902191244500-38377107.png" alt></p>
+<p>更新完成之后<br>点击重启，会进行系统的更新<br>第三步、正式安装Python3.7<br>点击安装文件后，将会出现下面界面</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902212127281-615329006.png" alt></p>
+<p>选择Install Now，以及全部勾选下面第二个选项（根据其他人反馈，不需要加载给所有用户），主要避免后期还要自己配环境变量<br>第四步、运行<br>安装完成之后，打开cmd窗口（点击左下角Windows图标，填入cmd，按enter就出来了）<br>在黑窗口敲入    》python   命令后会出现下面的错误提示</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902212703858-183365824.png" alt></p>
+<p>这里的解决方案推荐百度经验里的答案：<a href="https://jingyan.baidu.com/article/ab0b563067358ac15afa7dc5.html，就不重复造轮子了" target="_blank" rel="noopener">https://jingyan.baidu.com/article/ab0b563067358ac15afa7dc5.html，就不重复造轮子了</a><br>原因在于我们在上面重新安装了Windows7 service page 1，相当于进行了更新，而上述文件没有更新，虽然该文件属于Windows Visual  2015，所以需要进行更新<br>然后重复上述在黑窗口的操作<br>出现下面界面则说明运行成功了</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902214738477-1478778348.png" alt></p>
+<p>第五步、测试</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902214904387-460517224.png" alt></p>
+<p>如果出现下面结果，则说明基本没问题了</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201809/1343872-20180902214934068-73995240.png" alt></p>
+<p>转载请注明：<a href="https://www.cnblogs.com/gambler/p/9575556.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/9575556.html</a><br>如果有任何疑问，欢迎在下方留言</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/Python%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E4%B9%8BOne%20or%20more%20issues%20caused%20the%20setup%20to%20fail.Windows7%E5%AE%89%E8%A3%85Python3.7/">展开全文 >></a>
         </p>
       
 

@@ -140,701 +140,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-RC4加密算法原理简单理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">RC4加密算法原理简单理解</a>
-    </h1>
-  
-
-        
-        <a href="/RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#RC4加密算法原理简单理解<br>学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的<br>RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。<br>重点讲解RC4秘钥生成步骤<br>感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：<a href="https://www.cnblogs.com/block2016/p/5601925.html）" target="_blank" rel="noopener">https://www.cnblogs.com/block2016/p/5601925.html）</a></p>
-<p><img src="https://images2015.cnblogs.com/blog/929265/201606/929265-20160620213652444-560250478.jpg" alt=""></p>
-<p>1、先初始化状态向量S（256个字节，用来作为密钥流生成的种子1）<br>按照升序，给每个字节赋值0,1,2,3,4,5,6…..,254,255<br>2、初始密钥（由用户输入），长度任意<br>如果输入长度小于256个字节，则进行轮转，直到填满<br>例如输入密钥的是1,2,3,4,5   ,  那么填入的是1,2,3,4,5,1,2,3,4,5,1,2,3,4,5……..<br>由上述轮转过程得到256个字节的向量T（用来作为密钥流生成的种子2）<br>3、开始对状态向量S进行置换操作（用来打乱初始种子1）<br>按照下列规则进行<br>从第零个字节开始，执行256次，保证每个字节都得到处理<br>j = 0;<br>for (i = 0 ; i &lt; 256 ; i++){<br>j = (j + S[i] + T[i]) mod 256;<br>swap(S[i] , S[j]);<br>}<br>这样处理后的状态向量S几乎是带有一定的随机性了<br>4、最后是秘钥流的生成与加密，很多人在这里不是特别理解，别的博客也没有写的很简洁明了<br>假设我的明文字节数是datalength=1024个字节（当然可以是任意个字节）<br>i=0;<br>j=0;<br>while(datalength–){//相当于执行1024次，这样生成的秘钥流也是1024个字节<br>i = (i + 1) mod 256;<br>j = (j + S[i]) mod 256;<br>swap(S[i] , S[j]);<br>t = (S[i] + S[j]) mod 256;<br>k = S[t];这里的K就是当前生成的一个秘钥流中的一位<br>//可以直接在这里进行加密，当然也可以将密钥流保存在数组中，最后进行异或就ok<br>data[]=data[]^k； //进行加密，”^”是异或运算符<br>}<br>解密按照前面写的，异或两次就是原文，所以只要把密钥流重新拿过来异或一次就能得到原文了<br>这样就完成了一次生成密钥流及加密的过程，这也是RC4的全部工作，是不是很简单呢？</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pytorchhub教程之安装pytorch或pytorchversion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/">pytorchhub教程之安装pytorch或pytorchversion</a>
-    </h1>
-  
-
-        
-        <a href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#pytorchhub教程之安装pytorch或pytorchversion<br>出现上述bug是在第一次查看pytorchhub可用模型的时候发生的</p>
-<blockquote>
-<blockquote>
-<p>torch.hub.list(‘pytorch/vision’)</p>
-</blockquote>
-</blockquote>
-<p>没有记录下来，所以没办法重现<br>解决方法是：<br>定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015158051-1377802514.png" alt=""></p>
-<p>例如：<br>该方法原代码如下：</p>
-<pre><code>def _remove_if_exists(path):
-    if os.path.exists(path):
-        if os.path.isfile(path):
-            os.remove(path)
-        else:
-            shutil.rmtree(path)</code></pre><p>修改为：</p>
-<pre><code>def _remove_if_exists(path):
-    if os.path.exists(path):
-        if os.path.isfile(path):
-           # os.remove(path)
-            pass
-        else:
-            shutil.rmtree(path)</code></pre><p>然后执行</p>
-<blockquote>
-<blockquote>
-<p>torch.hub.list(‘pytorch/vision’)，发现能够成功获取所有模型</p>
-</blockquote>
-</blockquote>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015514003-949947541.png" alt=""></p>
-<p>最后再将hub.py修改回来即可。<br>最近pytorch发布了pytorch hub，正在学习之中。<br>不过需要先安装pytorch和pytorchversion，但是总是出现各种bug<br>建议直接根据官网步骤安装（相关依赖包很大，建议在网络环境好的情况下下载）<br>第一步<br>首先进入官网：<a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/</a><br>第二步<br>选择自己需要的版本</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614002709934-1557809455.png" alt=""></p>
-<p>第三步</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003104759-1577962048.png" alt=""></p>
-<p>安装完成</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003350953-665868823.png" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pytorchhub教程（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">pytorchhub教程（一）</a>
-    </h1>
-  
-
-        
-        <a href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.051Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#pytorchhub教程（一）<br>如果没有安装pytorch的请先上篇<a href="博客">博客</a>安装一下。<br>pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。<br>相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。<br>而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两者从调用流程及使用方法而言相差不大，但便捷程度pytorch hub明显略胜一筹。<br>不说废话，先来个hub版本的HelloWorld<br>第一步<br>先导入torch<br>import torch<br>第二步<br>得出所有可用模型列表，执行：torch.hub.list(‘pytorch/vision’)<br>第一次执行会默认下载本地仓库，可能会出现多个程序同时占用仓库文件的bug，解决方案见：<a href="https://www.cnblogs.com/gambler/p/11020649.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/11020649.html</a><br>执行后会显示当前可用模型，如下图所示：</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614112401990-969859239.png" alt=""></p>
-<p>第三步<br>然后加载模型到本地，执行：model = torch.hub.load(‘pytorch/vision’, ‘deeplabv3_resnet101’, pretrained=True)<br>参数说明如下：<br>‘pytorch/vision’反斜杠前面一个表示github仓库的所有者‘pytorch’，反斜杠后面一个表示仓库名‘vision’，<br>‘deeplabv3_resnet101’表示模型名称（模型需要存在在仓库列表中）<br>pretrained表示预训练模型，True表示使用预训练模型，参数权重经过预训练，可用快速方便的使用，False表示不使用预训练模型<br>第四步</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python中的yield通俗理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/">python中的yield通俗理解</a>
-    </h1>
-  
-
-        
-        <a href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.047Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#python中的yield通俗理解<br>|、第一步放bug</p>
-<pre><code>Traceback (most recent call last):
-  File &quot;c:\programdata\anaconda3\envs\sql\lib\runpy.py&quot;, line 193, in _run_module_as_main
-    &quot;__main__&quot;, mod_spec)
-  File &quot;c:\programdata\anaconda3\envs\sql\lib\runpy.py&quot;, line 85, in _run_code
-    exec(code, run_globals)
-  File &quot;C:\ProgramData\Anaconda3\envs\sql\Scripts\pipreqs.exe\__main__.py&quot;, line 9, in &lt;module&gt;
-  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 470, in main
-    init(args)
-  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 409, in init
-    follow_links=follow_links)
-  File &quot;c:\programdata\anaconda3\envs\sql\lib\site-packages\pipreqs\pipreqs.py&quot;, line 122, in get_all_imports
-    contents = f.read()
-UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0xab in position 2411: illegal multibyte sequence</code></pre><p>II、解决方案<br>根据bug提示就知道是编码出现问题，所以只需要改变编码<br>1、找到pipreqs包的位置<br>在bug中有提示，已经具体显示到第几行</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191119123033994-1994863568.png" alt=""></p>
-<p>2、修改编码<br>根据上面提示的行数直接找到源头，修改，完成</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191119123120738-1259322829.png" alt=""></p>
-<p>保存，ok<br>重新导出<br>I、理解yield，第一步需要理解yield和return的区别</p>
-<pre><code>print(&apos;yield:&apos;)
-def _testyield():
-    for i in range(5):
-        yield i*i
-#这里产生生成器对象,跟java对象意思相同
-generator = _testyield()
-
-for i in range(5):
-    print(next(generator))
-#-----------------------------------------------------------#
-
-print(&apos;return:&apos;)
-def _return(n):
-    # 这里res是一个list[],得出的结果是[1,2,3,4,5]
-    res = [i*i for i in range(n)]    
-    return res
-
-for i in _return(5):
-    print(i)</code></pre><p>上面yield和return生成的结果相同：</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117103029291-475061575.png" alt=""></p>
-<p>但是这里面的区别在于：<br>return返回的是一个list列表，而yield每次调用只返回一个数值，毫无疑问，使用return空间开销比较大，尤其是操作巨量数据的时候，操作一个大列表时间开销也会得不偿失</p>
-<p>II、yield执行方式</p>
-<pre><code>def foo():
-    print(&quot;starting...&quot;)
-    while True:
-        res = yield 4
-        print(&quot;res:&quot;,res)
-
-
-g = foo()
-#此时未打印出任何信息，说明只是生成了generator对象，并未执行函数
-
-print(&apos;-&apos;*30)
-print(&apos;g_1&apos;,next(g))
-#调用next，开始执行函数，并且到达yield这一步时，返回生成的4
-
-print(&quot;*&quot;*20)
-print(&apos;g_2&apos;,next(g))
-#res：none，说明是接着上一步开始执行，并且第二次循环到达yield这一步
-
-print(&quot;#&quot;*30)
-print(&apos;g_3&apos;,next(g))</code></pre><p>打印结果如下：</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117103549972-290747984.png" alt=""></p>
-<p>说明：<br>1、调用包含yield函数时，并不会执行函数，而是产生并返回一个生成器对象<br>2、第一次next取出一个值时，会将函数执行到第一个yield，停止<br>3、后面next时，会从上一个yield开始，接着执行，循环到下一个yield<br>后面均参照第三行。</p>
-<p>III、继续深挖yield</p>
-<pre><code>def foo():    print(&quot;starting...&quot;)    for i in range(6):        res = yield 4        print(&quot;res:&quot;,res)    #当我们添加新的yield    for i in range(6):        res = yield 5        print(&quot;res&quot;,res)g = foo()#此时未打印出任何信息，说明只是生成了generator对象，并未执行函数for i in range(7):    print(next(g))</code></pre><p>结果是：</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191117104717999-1813811285.png" alt=""></p>
-<p>上述结果5最后出现，说明yield会按照正常顺序进行执行，不会重新加载函数</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python之2018双十一秒杀脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/">python之2018双十一秒杀脚本</a>
-    </h1>
-  
-
-        
-        <a href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.044Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#python之2018双十一秒杀脚本<br>我发现很多网上的版本都失效了，毕竟人家阿里京东的员工又不是傻子，自然会耍点小手段，所以持续更新很重要<br>代码我就不放出来了（大家懂得，避免被针对），毕竟结果最重要，已经打包成exe文件，这样大家可以直接用，点击一下就ok<br>目前只提供两个主流电商平台的秒杀抢购脚本某宝和某东<br>这是初级版本的，没有进行优化，所以效果一般，如果有兴趣一起研究的可以先留言给我，一起讨论<br>某宝：<a href="https://pan.baidu.com/s/1v69HziQS2P0Mqt2Wk7znEg" target="_blank" rel="noopener">https://pan.baidu.com/s/1v69HziQS2P0Mqt2Wk7znEg</a><br>某东：<a href="https://pan.baidu.com/s/1_3SjfJqZMItMWVfOFun-5w" target="_blank" rel="noopener">https://pan.baidu.com/s/1_3SjfJqZMItMWVfOFun-5w</a><br>转载请注明：<a href="https://i.cnblogs.com/EditPosts.aspx?postid=9843389" target="_blank" rel="noopener">https://i.cnblogs.com/EditPosts.aspx?postid=9843389</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python学习笔记之占位符Python %" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/">Python学习笔记之占位符Python %</a>
-    </h1>
-  
-
-        
-        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Python学习笔记之占位符Python %<br>参考网站：<a href="https://www.cnblogs.com/czqq/p/6108557.html" target="_blank" rel="noopener">https://www.cnblogs.com/czqq/p/6108557.html</a><br>感觉Python学起来有些乱，特别是格式化输出这一块，而格式化输出势必涉及到占位符的使用<br>今天就来总结一下占位符%的使用<br>%[(name)][flags][width].[precision]typecode<br>不要被上面这一大串给吓唬到了，实际上这也是Python的魅力所在<br>一个个分析<br>1、（name）属性，它是用来传入字典值的<br>示例：</p>
-<pre><code>print(&apos;hi %(name)s&apos; %{&apos;name&apos;:&apos;jack&apos;})结果： hi jack</code></pre><p>2、[flags]属性，作为用户对一些格式的选择，只有固定的几个值，以下<br>示例：</p>
-<pre><code>print(&apos;the number is %-d %-d&apos; %(+250,-250))
-print(&apos;the number is %+d %+d&apos; %(+250,-250))
-print(&apos;the number is %0d %0d&apos; %(+250,-250))
-print(&apos;the number is % d % d&apos; %(+250,-250))</code></pre><p>结果：<br>the number is 250 -250the number is +250 -250the number is 250 -250the number is  250 -250</p>
-<p>3、[width]属性，根据名字就可以知道指的是宽度<br>示例：</p>
-<pre><code>print(&apos;my salary is %4d yuan in this month&apos; %(2504637))#set the width to four
-print(&apos;my salary is %9d yuan in this month&apos; %(2504637))#set the width to nine</code></pre><p>结果为：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201808/1343872-20180831172035857-851844151.png" alt=""></p>
-<p>说明如果设置宽度低于实际字符宽度时，会按照实际的宽度来输出<br>但是如果设置宽度高于字符宽度时，会按照设置的宽度输出，空白符自动补位，右对齐</p>
-<p>4、.[precision]属性，很简单，与c和c++相似，用来表示输出小数点后几位<br>示例：</p>
-<pre><code>print(&apos;the answer to the question is %.3f&apos; % (12.34567))</code></pre><p>结果为：<br>the answer to the question is 12.346<br>这里就不用解释了</p>
-<p>5、typecod属性，用于指定输出类型<br>这里选一个经典示例：<br>比如想一句话中多种格式化输出，多个占位符 %问题，用个‘+’号就可以解决</p>
-<pre><code>print(&apos;a is %s &apos; %(&apos;123&apos;)+&apos;b is %s&apos;%(&apos;456&apos;))
-print(&apos;the speed of %(obj)s &apos;%{&apos;obj&apos;:&apos;light&apos;}+&apos;is %10.2f meters per second&apos; %(299792458))</code></pre><p>结果：<br>a is 123 b is 456the speed of light is 299792458.00 meters per second<br>这就是%号占位符的总结，谢谢各位看客，觉得好的点个赞哦！！！<br>转载请注明<a href="https://www.cnblogs.com/gambler/p/9567165.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/9567165.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8D%A0%E4%BD%8D%E7%AC%A6Python%20%25/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python学习笔记之头部文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/">Python学习笔记之头部文件</a>
-    </h1>
-  
-
-        
-        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.036Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Python学习笔记之头部文件<br>首先是设置Python的运行模式<br>即我们常见的开头那一行#!/usr/bin/python3或者#!/usr/bin/python<br>主要是用来指定运行方式<br>与我们在终端中输入：python3 xxx.py或者python xxx.py是等同的<br>指定这一行可以让我们将其变为可执行程序，即先在终端中给予权限 chmod 777 xxx.py<br>然后双击就可以运行该程序<br>记住必须要放在第一行</p>
-<pre><code>#coding:utf-8
-#!/usr/bin/python
-
-while True:
-    print(&apos;yes&apos;)</code></pre><pre><code>#!/usr/bin/python
-#coding:utf-8
-
-while True:
-    print(&apos;yes&apos;)</code></pre><p>其次是如果是直接在终端执行<br>例如终端中是python xxx.py而该文件中的运行模式是python3，那么会优先终端中的，如果在文件中多次指定，则优先最前面一行的</p>
-<p>然后就是编码格式<br>一般都会设置为utf-8或者utf8（等同）,但有两种风格<br>第一种：</p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="coding=utf-8"></a>coding=utf-8</h1><p>第二种（主流）</p>
-<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 -"></a>-<em>- coding: utf-8 -</em></h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%A4%B4%E9%83%A8%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python学习笔记之打包可执行exe文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/">Python学习笔记之打包可执行exe文件</a>
-    </h1>
-  
-
-        
-        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.032Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Python学习笔记之打包可执行exe文件<br>记住，这里的可执行文件并不能是exe文件<br>在Linux系统下，Python不能被打包成exe文件，只有在Windows系统下才能打包成exe文件！！！<br>就算通过各种模块最后打包成功，大多也是不能执行的！！！<br>感觉这个好坑啊！！！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8Cexe%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python学习笔记之&#39;geckodriver&#39; executable needs to be in PATH" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/">Python学习笔记之&#39;geckodriver&#39; executable needs to be in PATH</a>
-    </h1>
-  
-
-        
-        <a href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.027Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#Python学习笔记之’geckodriver’ executable needs to be in PATH<br>出现这个问题，是因为没有加载geckodriver的问题，自然的打不开Firefox<br>先去下载一个最新对应版本的geckodriver：<a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">https://github.com/mozilla/geckodriver/releases</a><br>我的是Ubuntu 64位<br>然后下载后解压到/usr/bin/目录就好了<br>如果是Windows系统，网上大多有解决方案，这里就不重复造轮子了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B'geckodriver'%20executable%20needs%20to%20be%20in%20PATH/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-python学习笔记（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -848,14 +153,14 @@ while True:
 
         
         <a href="/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.023Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.583Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#python学习笔记（一）<br>1、如何找到pip或者pip3安装位置<br>用以下命令<br>pip show (包名)</p>
+        <h1 id="python学习笔记（一）"><a href="#python学习笔记（一）" class="headerlink" title="python学习笔记（一）"></a>python学习笔记（一）</h1><p>1、如何找到pip或者pip3安装位置<br>用以下命令<br>pip show (包名)</p>
 
       
 
@@ -869,6 +174,988 @@ while True:
       
         <p class="article-more-link">
           <a class="article-more-a" href="/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python实战项目之爬虫（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/">python实战项目之爬虫（一）</a>
+    </h1>
+  
+
+        
+        <a href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.583Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python实战项目之爬虫（一）"><a href="#python实战项目之爬虫（一）" class="headerlink" title="python实战项目之爬虫（一）"></a>python实战项目之爬虫（一）</h1><p>因为马上就要大四实习了，博主实在懒得在学校官网上一个个翻，直接用爬虫将所有数据都爬下来<br>放在表格里，这样感觉简单多了，可惜还没找到工作，so sad<br>总共选择了三个学校：湖南大学，中南大学，湘潭大学<br>三个项目代码分别如下（新手代码，惨不忍睹）：<br>湘潭大学：</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import json
+import logging
+import os
+import xlwt
+basic_url = &apos;http://jobs.xtu.edu.cn/index/getdaycareers?day=2018-10-&apos;
+logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
+
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list1&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;专业要求&apos;)
+sheet1.write(0,5,&apos;详细信息&apos;)
+count=1
+for i in range(1,32):
+    url = basic_url+str(i)
+    logging.debug(&apos;the clawer web site is:&apos;+url)
+    clawertext = requests.get(url)
+    logging.debug(type(clawertext))
+    logging.debug(clawertext.json())
+    logging.debug(clawertext.json()[&apos;data&apos;])
+    logging.debug(type(clawertext.json()[&apos;data&apos;]))
+
+    data_list = clawertext.json()[&apos;data&apos;]#the useful data 
+
+    for i in data_list:
+        sheet1.write(count,0,i[&apos;meet_day&apos;])
+        sheet1.write(count,1,i[&apos;address&apos;])
+        sheet1.write(count,2,i[&apos;meet_name&apos;])
+        sheet1.write(count,3,i[&apos;professionals&apos;])
+        sheet1.write(count,5,&apos;http://jobs.xtu.edu.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
+        count=count+1
+workbook.save(&apos;湘潭大学十月份招聘信息.xlsx&apos;)</code></pre><p>中南大学：<br>这个最坑，花了我一个多小时</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import xlwt
+import json
+import logging
+import bs4
+from bs4 import BeautifulSoup
+#初始化日志保存路劲，及格式
+logging.basicConfig(filename=&apos;log.txt&apos;,level=logging.DEBUG,format=&apos;%(asctime)s - %(levelname)s - %(message)s&apos;)
+logging.getLogger(&apos;requests&apos;).setLevel(logging.WARNING)#禁用requests的日志
+
+#初始化表格
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;职位名称&apos;)
+sheet1.write(0,4,&apos;教育水平&apos;)
+sheet1.write(0,5,&apos;专业要求&apos;)
+sheet1.write(0,6,&apos;空缺数量&apos;)
+sheet1.write(0,7,&apos;详细信息&apos;)
+
+#初始化地址
+json_all_url = &apos;http://jobsky.csu.edu.cn/Home/SearchDateAllMonth&apos;
+dt1={&apos;Date&apos;:&apos;2018-09-04&apos;}
+post_data = requests.post(json_all_url,data=dt1)
+json_data = post_data.json()
+logging.debug(type(json_data))
+&apos;&apos;&apos;with open(&apos;json.txt&apos;,&apos;w&apos;) as fileTxt:
+    for i in json_data:
+        fileTxt.write(str(i)+&apos;\n&apos;)    
+&apos;&apos;&apos;
+basic_html_url = &apos;http://jobsky.csu.edu.cn/Home/ArticleDetails/&apos;
+
+counter_all = 1
+for data in json_data:
+    company_Id=data[&apos;NewsID&apos;]
+    #logging.debug(&apos;the commpanyID is:&apos;+company_Id)
+    html_url=basic_html_url+company_Id
+#html_url=basic_html_url+&apos;13713&apos;#static url,please delete and repaire after you have used it
+
+    html_txt = requests.get(html_url)
+#  logging.debug(&apos;the web site using code is:&apos;+str(html_txt.status_code))
+    bs = BeautifulSoup(html_txt.text,&apos;lxml&apos;)
+
+    #get the commpanyName
+
+    list_soup_CN = bs.find(&apos;h1&apos;,attrs={&apos;class&apos;:&apos;text-center title&apos;})
+    try:    
+        advertise_company_name=list_soup_CN.getText()
+        sheet1.write(counter_all,2,advertise_company_name)
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+    #get the time and place
+    try:
+        list_soup_TP = bs.find(&apos;div&apos;,attrs={&apos;id&apos;:&apos;placeAndTime&apos;})
+        advertise_time=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center time&apos;}).getText()
+        advertise_place=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center place&apos;}).getText()
+        sheet1.write(counter_all,0,advertise_time)
+        sheet1.write(counter_all,1,advertise_place)
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+
+    try:     
+        list_soup_demand = bs.find(&apos;table&apos;,attrs={&apos;class&apos;:&apos;table table-bordered&apos;})
+        list_td = list_soup_demand.find_all(&apos;td&apos;)
+        counter_even = 0#use to counter ,so that we can find the number of td,and get we need data
+        #we can get the useful data by looking the source
+        for td in list_td:
+            if counter_even==1 :
+                sheet1.write(counter_all,3,td.getText())
+            if counter_even==3 :
+                sheet1.write(counter_all,4,td.getText())
+            if counter_even==5 :
+                sheet1.write(counter_all,5,td.getText())
+            if counter_even==7 :
+                sheet1.write(counter_all,6,td.getText())
+            counter_even =counter_even+1
+        sheet1.write(counter_all,7,html_url)
+        counter_all+=1
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+    #保存文件
+    workbook.save(&apos;中南大学招聘信息.xlsx&apos;)</code></pre><p>最后是湖南大学，不知道为什么，湖南大学招聘信息少的可怜</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import json
+import logging
+import os
+import xlwt
+json_url = &apos;https://hnu.bysjy.com.cn/module/getcareers?start_page=1&amp;keyword=&amp;type=inner&amp;day=&amp;count=15&amp;start=1&amp;_=1536044186160&apos;
+logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
+
+json_data = requests.get(json_url)
+#print(json_data.text)
+
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list1&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;招聘会&apos;)
+sheet1.write(0,4,&apos;专业要求&apos;)
+sheet1.write(0,6,&apos;详细信息&apos;)
+count=1
+
+data_list = json_data.json()[&apos;data&apos;]#the useful data 
+
+for i in data_list:
+        sheet1.write(count,0,i[&apos;meet_day&apos;]+i[&apos;meet_time&apos;])
+        sheet1.write(count,1,i[&apos;address&apos;])
+        sheet1.write(count,2,i[&apos;company_name&apos;])
+        sheet1.write(count,3,i[&apos;meet_name&apos;])
+        sheet1.write(count,4,i[&apos;professionals&apos;])
+        sheet1.write(count,5,&apos;https://hnu.bysjy.com.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
+        count=count+1
+workbook.save(&apos;湖南大学招聘信息.xlsx&apos;)</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql学习训练记录及笔记（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">mysql学习训练记录及笔记（一）</a>
+    </h1>
+  
+
+        
+        <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql学习训练记录及笔记（一）"><a href="#mysql学习训练记录及笔记（一）" class="headerlink" title="mysql学习训练记录及笔记（一）"></a>mysql学习训练记录及笔记（一）</h1><p>写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、建表语句</p>
+<pre><code>--建表
+--学生表
+CREATE TABLE `Student`(
+    `s_id` VARCHAR(20),
+    `s_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `s_birth` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `s_sex` VARCHAR(10) NOT NULL DEFAULT &apos;&apos;,
+    PRIMARY KEY(`s_id`)
+);
+--课程表
+CREATE TABLE `Course`(
+    `c_id`  VARCHAR(20),
+    `c_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `t_id` VARCHAR(20) NOT NULL,
+    PRIMARY KEY(`c_id`)
+);
+--教师表
+CREATE TABLE `Teacher`(
+    `t_id` VARCHAR(20),
+    `t_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    PRIMARY KEY(`t_id`)
+);
+--成绩表
+CREATE TABLE `Score`(
+    `s_id` VARCHAR(20),
+    `c_id`  VARCHAR(20),
+    `s_score` INT(3),
+    PRIMARY KEY(`s_id`,`c_id`)
+);
+--插入学生表测试数据
+insert into Student values(&apos;01&apos; , &apos;赵雷&apos; , &apos;1990-01-01&apos; , &apos;男&apos;);
+insert into Student values(&apos;02&apos; , &apos;钱电&apos; , &apos;1990-12-21&apos; , &apos;男&apos;);
+insert into Student values(&apos;03&apos; , &apos;孙风&apos; , &apos;1990-05-20&apos; , &apos;男&apos;);
+insert into Student values(&apos;04&apos; , &apos;李云&apos; , &apos;1990-08-06&apos; , &apos;男&apos;);
+insert into Student values(&apos;05&apos; , &apos;周梅&apos; , &apos;1991-12-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;06&apos; , &apos;吴兰&apos; , &apos;1992-03-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;07&apos; , &apos;郑竹&apos; , &apos;1989-07-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;08&apos; , &apos;王菊&apos; , &apos;1990-01-20&apos; , &apos;女&apos;);
+--课程表测试数据
+insert into Course values(&apos;01&apos; , &apos;语文&apos; , &apos;02&apos;);
+insert into Course values(&apos;02&apos; , &apos;数学&apos; , &apos;01&apos;);
+insert into Course values(&apos;03&apos; , &apos;英语&apos; , &apos;03&apos;);
+
+--教师表测试数据
+insert into Teacher values(&apos;01&apos; , &apos;张三&apos;);
+insert into Teacher values(&apos;02&apos; , &apos;李四&apos;);
+insert into Teacher values(&apos;03&apos; , &apos;王五&apos;);
+
+--成绩表测试数据
+insert into Score values(&apos;01&apos; , &apos;01&apos; , 80);
+insert into Score values(&apos;01&apos; , &apos;02&apos; , 90);
+insert into Score values(&apos;01&apos; , &apos;03&apos; , 99);
+insert into Score values(&apos;02&apos; , &apos;01&apos; , 70);
+insert into Score values(&apos;02&apos; , &apos;02&apos; , 60);
+insert into Score values(&apos;02&apos; , &apos;03&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;01&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;02&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;03&apos; , 80);
+insert into Score values(&apos;04&apos; , &apos;01&apos; , 50);
+insert into Score values(&apos;04&apos; , &apos;02&apos; , 30);
+insert into Score values(&apos;04&apos; , &apos;03&apos; , 20);
+insert into Score values(&apos;05&apos; , &apos;01&apos; , 76);
+insert into Score values(&apos;05&apos; , &apos;02&apos; , 87);
+insert into Score values(&apos;06&apos; , &apos;01&apos; , 31);
+insert into Score values(&apos;06&apos; , &apos;03&apos; , 34);
+insert into Score values(&apos;07&apos; , &apos;02&apos; , 89);
+insert into Score values(&apos;07&apos; , &apos;03&apos; , 98);</code></pre><p>II、sql语言训练<br>1、– 查询”01”课程比”02”课程成绩高的学生的信息及课程分数</p>
+<pre><code>select
+    a.*,
+    b.s_score,
+    c.s_score
+from
+    student a join score b on
+    a.s_id = b.s_id
+    and b.c_id=&apos;01&apos;
+    join score c on a.s_id = c.s_id and c.c_id = &apos;02&apos; or c.c_id =null
+where
+    b.s_score&gt; c.s_score;</code></pre><p>2、查询”01”课程比”02”课程成绩低的学生的信息及课程分数</p>
+<pre><code>select a.*, b.s_score, c.s_score
+from student a join score b on a.s_id =b.s_id and b.c_id =&apos;01&apos;
+join score c on a.s_id = c.s_id and c.c_id = &apos;02&apos;
+where b.s_score &lt; c.s_score;</code></pre><p>3、– 查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩</p>
+<pre><code>select a.s_id,a.s_name, avg(b.s_score) from student a join score b on a.s_id = b.s_id group by a.s_id,a.s_name having avg(b.s_score)&gt;60;</code></pre><p>4、– 查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩<br>– (包括有成绩的和无成绩的)</p>
+<pre><code>select a.s_id,a.s_name, avg(b.s_score) from student a join score b on a.s_id = b.s_id group by a.s_id,a.s_name having avg(b.s_score)&lt;60
+union
+select a.s_id,a.s_name,0  from student a where a.s_id not in (select distinct s_id from score); 
+;</code></pre><p>5、查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩</p>
+<pre><code>select t1.s_id,t1.s_name,count(t2.c_id),sum(t2.s_score) from student t1 join score t2 on t1.s_id = t2.s_id
+group by t1.s_id,t1.s_name ;</code></pre><p>6、– 查询”李”姓老师的数量</p>
+<pre><code>select count(1) from teacher where t_name like &quot;李%&quot;;</code></pre><p>7、– 查询学过”张三”老师授课的同学的信息</p>
+<pre><code>select a.* from student a join score b on a.s_id  = b.s_id join course c on b.c_id = c.c_id join teacher d on c.t_id = d.t_id where d.t_name = &apos;张三&apos;;</code></pre><p>8、– 查询没学过”张三”老师授课的同学的信息</p>
+<pre><code>select a.* from student a where a.s_id  not in (
+    select s_id from score where c_id = (
+        select c_id from course where t_id = (
+            select t_id from teacher where t_name =&apos;张三&apos;
+        )
+    ));</code></pre><p>9、– 查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息</p>
+<pre><code>select * from 
+    student a 
+    where a.s_id in (
+    select a.s_id from score a join score b on a.s_id=b.s_id and a.c_id = &apos;01&apos; and b.c_id=&apos;02&apos;);</code></pre><p>10、– 查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息</p>
+<pre><code>select * from student
+     where s_id in (
+     select a.s_id from score a where a.c_id = &apos;01&apos; and a.s_id not in (
+         select b.s_id from score b where b.c_id = &apos;02&apos;)
+     );</code></pre><p>11、– 查询没有学全所有课程的同学的信息</p>
+<pre><code>select * from
+    student a
+    where a.s_id not in (
+    select s_id from score b group by b.s_id  having count(*) = (select count(distinct c_id) from course)
+    )</code></pre><p>12、– 查询至少有一门课与学号为”01”的同学所学相同的同学的信息</p>
+<pre><code>select * from student
+    where s_id in (
+     select s_id from score where  c_id in (select c_id from score where s_id = &apos;01&apos;)
+    );</code></pre><p>13、 - 查询和”01”号的同学学习的课程完全相同的其他同学的信息、</p>
+<pre><code>select * from student
+where s_id in
+(select s_id from score group by s_id having group_concat(c_id order by c_id) = 
+(select group_concat(c_id order by c_id) from score  where s_id = &apos;01&apos;)
+)</code></pre><p>14、查询没学过”张三”老师讲授的任一门课程的学生姓名</p>
+<pre><code>select t1.s_name from student t1 where t1.s_id not in
+(select s_id from score t2 where t2.c_id in (select c_id from course a join  teacher b on a.t_id=b.t_id where t_name =&apos;张三&apos;))</code></pre><p>15、–查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩</p>
+<pre><code>select t1.s_id ,t1.s_name,avg(t2.s_score) from student t1 join score t2 on t1.s_id=t2.s_id where t2.s_score&lt;60 group by t1.s_id having count(t2.s_score)&gt;1;</code></pre><p>– 16、检索”01”课程分数小于60，按分数降序排列的学生信息</p>
+<pre><code>select * from student t1 join score t2 on t1.s_id = t2.s_id where t2.s_score &lt; 60 and t2.c_id = &apos;01&apos; order by t2.s_score desc;</code></pre><p>– 17、按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩</p>
+<pre><code>select s_id,(select s_score from score where t1.s_id=s_id and c_id=&apos;01&apos;) as a,
+(select s_score from score where t1.s_id=s_id and c_id=&apos;02&apos;) as b,
+(select s_score from score where t1.s_id= s_id and c_id=&apos;03&apos;) as c,
+avg(s_score)
+from score t1 group by s_id order by avg(s_score) desc;</code></pre><p>– 18、查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率– 及格为&gt;=60，中等为：70-80，优良为：80-90，优秀为：&gt;=90</p>
+<pre><code>select score.c_id,course.c_name,max(s_score),min(s_score),avg(s_score),
+(sum(s_score&gt;=60)/count(s_score)),
+(sum(case when  s_score between 70 and 80 then 1 else 0 end)/count(s_score)),
+(sum(case when  s_score between 80 and 90 then 1 else 0 end)/count(s_score)),
+(sum(case when  s_score &gt;=90 then 1 else 0 end)/count(s_score))
+from score join course on score.c_id = course.c_id
+group by c_id</code></pre><p>19、按各科成绩进行排序，并显示排名</p>
+<pre><code>select @i:= @i + 1,s_score,s_id,c_id
+from score,(select @i:=0) as a order by s_score desc</code></pre><p>20、查询学生的总成绩并进行排名</p>
+<pre><code>select @i:=@i+1,sum_score,s_id
+from (
+select s_id,sum(s_score) as sum_score
+from score group by s_id order by sum(s_score) desc
+) b,(select @i:=0) a</code></pre><p>III、总结一下，前20题涉及知识点包括<br>1、各语句执行顺序：<br>sql语句顺序</p>
+<pre><code>&lt;SELECT clause&gt; [&lt;FROM clause&gt;] [&lt;WHERE clause&gt;] [&lt;GROUP BY clause&gt;] [&lt;HAVING clause&gt;] [&lt;ORDER BY clause&gt;] [&lt;LIMIT clause&gt;]</code></pre><p>数据库底层执行顺序</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201912/1343872-20191203151744160-1095337361.png" alt></p>
+<p>2、子查询<br>a、   where型子查询：指把内部查询的结果作为外层查询的比较条件。 b、   from型子查询：把内层的查询结果当成临时表，供外层sql再次查询。 c、 in子查询：内层查询语句仅返回一个数据列，这个数据列的值将供外层查询语句进行比较。 d、 exists子查询：把外层的查询结果，拿到内层，看内层是否成立，简单来说后面的返回true,外层（也就是前面的语句）才会执行，否则不执行。 e、 any子查询：只要满足内层子查询中的任意一个比较条件，就返回一个结果作为外层查询条件。 f、  all子查询：内层子查询返回的结果需同时满足所有内层查询条件。 g、 比较运算符子查询：子查询中可以使用的比较运算符如 “&gt;” “&lt;” “= ” “!=”<br>3、group_concat连接列数据，需要配合groupby使用<br>4、@符号使用，声明用户变量<br>oracle中有rownum这个伪列，自增序号，但是mysql中没有，因此借用@进行递增赋值<br>注意需要先进行子查询排序，再补加序列号，因为@i：=@i+1赋值语句执行在order by之前<br>在from中增加select @i:=0,是进行初始赋值<br>5、case when<br>通常使用方法为case when xxx then [value] else [value] end</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pandas个人bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pandas%E4%B8%AA%E4%BA%BAbug/">pandas个人bug</a>
+    </h1>
+  
+
+        
+        <a href="/pandas%E4%B8%AA%E4%BA%BAbug/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pandas个人bug"><a href="#pandas个人bug" class="headerlink" title="pandas个人bug"></a>pandas个人bug</h1><p>1、<br>bug</p>
+<pre><code>pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393</code></pre><p>解决方法：<br>在read_csv()函数中添加 engine=’python’<br>示例：</p>
+<pre><code>df = pd.read_csv(csv_path, error_bad_lines=False, sep=sep, encoding=&apos;utf-8&apos;,engine=’python’ )</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/pandas%E4%B8%AA%E4%BA%BAbug/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pom.xml学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pom.xml%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">pom.xml学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/pom.xml%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pom-xml学习笔记"><a href="#pom-xml学习笔记" class="headerlink" title="pom.xml学习笔记"></a>pom.xml学习笔记</h1><p>这个博客写的很详细：<br><a href="https://blog.csdn.net/l00149133/article/details/78923873" target="_blank" rel="noopener">https://blog.csdn.net/l00149133/article/details/78923873</a><br>后续自行慢慢补充</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/pom.xml%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pycharm使用conda环境，部分包没有代码提示或包名没有显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pycharm%E4%BD%BF%E7%94%A8conda%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%83%A8%E5%88%86%E5%8C%85%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E6%88%96%E5%8C%85%E5%90%8D%E6%B2%A1%E6%9C%89%E6%98%BE%E7%A4%BA/">pycharm使用conda环境，部分包没有代码提示或包名没有显示</a>
+    </h1>
+  
+
+        
+        <a href="/pycharm%E4%BD%BF%E7%94%A8conda%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%83%A8%E5%88%86%E5%8C%85%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E6%88%96%E5%8C%85%E5%90%8D%E6%B2%A1%E6%9C%89%E6%98%BE%E7%A4%BA/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="pycharm使用conda环境，部分包没有代码提示或包名没有显示"><a href="#pycharm使用conda环境，部分包没有代码提示或包名没有显示" class="headerlink" title="pycharm使用conda环境，部分包没有代码提示或包名没有显示"></a>pycharm使用conda环境，部分包没有代码提示或包名没有显示</h1><p>如果是TensorFlow的话，请参考我的上一篇博客，其余请参照本篇博客<br>我的项目依赖的是自己创建的sql这个环境，</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201911/1343872-20191104150738836-2052111604.png" alt></p>
+<p>那么包管理器也应该使用该环境下的包管理器</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201911/1343872-20191104151116214-1903014498.png" alt></p>
+<p>然后就可以更改完成后，点击ok就行。<br>顺带提一句，conda install某些包，比如很新的包或者比较偏门的包，不会再conda GUI列表里显示出来，但是可以conda list 显示出来<br>例如最新的streamlit</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201911/1343872-20191104151324928-1614402052.png" alt></p>
+<p>可以看到上述里面没有streamlit，但是可以再conda list中找到</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201911/1343872-20191104151454100-1641518422.png" alt></p>
+<p>自然也不妨碍我们在项目中导入使用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/pycharm%E4%BD%BF%E7%94%A8conda%E7%8E%AF%E5%A2%83%EF%BC%8C%E9%83%A8%E5%88%86%E5%8C%85%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E6%88%96%E5%8C%85%E5%90%8D%E6%B2%A1%E6%9C%89%E6%98%BE%E7%A4%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mongodb连接问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/">mongodb连接问题</a>
+    </h1>
+  
+
+        
+        <a href="/mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mongodb连接问题"><a href="#mongodb连接问题" class="headerlink" title="mongodb连接问题"></a>mongodb连接问题</h1><p>这里不考虑复杂的配置，仅就能否连上mongodb的初始设置一步一步排查<br>I、检查端口是否开放</p>
+<pre><code>netstat -nap
+#看看监听接口是否开启</code></pre><p>II、检查配置文件是否允许ip通过</p>
+<pre><code>#如果是默认安装，则目录是/var/log/mongodb/mongod.conf
+vim /var/log/mongodb/mongod.conf
+
+#检查bind_ip
+可以设置0.0.0.0，允许所有ip通过#可以配置port监听端口</code></pre><p>III、检查防火墙是否关闭</p>
+<pre><code>#查询防火墙状态
+systemctl status firewalld.service
+
+#防火墙开启的话，关闭
+systemctl stop firewalld.service
+
+#永久关闭
+systemctl disable firewalld.service</code></pre><p>IV、检查进程是否存在</p>
+<pre><code>ps -aux|grep mongo#如果不存在，请重新开启#建议开启方式采用下面命令 ，存在问题只需要根据配置文件去排查mongod --config /etc/mongodb.conf</code></pre><p>V、检查是否因为异常关闭，导致sock依旧锁住了</p>
+<pre><code>#默认安装mongodb的数据库位置为/var/lib/mongo
+ls /var/lib/mongo
+
+#查看是否存在mongod.lock,如果存在就删除
+rm mongod.lock
+
+#然后执行修复（如果删掉了mongod.log文件也需要执行修复）
+mongod --repair --dbpath /var/lib/mongo</code></pre><p>VI、故障排除顺序</p>
+<pre><code>netstat -tunlp|grep 27017
+#看看相关端口是否开启
+
+#如果没有开启，则启动
+mongod --config /etc/mongod.conf
+
+#如果启动不了，尝试进行修复
+mongod --repair --dbpath /var/lib/mongo
+
+#修复完成后，再次重新启动
+mongod --config /etc/mongod.conf</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/mongodb%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql学习训练记录及笔记（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">mysql学习训练记录及笔记（三）</a>
+    </h1>
+  
+
+        
+        <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql学习训练记录及笔记（三）"><a href="#mysql学习训练记录及笔记（三）" class="headerlink" title="mysql学习训练记录及笔记（三）"></a>mysql学习训练记录及笔记（三）</h1><p>接着训练二<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、sql训练<br>41、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩</p>
+<pre><code>select * from score t1 join score t2 on t1.s_id=t2.s_id where t1.s_score =t2.s_score and t1.c_id &lt;&gt; t2.c_id</code></pre><p>42、查询每门功成绩最好的前两名</p>
+<pre><code>select t1.s_id,t1.c_id,t1.s_score,t1.ran
+from (
+select s_id,c_id,s_score,rank() over(partition by c_id order by s_score) ran from score 
+) t1
+where t1.ran &lt;3</code></pre><p>43、统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</p>
+<pre><code>select c_id,count(s_id) count_n from score group by c_id having count_n&gt;5 order by count_n desc</code></pre><p>44、检索至少选修两门课程的学生学号</p>
+<pre><code>select s_id from score group by s_id having count(c_id)&gt;1</code></pre><p>45、查询选修了全部课程的学生信息</p>
+<pre><code>select t1.* from student t1 join score t2 on  t1.s_id =t2.s_id group by s_id having count(c_id) &gt;2</code></pre><p>46、查询各学生的年龄<br>– 按照出生日期来算，当前月日 &lt; 出生年月的月日则，年龄减一</p>
+<pre><code>select s_name,s_birth,
+(date_format(now(),&apos;%Y&apos;)-date_format(s_birth,&apos;%Y&apos;)-(case when date_format(s_birth,&apos;%m%d&apos;)&lt;date_format(now(),&apos;%m%d&apos;) then 1 else 0 end)) as 年龄
+from student</code></pre><p>47、查询本周过生日的学生</p>
+<pre><code>select * from student where week(s_birth)=week(now())</code></pre><p>48、查询下周过生日的学生</p>
+<pre><code>select * from student where week(s_birth)=week(now())+1</code></pre><p>49、查询本月过生日的学生</p>
+<pre><code>select * from student where month(s_birth) = month(now())</code></pre><p>50、查询下月过生日的学生</p>
+<pre><code>select * from student where month(s_birth) = month(now())+1</code></pre><p>II、个人总结（本套过于简单）<br>1、日期相关函数</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql学习训练记录及笔记（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">mysql学习训练记录及笔记（二）</a>
+    </h1>
+  
+
+        
+        <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.551Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="mysql学习训练记录及笔记（二）"><a href="#mysql学习训练记录及笔记（二）" class="headerlink" title="mysql学习训练记录及笔记（二）"></a>mysql学习训练记录及笔记（二）</h1><p>接着训练一<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、sql训练<br>21、查询不同老师所教不同课程平均分从高到低显示</p>
+<pre><code>select
+    t3.t_id,
+    t3.t_name,
+    avg(t1.s_score) as avg_score
+from
+    score t1 
+    left join course t2 on t1.c_id = t2.c_id 
+    left join teacher t3 on t2.t_id = t3.t_id
+group by
+    t3.t_id,
+    t3.t_name
+order by
+    avg_score desc;</code></pre><p>22、查询所有课程的成绩第2名到第3名的学生信息及该课程成绩<br>这里学习到rank（）函数</p>
+<pre><code>select * from student t1 join
+(select s_id,s_score,c_id, (rank() over(partition by c_id order by s_score desc)) as 排名
+from score ) as t2 on t1.s_id =t2.s_id</code></pre><p>23、统计各科成绩各分数段人数：课程编号,课程名称,[100-85],[85-70],[70-60],[0-60]及所占百分比</p>
+<pre><code>select t2.c_id,t2.c_name,
+(sum(case when s_score between 85 and 100 then 1 else 0 end)/count(s_score))*100 a,
+(sum(case when s_score &lt;85 and s_score&gt;70 then 1 else 0 end)/count(s_score))*100 b,
+(sum(case when s_score between 60 and 70 then 1 else 0 end)/count(s_score))*100 c,
+(sum(case when s_score between 0 and 60 then 1 else 0 end)/count(s_score))*100 d
+from score t1 join course t2 on t1.c_id=t2.c_id
+group by t1.c_id</code></pre><p>24、查询学生平均成绩及其名次</p>
+<pre><code>select avg(s_score), rank() over(order by avg(s_score)) from score group by s_id</code></pre><p>25、查询各科成绩前三名的记录</p>
+<pre><code>select * 
+from
+(select c_id,s_id,dense_rank() over(partition by c_id order by s_score) as ran from score) t1
+where t1.ran&lt;4</code></pre><p>26、查询每门课程被选修的学生数</p>
+<pre><code>select c_id,count(s_id) from score group by c_id</code></pre><p>27、查询出只有两门课程的全部学生的学号和姓名</p>
+<pre><code>select s_id,s_name from student where s_id in
+(select s_id from score group by s_id having  count(s_score) = 2)</code></pre><p>28、查询男生、女生人数</p>
+<pre><code>select s_sex,count(s_id) from student group by s_sex;</code></pre><p>29、查询名字中含有”风”字的学生信息</p>
+<pre><code>select * from student where s_name like &apos;%风%&apos;</code></pre><p>30、查询同名同性学生名单，并统计同名人数</p>
+<pre><code>select s_name,count(s_id) as count_num from student group by s_name having count(s_id)&gt;1</code></pre><p>31、查询1990年出生的学生名单</p>
+<pre><code>select * from student where s_birth like &apos;1990%&apos;</code></pre><p>32、查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列<br>连续两个条件排序，只需要加个条件即可</p>
+<pre><code>select avg(s_score) from score group by c_id order by avg(s_score) desc,c_id asc;</code></pre><p>33、查询平均成绩大于等于85的所有学生的学号、姓名和平均成绩</p>
+<pre><code>select t1.s_id,t1.s_name,avg(t2.s_score) as avg_score from student t1 join score t2 on t1.s_id=t2.s_id group by t1.s_id having avg_score &gt;=85</code></pre><p>34、查询课程名称为”数学”，且分数低于60的学生姓名和分数</p>
+<pre><code>select t1.s_name,t2.s_score from student t1 join score t2 on t1.s_id =t2.s_id join course t3 on t2.c_id =t3.c_id where t3.c_name=&apos;数学&apos; and t2.s_score &lt;60</code></pre><p>35、查询所有学生的课程及分数情况；</p>
+<pre><code>select t1.s_id,t2.s_score as 语文,t3.s_score as 数学, t4.s_score as 英语,(select sum(s_score) from score group by s_id having s_id=t1.s_id) as 总分  
+from student t1 
+left join score t2 on t1.s_id=t2.s_id and t2.c_id=&apos;01&apos; 
+left join score t3 on t1.s_id=t3.s_id and t3.c_id=&apos;02&apos;
+left join score t4 on t1.s_id=t4.s_id and t4.c_id=&apos;03&apos;</code></pre><p>36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数</p>
+<pre><code>select t3.s_name,t2.c_name,t1.s_score from score t1 join course  t2 on t1.c_id=t2.c_id join student t3 on t1.s_id = t3.s_id where s_score &gt;70</code></pre><p>37、查询不及格的课程</p>
+<pre><code>select * from course t1 join  score t2 on t1.c_id=t2.c_id where t2.s_score &lt; 60</code></pre><p>38、查询课程编号为01且课程成绩在80分以上的学生的学号和姓名；</p>
+<pre><code>select t2.s_id,t2.s_name from score t1 join student t2 on t1.s_id=t2.s_id where t1.c_id=&apos;01&apos; and t1.s_score&gt;80</code></pre><p>39、求每门课程的学生人数</p>
+<pre><code>select c_id,count(s_id) from score group by c_id</code></pre><p>40、查询选修”张三”老师所授课程的学生中，成绩最高的学生信息及其成绩</p>
+<pre><code>select * from
+(
+select t1.*,t2.s_score,rank() over(order by t2.s_score desc) ran
+from student t1 join score t2 on t1.s_id=t2.s_id 
+where t2.c_id in (select c_id from course  natural join teacher where t_name = &apos;张三&apos;)
+) ta where ta.ran =1</code></pre><p>II、总结一下<br>1、前面二十道会了之后，后面几乎没有什么难度，主要在于思路，已经尽量减少多表关联，增加查询速度<br>2、开窗函数，这是mysql新特性，可以添加rank等，解决排序等问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MongoDB bug汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/MongoDB%20bug%E6%B1%87%E6%80%BB/">MongoDB bug汇总</a>
+    </h1>
+  
+
+        
+        <a href="/MongoDB%20bug%E6%B1%87%E6%80%BB/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.536Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MongoDB-bug汇总"><a href="#MongoDB-bug汇总" class="headerlink" title="MongoDB bug汇总"></a>MongoDB bug汇总</h1><p>bug：Exceeded memory limit for $group, but didn’t allow external sort. Pass allowDiskUse:true to opt in.<br>原因及解决办法：主要是MongoDB单次查询内存限制，因此在option中解除限制</p>
+<pre><code>{ allowDiskUse: true }实例：</code></pre><pre><code>db.souhu_three.aggregate( [ { $group : { _id : &quot;$id&quot; ,total_count:{$sum:1} }} ] ,{ allowDiskUse: true })</code></pre><p>参考文档：<a href="https://blog.csdn.net/u013683233/article/details/70172541" target="_blank" rel="noopener">https://blog.csdn.net/u013683233/article/details/70172541</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/MongoDB%20bug%E6%B1%87%E6%80%BB/">展开全文 >></a>
         </p>
       
 

@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pytorchhub教程（一） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#pytorchhub教程（一）如果没有安装pytorch的请先上篇博客安装一下。pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，">
+  <meta name="description" content="pytorchhub教程（一）如果没有安装pytorch的请先上篇博客安装一下。pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pytorchhub教程（一）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#pytorchhub教程（一）如果没有安装pytorch的请先上篇博客安装一下。pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，">
+<meta property="og:description" content="pytorchhub教程（一）如果没有安装pytorch的请先上篇博客安装一下。pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614112401990-969859239.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.051Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.372Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.614Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.051Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614112401990-969859239.png">
@@ -157,15 +157,15 @@
 
         
         <a href="/pytorchhub%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.051Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#pytorchhub教程（一）<br>如果没有安装pytorch的请先上篇<a href="博客">博客</a>安装一下。<br>pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。<br>相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。<br>而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两者从调用流程及使用方法而言相差不大，但便捷程度pytorch hub明显略胜一筹。<br>不说废话，先来个hub版本的HelloWorld<br>第一步<br>先导入torch<br>import torch<br>第二步<br>得出所有可用模型列表，执行：torch.hub.list(‘pytorch/vision’)<br>第一次执行会默认下载本地仓库，可能会出现多个程序同时占用仓库文件的bug，解决方案见：<a href="https://www.cnblogs.com/gambler/p/11020649.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/11020649.html</a><br>执行后会显示当前可用模型，如下图所示：</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614112401990-969859239.png" alt=""></p>
+        <h1 id="pytorchhub教程（一）"><a href="#pytorchhub教程（一）" class="headerlink" title="pytorchhub教程（一）"></a>pytorchhub教程（一）</h1><p>如果没有安装pytorch的请先上篇<a href="博客">博客</a>安装一下。<br>pytorchhub，看到hub两个字就大概知道这个是用来干嘛的，就是用于大家的模型共享。<br>相比于Google提供的TensorFlow hub而言，pytorch hub目标是实现论文复现，方便快速的实现模型的调用。<br>而不需要像TensorFlow hub那样，进行少量配置，以及复杂的文档接口，因此更方便大家直接使用，两者从调用流程及使用方法而言相差不大，但便捷程度pytorch hub明显略胜一筹。<br>不说废话，先来个hub版本的HelloWorld<br>第一步<br>先导入torch<br>import torch<br>第二步<br>得出所有可用模型列表，执行：torch.hub.list(‘pytorch/vision’)<br>第一次执行会默认下载本地仓库，可能会出现多个程序同时占用仓库文件的bug，解决方案见：<a href="https://www.cnblogs.com/gambler/p/11020649.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/11020649.html</a><br>执行后会显示当前可用模型，如下图所示：</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614112401990-969859239.png" alt></p>
 <p>第三步<br>然后加载模型到本地，执行：model = torch.hub.load(‘pytorch/vision’, ‘deeplabv3_resnet101’, pretrained=True)<br>参数说明如下：<br>‘pytorch/vision’反斜杠前面一个表示github仓库的所有者‘pytorch’，反斜杠后面一个表示仓库名‘vision’，<br>‘deeplabv3_resnet101’表示模型名称（模型需要存在在仓库列表中）<br>pretrained表示预训练模型，True表示使用预训练模型，参数权重经过预训练，可用快速方便的使用，False表示不使用预训练模型<br>第四步</p>
 
       
@@ -270,8 +270,8 @@
     </a>
   
   
-    <a href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python中的yield通俗理解</div>
+    <a href="/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -298,7 +298,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pytorchhub教程（一）"><span class="toc-number">1.</span> <span class="toc-text">pytorchhub教程（一）</span></a></li></ol>
                     </div>
                 </span>
             </div>

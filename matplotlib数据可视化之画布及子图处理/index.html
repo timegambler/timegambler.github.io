@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>matplotlib数据可视化之画布及子图处理 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#matplotlib数据可视化之画布及子图处理I、画布1、pyplot.figure()函数 matplotlib.pyplot.figure(num&#x3D;None, figsize&#x3D;None, dpi&#x3D;None, facecolor&#x3D;None, edgecolor&#x3D;None, frameon&#x3D;True, FigureClass&#x3D;&lt;class &amp;apos;matplotlib.figure.F">
+  <meta name="description" content="matplotlib数据可视化之画布及子图处理I、画布1、pyplot.figure()函数 matplotlib.pyplot.figure(num&#x3D;None, figsize&#x3D;None, dpi&#x3D;None, facecolor&#x3D;None, edgecolor&#x3D;None, frameon&#x3D;True, FigureClass&#x3D;&lt;class &amp;apos;matplotlib.figure.Fi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="matplotlib数据可视化之画布及子图处理">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#matplotlib数据可视化之画布及子图处理I、画布1、pyplot.figure()函数 matplotlib.pyplot.figure(num&#x3D;None, figsize&#x3D;None, dpi&#x3D;None, facecolor&#x3D;None, edgecolor&#x3D;None, frameon&#x3D;True, FigureClass&#x3D;&lt;class &amp;apos;matplotlib.figure.F">
+<meta property="og:description" content="matplotlib数据可视化之画布及子图处理I、画布1、pyplot.figure()函数 matplotlib.pyplot.figure(num&#x3D;None, figsize&#x3D;None, dpi&#x3D;None, facecolor&#x3D;None, edgecolor&#x3D;None, frameon&#x3D;True, FigureClass&#x3D;&lt;class &amp;apos;matplotlib.figure.Fi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191126155542677-2058824003.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191126164118651-1970360627.png">
@@ -23,8 +23,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191126171858571-1874229886.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191126210541229-402806917.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191128113610871-1689781561.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.278Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.113Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.505Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:23.629Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201911&#x2F;1343872-20191126155542677-2058824003.png">
@@ -164,16 +164,16 @@
 
         
         <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#matplotlib数据可视化之画布及子图处理<br>I、画布<br>1、pyplot.figure()函数</p>
+        <h1 id="matplotlib数据可视化之画布及子图处理"><a href="#matplotlib数据可视化之画布及子图处理" class="headerlink" title="matplotlib数据可视化之画布及子图处理"></a>matplotlib数据可视化之画布及子图处理</h1><p>I、画布<br>1、pyplot.figure()函数</p>
 <pre><code>matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)</code></pre><pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数说明</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126155542677-2058824003.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126155542677-2058824003.png" alt></p>
 <p>3、官方文档直达链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure</a><br>4、相关代码测试<br>1、图形1</p>
 <pre><code>import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
@@ -195,16 +195,16 @@ plt.figure()
 x_range = np.arange(7)
 y_range = np.random.randint(1, 7, size=7)
 plt.plot(y_range)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164118651-1970360627.png" alt=""></p>
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164118651-1970360627.png" alt></p>
 <p>2、图形2</p>
 <pre><code>#修改参数plt.figure(figsize=(2, 2), dpi=100)
 x_range = np.arange(7)
 y_range = np.random.randint(1, 7, size=7)
 plt.plot(x_range, y_range)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164507404-192172268.png" alt=""></p>
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164507404-192172268.png" alt></p>
 <p>II、子图切割<br>1、subplot函数方法</p>
 <pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126193243169-1190491227.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126193243169-1190491227.png" alt></p>
 <p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot</a><br>4、简单测试<br>①图形1</p>
 <pre><code>plt.figure(figsize=(8, 8))
 x_range = np.arange(7)
@@ -215,7 +215,7 @@ plt.subplot(222)
 plt.plot(x_range, np.random.randint(1, 7, size=7))
 plt.subplot(223)
 plt.plot(x_range, np.random.randint(1, 7, size=7))
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171132362-372254195.png" alt=""></p>
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171132362-372254195.png" alt></p>
 <p>②、图形2</p>
 <pre><code># 指定多个画布，并创建多个子图，并修改指定子图
 plt.figure(1, figsize=(8, 8))
@@ -237,12 +237,12 @@ plt.plot(x_range, np.random.randint(1,7,size=7))
 plt.figure(1)
 plt.subplot(222)
 plt.title(&apos;for testfigure&apos;)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171858571-1874229886.png" alt=""></p>
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171858571-1874229886.png" alt></p>
 <p>III、子图叠加在主图上<br>1、aexs函数</p>
 <pre><code>matplotlib.pyplot.axes(arg=None, **kwargs)</code></pre><p>2、主要参数说明</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126210541229-402806917.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126210541229-402806917.png" alt></p>
 <p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes</a><br>4、测试</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191128113610871-1689781561.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191128113610871-1689781561.png" alt></p>
 <pre><code># 在主图上叠加小图形
 # 列表前两位数字表示为起始坐标，后两位表示为图形的横纵比（长宽）
 x_range = np.arange(7)
@@ -347,18 +347,18 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
   
 <nav id="article-nav">
   
-    <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E6%9F%B1%E5%BD%A2%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/linux&ubuntu%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          matplotlib数据可视化之柱形图
+          linux&amp;ubuntu谷歌浏览器无法安装扩展程序
         
       </div>
     </a>
   
   
-    <a href="/MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MapReduce解析之Map，Context，Reduce</div>
+    <a href="/Javaweb%E4%B9%8B%E6%B3%A8%E8%A7%A3%E8%AE%BF%E9%97%AEservlet%E5%92%8Cweb.xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javaweb之注解访问servlet和web.xml配置文件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -385,7 +385,7 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#matplotlib数据可视化之画布及子图处理"><span class="toc-number">1.</span> <span class="toc-text">matplotlib数据可视化之画布及子图处理</span></a></li></ol>
                     </div>
                 </span>
             </div>

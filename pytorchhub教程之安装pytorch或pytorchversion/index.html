@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pytorchhub教程之安装pytorch或pytorchversion | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#pytorchhub教程之安装pytorch或pytorchversion出现上述bug是在第一次查看pytorchhub可用模型的时候发生的   torch.hub.list(‘pytorch&#x2F;vision’)   没有记录下来，所以没办法重现解决方法是：定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示">
+  <meta name="description" content="pytorchhub教程之安装pytorch或pytorchversion出现上述bug是在第一次查看pytorchhub可用模型的时候发生的   torch.hub.list(‘pytorch&#x2F;vision’)   没有记录下来，所以没办法重现解决方法是：定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示  例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pytorchhub教程之安装pytorch或pytorchversion">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#pytorchhub教程之安装pytorch或pytorchversion出现上述bug是在第一次查看pytorchhub可用模型的时候发生的   torch.hub.list(‘pytorch&#x2F;vision’)   没有记录下来，所以没办法重现解决方法是：定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示">
+<meta property="og:description" content="pytorchhub教程之安装pytorch或pytorchversion出现上述bug是在第一次查看pytorchhub可用模型的时候发生的   torch.hub.list(‘pytorch&#x2F;vision’)   没有记录下来，所以没办法重现解决方法是：定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示  例">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614015158051-1377802514.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614015514003-949947541.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614002709934-1557809455.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614003104759-1577962048.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614003350953-665868823.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.054Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.379Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.614Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.066Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201906&#x2F;1343872-20190614015158051-1377802514.png">
@@ -161,21 +161,21 @@
 
         
         <a href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.054Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#pytorchhub教程之安装pytorch或pytorchversion<br>出现上述bug是在第一次查看pytorchhub可用模型的时候发生的</p>
+        <h1 id="pytorchhub教程之安装pytorch或pytorchversion"><a href="#pytorchhub教程之安装pytorch或pytorchversion" class="headerlink" title="pytorchhub教程之安装pytorch或pytorchversion"></a>pytorchhub教程之安装pytorch或pytorchversion</h1><p>出现上述bug是在第一次查看pytorchhub可用模型的时候发生的</p>
 <blockquote>
 <blockquote>
 <p>torch.hub.list(‘pytorch/vision’)</p>
 </blockquote>
 </blockquote>
 <p>没有记录下来，所以没办法重现<br>解决方法是：<br>定位到hub.py文件的_remove_if_exists(path)方法，pycharm定位方式是直接点击bug最后一行显示bug提示</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015158051-1377802514.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015158051-1377802514.png" alt></p>
 <p>例如：<br>该方法原代码如下：</p>
 <pre><code>def _remove_if_exists(path):
     if os.path.exists(path):
@@ -195,13 +195,13 @@
 <p>torch.hub.list(‘pytorch/vision’)，发现能够成功获取所有模型</p>
 </blockquote>
 </blockquote>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015514003-949947541.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614015514003-949947541.png" alt></p>
 <p>最后再将hub.py修改回来即可。<br>最近pytorch发布了pytorch hub，正在学习之中。<br>不过需要先安装pytorch和pytorchversion，但是总是出现各种bug<br>建议直接根据官网步骤安装（相关依赖包很大，建议在网络环境好的情况下下载）<br>第一步<br>首先进入官网：<a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener">https://pytorch.org/get-started/locally/</a><br>第二步<br>选择自己需要的版本</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614002709934-1557809455.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614002709934-1557809455.png" alt></p>
 <p>第三步</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003104759-1577962048.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003104759-1577962048.png" alt></p>
 <p>安装完成</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003350953-665868823.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201906/1343872-20190614003350953-665868823.png" alt></p>
 
       
 
@@ -295,11 +295,11 @@
   
 <nav id="article-nav">
   
-    <a href="/RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          RC4加密算法原理简单理解
+          python中的yield通俗理解
         
       </div>
     </a>
@@ -333,7 +333,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pytorchhub教程之安装pytorch或pytorchversion"><span class="toc-number">1.</span> <span class="toc-text">pytorchhub教程之安装pytorch或pytorchversion</span></a></li></ol>
                     </div>
                 </span>
             </div>

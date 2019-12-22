@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MapReduce解析之Map，Context，Reduce | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#MapReduce解析之Map，Context，Reduce要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。也就是两大组件Map与Reduce首先看看Map（声明：这里感谢Pig2的文章，对我启发很大，也顺便引用一下她的一些东西）首先看看Map类中包含哪些方法：  首先看看run方法，它就像是一个控制器  很明显，Map中的run方法遵循setup—&gt;">
+  <meta name="description" content="MapReduce解析之Map，Context，Reduce要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。也就是两大组件Map与Reduce首先看看Map（声明：这里感谢Pig2的文章，对我启发很大，也顺便引用一下她的一些东西）首先看看Map类中包含哪些方法：  首先看看run方法，它就像是一个控制器  很明显，Map中的run方法遵循setup—&gt;m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MapReduce解析之Map，Context，Reduce">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#MapReduce解析之Map，Context，Reduce要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。也就是两大组件Map与Reduce首先看看Map（声明：这里感谢Pig2的文章，对我启发很大，也顺便引用一下她的一些东西）首先看看Map类中包含哪些方法：  首先看看run方法，它就像是一个控制器  很明显，Map中的run方法遵循setup—&gt;">
+<meta property="og:description" content="MapReduce解析之Map，Context，Reduce要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。也就是两大组件Map与Reduce首先看看Map（声明：这里感谢Pig2的文章，对我启发很大，也顺便引用一下她的一些东西）首先看看Map类中包含哪些方法：  首先看看run方法，它就像是一个控制器  很明显，Map中的run方法遵循setup—&gt;m">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180603163133406-1364776962.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180603163443354-1105486812.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180603170208408-402352261.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180603174025959-712706211.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.275Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.598Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.505Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.316Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180603163133406-1364776962.png">
@@ -160,21 +160,21 @@
 
         
         <a href="/MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.275Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#MapReduce解析之Map，Context，Reduce<br>要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。<br>也就是两大组件Map与Reduce<br>首先看看Map<br>（声明：这里感谢<a href="Pig2">Pig2</a>的文章，对我启发很大，也顺便引用一下她的一些东西）<br>首先看看Map类中包含哪些方法：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163133406-1364776962.png" alt=""></p>
+        <h1 id="MapReduce解析之Map，Context，Reduce"><a href="#MapReduce解析之Map，Context，Reduce" class="headerlink" title="MapReduce解析之Map，Context，Reduce"></a>MapReduce解析之Map，Context，Reduce</h1><p>要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。<br>也就是两大组件Map与Reduce<br>首先看看Map<br>（声明：这里感谢<a href="Pig2">Pig2</a>的文章，对我启发很大，也顺便引用一下她的一些东西）<br>首先看看Map类中包含哪些方法：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163133406-1364776962.png" alt></p>
 <p>首先看看run方法，它就像是一个控制器</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163443354-1105486812.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163443354-1105486812.png" alt></p>
 <p>很明显，Map中的run方法遵循setup—&gt;map—–&gt;cleanup<br>setup源码：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603170208408-402352261.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603170208408-402352261.png" alt></p>
 <p>很明显，只传入了一个context对象<br>那么这个Context对象究竟为何物<br>Context，中文释义：环境，背景，上下文<br>很明显，开发过Android的人肯定知道，在Context就是一个保存所有信息的中介桥梁，与java中的session有着异曲同工之妙<br>Context包含了几乎关于这个任务的所有信息</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603174025959-712706211.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603174025959-712706211.png" alt></p>
 <p>那么问题就over了，很明显传入这个context对象就像传入一个session来记录一些信息的，避免信息错乱<br>好的，再重新回过头看看run方法中的map方法，很显然，这就是我们通常普通用户需要进行更改的<br>它的最大用处就是对信息进行预处理，让最后得到的</p>
 
       
@@ -269,18 +269,18 @@
   
 <nav id="article-nav">
   
-    <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%BE%9D%E8%B5%96libssl1.1.0%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          matplotlib数据可视化之画布及子图处理
+          Linux系统中出现依赖libssl1.1.0问题
         
       </div>
     </a>
   
   
-    <a href="/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%BE%9D%E8%B5%96libssl1.1.0%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux系统中出现依赖libssl1.1.0问题</div>
+    <a href="/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux常用命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -307,7 +307,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MapReduce解析之Map，Context，Reduce"><span class="toc-number">1.</span> <span class="toc-text">MapReduce解析之Map，Context，Reduce</span></a></li></ol>
                     </div>
                 </span>
             </div>

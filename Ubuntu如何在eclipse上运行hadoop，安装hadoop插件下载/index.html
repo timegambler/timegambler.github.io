@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的">
+  <meta name="description" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的">
+<meta property="og:description" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201805&#x2F;1343872-20180512140845704-1108835223.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201805&#x2F;1343872-20180512142453006-849956057.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201805&#x2F;1343872-20180512143356092-1449627996.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201805&#x2F;1343872-20180512144402901-639192465.jpg">
-<meta property="article:published_time" content="2019-12-20T06:37:41.093Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.756Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.645Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.519Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201805&#x2F;1343872-20180512140845704-1108835223.png">
@@ -160,14 +160,14 @@
 
         
         <a href="/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.093Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.645Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载<br>其实出现这类错误，大部分是编译的插件有问题。<br>（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同<br>最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里<br>因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解决方案）那么问题来了，如何根据自己需要的版本编译插件呢？<br>请看我的另一篇博客：<br><a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a></p>
+        <h1 id="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"><a href="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载" class="headerlink" title="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"></a>Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</h1><p>其实出现这类错误，大部分是编译的插件有问题。<br>（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同<br>最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里<br>因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解决方案）那么问题来了，如何根据自己需要的版本编译插件呢？<br>请看我的另一篇博客：<br><a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a></p>
 <p>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9034402.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9034402.html</a><br>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a><br>一、要想在eclipse上运行hadoop，首先要依次解决下面问题：<br>1、安装jdk<br>2、安装ant<br>3、安装eclipse<br>4、安装hadoop<br>5、编译hadoop-eclipse-plugin插件<br>前面四个网上方案很多，但是却参差不齐，很多都是敷衍了事，于是我整理了一些优秀的文章，按照上面来，几乎没什么问题（对于小白，一定要注意路径问题，别到后面自己都不知道自己安装了什么）<br><a href="1、安装jdk">1、安装jdk</a>（注意，这里会出现一些小问题，例如本机已经安装了openjdk，可以百度）<br><a href="2、安装ant">2、安装ant</a>（这个很简单，但是也要记住，在配置文件的时候，也是在前面jdk配置文件（sudo gedit /etc/profile）那里添加）<br><a href="3、安装eclipse">3、安装eclipse</a>（这里jdk就不用重新安装了，选择下载java EE，毕竟什么都有）<br><a href="4、安装hadoop">4、安装hadoop</a>（免密登录，貌似这伙有问题，再贴一个，大家可以参考<a href="这个人">这个人</a>的免密登录）<br>5、编译hadoop-eclipse-plugin（这个很麻烦，而且网上的教程写的很乱，而且大多很老或者没用，主要是版本的更新）<br>二、如何编译hadoop-eclipse-plugin文件<br>1、首先，大家一般都是hadoop-2.*，所以可以在GitHub上下载提供的<a href="hadoop-eclipse-plugin">hadoop-eclipse-plugin</a></p>
 <p>2、下载完之后，直接进行解压，然后打开hadoop2x-eclipse-plugin-master —&gt;ivy —-&gt;libraries.properties<br>打开之后是这样的（当然，这是我更改之后的，我使用的是hadoop-2.7.6，如果你跟我一样，可以直接跳，在文章末尾下载编译好的）</p>
 <pre><code>#   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -264,7 +264,7 @@ xerces.version=1.4.4
 protobuf.version=2.5.0
 guava.version=11.0.2
 netty.version=3.6.2.Final</code></pre><p>3、找到你最开始放置解压后hadoop文件的地方<br>打开hadoop文件 —-&gt; share —-&gt; hadoop<br>打开后是这样的:</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512140845704-1108835223.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512140845704-1108835223.png" alt></p>
 <p>根据这个来更改版本（重点），比如前面</p>
 <pre><code>log4j.version=1.2.17（最开始我是log4j.version=1.2.10的，但是根据上面最下面一排，左边第三个，发现是1.2.17，所以需要改为log4j.version=1.2.17）这里有个小技巧，你可以一行一行的来查看，先对着libraries.properties，查看版本version，然后打开文件夹/你的hadoop文件夹/share/hadoop/，点击右边的那个放大镜（搜索），输入几个关键字符，这样就可以快速对照更改4、更改build.xml(重点，因为随着版本不同，有些jar包的名称发生改变)打开hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin ----&gt;build.xml(注意，有些版本不同，可能位置会不一样，只要在hadoop2x-eclipse-plugin-master找到eclipse-plugin就行)打开后：</code></pre><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
 
@@ -479,14 +479,14 @@ netty.version=3.6.2.Final</code></pre><p>3、找到你最开始放置解压后ha
     &lt;/jar&gt;
   &lt;/target&gt;
 
-&lt;/project&gt;</code></pre><pre><code></code></pre><pre><code>（提示：&lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512142453006-849956057.png" alt=""></p>
-<pre><code>在前面的jar包里没有htrace-core-...jar只有htrace-core-3.1.0-incubating.jar，所以更改为：）</code></pre><pre><code>做法：</code></pre><p>找到<target name="jar" depends="compile" unless="skip.contrib">标签，然后添加以下内容</p>
-<pre><code></code></pre><p><copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}-incubating.jar"  todir="${build.dir}/lib" verbose="true"/>    <copy file="${hadoop.home}/share/hadoop/common/lib/servlet-api-${servlet-api.version}.jar"  todir="${build.dir}/lib" verbose="true"/>    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar"  todir="${build.dir}/lib" verbose="true"/></p>
+&lt;/project&gt;</code></pre><pre><code></code></pre><pre><code>（提示：&lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512142453006-849956057.png" alt></p>
+<pre><code>在前面的jar包里没有htrace-core-...jar只有htrace-core-3.1.0-incubating.jar，所以更改为：）</code></pre><pre><code>做法：</code></pre><p>找到<target name="jar" depends="compile" unless="skip.contrib">标签，然后添加以下内容</target></p>
+<pre><code></code></pre><p><copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}-incubating.jar" todir="${build.dir}/lib" verbose="true">    <copy file="${hadoop.home}/share/hadoop/common/lib/servlet-api-${servlet-api.version}.jar" todir="${build.dir}/lib" verbose="true">    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar" todir="${build.dir}/lib" verbose="true"></copy></copy></copy></p>
 <pre><code></code></pre><p>然后找到标签&lt;attribute name=”Bundle-ClassPath”  ( 在修改之前的配置文件 build.xml 第133行 )在齐总的value的列表中对应的添加和修改lib,如下 ( 删除第154行 lib/htrace-core-${htrace.version}.jar, 添加下面3行 )</p>
 <pre><code></code></pre><pre><code>lib/servlet-api-${servlet-api.version}.jar,  
 lib/commons-io-${commons-io.version}.jar,  
-lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><code>当然，如果出现其他类似错误，对照更改就行（当然，如果报错，先备份后，尝试删除部分，毕竟不是每个都能用到）5、最后开始进行编译工作在hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin文件夹中执行：ant jar -Dversion=2.7.6 -Declipse.home=/opt/eclipse -Dhadoop.home=/home/gambler/hadoop-2.7.6注意 -Dversion=你的hadoop版本，-Declipse.home=你的eclipse文件路径，-Dhadoop=你的hadoop文件路径，还有关键的一点是，它创建jar包的默认路径是hadoop2x-eclipse-plugin-master  ----&gt;build ----&gt;contrib ----&gt;eclipse-plugin，如果没有的话可以提前创建一个，至少需要build文件夹，否则会报错</code></pre><pre><code></code></pre><pre><code>编译完成后出现下面这个表示成功：</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512143356092-1449627996.png" alt=""></p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512144402901-639192465.jpg" alt=""></p>
+lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><code>当然，如果出现其他类似错误，对照更改就行（当然，如果报错，先备份后，尝试删除部分，毕竟不是每个都能用到）5、最后开始进行编译工作在hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin文件夹中执行：ant jar -Dversion=2.7.6 -Declipse.home=/opt/eclipse -Dhadoop.home=/home/gambler/hadoop-2.7.6注意 -Dversion=你的hadoop版本，-Declipse.home=你的eclipse文件路径，-Dhadoop=你的hadoop文件路径，还有关键的一点是，它创建jar包的默认路径是hadoop2x-eclipse-plugin-master  ----&gt;build ----&gt;contrib ----&gt;eclipse-plugin，如果没有的话可以提前创建一个，至少需要build文件夹，否则会报错</code></pre><pre><code></code></pre><pre><code>编译完成后出现下面这个表示成功：</code></pre><p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512143356092-1449627996.png" alt></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201805/1343872-20180512144402901-639192465.jpg" alt></p>
 <pre><code>三、使用eclipse创建MapReduce工程1、首先将编译好的jar包移动到eclipse ----&gt; plugins中去命令是： sudo mv hadoop-eclipse-plugin-2.7.6 .jar /你的eclipse文件/plugins2、启动eclipse，可以直接在search中搜索eclipse，新建一个工程，找到MapReduce，会出现下面这种问题（invalid Hadoop Runtime specified;please click&apos;Configure Hadoop install directory&apos;）点击右下边的&apos;Configure Hadoop install directory&apos;在里面填入/hadoop的绝对路径/share/hadoop/mapreduce填完之后点击完成，然后就OK了，最后放一张成功的图，博主也是刚刚建好的；好累啊，写完这个，麻烦大伙要是觉得还ok，就点个赞！！！最后的编译完成的后的jar包</code></pre>
       
 
@@ -580,18 +580,18 @@ lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><co
   
 <nav id="article-nav">
   
-    <a href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Ubuntu%E5%85%B3%E4%BA%8Eeclipse%E6%96%B0%E6%8F%92%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住
+          Ubuntu关于eclipse新插件不显示的解决方案
         
       </div>
     </a>
   
   
-    <a href="/ubuntu%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8ss+SwitchyOmega/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ubuntu如何使用代理服务器ss+SwitchyOmega</div>
+    <a href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -618,7 +618,7 @@ lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><co
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</span></a></li></ol>
                     </div>
                 </span>
             </div>

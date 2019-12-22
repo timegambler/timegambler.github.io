@@ -140,28 +140,109 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MongoDB bug汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-matplotlib数据可视化之画布及子图处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/MongoDB%20bug%E6%B1%87%E6%80%BB/">MongoDB bug汇总</a>
+      <a class="article-title" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/">matplotlib数据可视化之画布及子图处理</a>
     </h1>
   
 
         
-        <a href="/MongoDB%20bug%E6%B1%87%E6%80%BB/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.974Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.505Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#MongoDB bug汇总<br>bug：Exceeded memory limit for $group, but didn’t allow external sort. Pass allowDiskUse:true to opt in.<br>原因及解决办法：主要是MongoDB单次查询内存限制，因此在option中解除限制</p>
-<pre><code>{ allowDiskUse: true }实例：</code></pre><pre><code>db.souhu_three.aggregate( [ { $group : { _id : &quot;$id&quot; ,total_count:{$sum:1} }} ] ,{ allowDiskUse: true })</code></pre><p>参考文档：<a href="https://blog.csdn.net/u013683233/article/details/70172541" target="_blank" rel="noopener">https://blog.csdn.net/u013683233/article/details/70172541</a></p>
+        <h1 id="matplotlib数据可视化之画布及子图处理"><a href="#matplotlib数据可视化之画布及子图处理" class="headerlink" title="matplotlib数据可视化之画布及子图处理"></a>matplotlib数据可视化之画布及子图处理</h1><p>I、画布<br>1、pyplot.figure()函数</p>
+<pre><code>matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)</code></pre><pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数说明</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126155542677-2058824003.png" alt></p>
+<p>3、官方文档直达链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure</a><br>4、相关代码测试<br>1、图形1</p>
+<pre><code>import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+&apos;&apos;&apos;
+matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)[source]
+&apos;&apos;&apos;
+
+# 解决中文不能在图片中显示的问题
+plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]
+# 用来正常显示负号
+plt.rcParams[&apos;axes.unicode_minus&apos;] = False
+
+#
+plt.figure()
+x_range = np.arange(7)
+y_range = np.random.randint(1, 7, size=7)
+plt.plot(y_range)
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164118651-1970360627.png" alt></p>
+<p>2、图形2</p>
+<pre><code>#修改参数plt.figure(figsize=(2, 2), dpi=100)
+x_range = np.arange(7)
+y_range = np.random.randint(1, 7, size=7)
+plt.plot(x_range, y_range)
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164507404-192172268.png" alt></p>
+<p>II、子图切割<br>1、subplot函数方法</p>
+<pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126193243169-1190491227.png" alt></p>
+<p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot</a><br>4、简单测试<br>①图形1</p>
+<pre><code>plt.figure(figsize=(8, 8))
+x_range = np.arange(7)
+y_range = np.random.randint(1, 7, size=7)
+plt.subplot(221)
+plt.plot(x_range, y_range)
+plt.subplot(222)
+plt.plot(x_range, np.random.randint(1, 7, size=7))
+plt.subplot(223)
+plt.plot(x_range, np.random.randint(1, 7, size=7))
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171132362-372254195.png" alt></p>
+<p>②、图形2</p>
+<pre><code># 指定多个画布，并创建多个子图，并修改指定子图
+plt.figure(1, figsize=(8, 8))
+x_range = np.arange(7)
+y_range = np.random.randint(1, 7, size=7)
+plt.subplot(221)
+plt.plot(x_range, y_range)
+plt.subplot(222)
+plt.plot(x_range, np.random.randint(1, 7, size=7))
+plt.subplot(223)
+plt.plot(x_range, np.random.randint(1, 7, size=7))
+# plt.show()
+
+plt.figure(2, figsize=(4, 4))
+plt.subplot(212)
+plt.plot(x_range, np.random.randint(1,7,size=7))
+
+# 修改指定画布，及相关子图
+plt.figure(1)
+plt.subplot(222)
+plt.title(&apos;for testfigure&apos;)
+plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171858571-1874229886.png" alt></p>
+<p>III、子图叠加在主图上<br>1、aexs函数</p>
+<pre><code>matplotlib.pyplot.axes(arg=None, **kwargs)</code></pre><p>2、主要参数说明</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126210541229-402806917.png" alt></p>
+<p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes</a><br>4、测试</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191128113610871-1689781561.png" alt></p>
+<pre><code># 在主图上叠加小图形
+# 列表前两位数字表示为起始坐标，后两位表示为图形的横纵比（长宽）
+x_range = np.arange(7)
+y_range = np.random.randint(1, 7, size=7)
+plt.figure()
+plt.plot(x_range, y_range)
+plt.title(&apos;主图&apos;)
+plt.axes([0.2, 0.2, 0.2, 0.2])
+plt.plot(x_range, y_range)
+plt.axes([0.5, 0.5, 0.2, 0.2])
+plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
 
       
 
@@ -174,7 +255,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/MongoDB%20bug%E6%B1%87%E6%80%BB/">展开全文 >></a>
+          <a class="article-more-a" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/">展开全文 >></a>
         </p>
       
 
@@ -204,44 +285,107 @@
 
 
   
-    <article id="post-maven之web.xml is missing and  is set to true错误解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Javaweb之注解访问servlet和web.xml配置文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/maven%E4%B9%8Bweb.xml%20is%20missing%20and%20%20is%20set%20to%20true%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">maven之web.xml is missing and  is set to true错误解决方案</a>
+      <a class="article-title" href="/Javaweb%E4%B9%8B%E6%B3%A8%E8%A7%A3%E8%AE%BF%E9%97%AEservlet%E5%92%8Cweb.xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Javaweb之注解访问servlet和web.xml配置文件</a>
     </h1>
   
 
         
-        <a href="/maven%E4%B9%8Bweb.xml%20is%20missing%20and%20%20is%20set%20to%20true%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/Javaweb%E4%B9%8B%E6%B3%A8%E8%A7%A3%E8%AE%BF%E9%97%AEservlet%E5%92%8Cweb.xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#maven之web.xml is missing and  is set to true错误解决方案<br>遇到这个问题一般是在导入其他项目发生的，路径不对造成的。<br>第一种网上大多提供的解决方案是：<br>1、双击tomcat</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407160405734-36404240.png" alt=""></p>
-<p>2、继续点击open lanch configuration</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407160458730-632163798.png" alt=""></p>
-<p>3、修改user Entries，主要是bootstrap.jar或者tomcat-juli.jar路径错误</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407160600741-1164149146.png" alt=""></p>
-<p>第二种解决问题的方法：（ps：bootstrap.jar路径默认修改回/Servers/bin，按照上面一种方法修改跟本没用，会自动修改回来）<br>很简单，重新创建一个tomcat<br>1、先把已有的删掉，对着已有的tomcat右键，delete</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407161133266-845176047.png" alt=""></p>
-<p>2、点击create a new server</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407161237327-654853201.png" alt=""></p>
-<p>3、选择自己需要的version，然后next</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407161331066-419919764.png" alt=""></p>
-<p>4、点击download and install，选择下载路径，等待一会儿，finish按钮可用之后，就可以创建成功了。</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407161433384-1535541198.png" alt=""></p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407161527778-1144790070.png" alt=""></p>
-<p>出现这个问题，表示没有找到web.xml<br>也有两种解决方案：<br>第一种是根据问题解决问题，非主流方式，但也能解决<br>（转载：<a href="https://www.cnblogs.com/dongyu666/p/7079414.html" target="_blank" rel="noopener">https://www.cnblogs.com/dongyu666/p/7079414.html</a>）<br>第二种是按照maven的配置，直接在properties中的project facets中勾选web项目</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406165731637-1616852060.png" alt=""></p>
-<p>如果出现问题，请看本人另一篇可能会刚好解决：<a href="https://www.cnblogs.com/gambler/p/10662202.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/10662202.html</a></p>
+        <h1 id="Javaweb之注解访问servlet和web-xml配置文件"><a href="#Javaweb之注解访问servlet和web-xml配置文件" class="headerlink" title="Javaweb之注解访问servlet和web.xml配置文件"></a>Javaweb之注解访问servlet和web.xml配置文件</h1><p>一、在这里顺便回顾一下servlet<br>1、首先servlet用于对用户的请求及响应</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407174603527-378921405.png" alt></p>
+<p>2、以及servlet接口需要实现的的五个方法：</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407175225267-672288867.png" alt></p>
+<p>二、两种方式前面过程是一样的，创建一个web工程<br>1、创建一个dynamic web project，本人命名为：ServerletDemo_WebServerlet</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407175710840-2019948067.png" alt></p>
+<p>2、next两下，勾选Generate web.xml（后面手动创建也可以）</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407175901476-917805321.png" alt></p>
+<p>三、两种访问方式<br>1、web.xml访问方式<br>（1）src下创建包com.serverlet.test</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407180325243-985632593.png" alt></p>
+<p>(2)创建一个class文件，命名为Myservlet.java</p>
+<pre><code>package com.serverlet.test;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 注解WebServlet用来描述一个Servlet
+ * 属性name描述Servlet的名字,可选
+ * 属性urlPatterns定义访问的URL,或者使用属性value定义访问的URL.(定义访问的URL是必选属性)
+ */
+@WebServlet(name=&quot;ServletDemo&quot;,urlPatterns=&quot;/ServletDemo&quot;)
+public class Myservlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.getWriter().write(&quot;Hello Servlet3.0&quot;);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.doGet(request, response);
+    }
+}</code></pre><p>(3)在tomcat上运行后，访问：<a href="http://localhost:8080/ServerletDemo_WebServerlet/ServletDemo，中间ServerletDemo_WebServerlet是项目名称" target="_blank" rel="noopener">http://localhost:8080/ServerletDemo_WebServerlet/ServletDemo，中间ServerletDemo_WebServerlet是项目名称</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407180646404-1704091619.png" alt></p>
+<p>2、注解方式访问servlet（这里可以重新创建一个工程）<br>（1）先修改web.xml，这个文件路径是：</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407180145267-1497286642.png" alt></p>
+<p>（2）修改web.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;3.1&quot;&gt;
+  &lt;display-name&gt;ServerletDemo_xml&lt;/display-name&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;Myservlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.serverlet.test.Myservlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;Myservlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/ServletDemo&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre><p>保存即可。<br>（3）处理servlet请求（可以直接将前面的创建好的包（包含java文件）直接复制过来）<br>去掉注解即可</p>
+<pre><code>package com.serverlet.test;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 注解WebServlet用来描述一个Servlet
+ * 属性name描述Servlet的名字,可选
+ * 属性urlPatterns定义访问的URL,或者使用属性value定义访问的URL.(定义访问的URL是必选属性)
+ */
+public class Myservlet extends HttpServlet {
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.getWriter().write(&quot;Hello Servlet3.0&quot;);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.doGet(request, response);
+    }
+}</code></pre><p>（4）在tomcat上直接运行，访问相同链接：<a href="http://localhost:8080/ServerletDemo_xml/ServletDemo，中间ServerletDemo_xml是项目名称" target="_blank" rel="noopener">http://localhost:8080/ServerletDemo_xml/ServletDemo，中间ServerletDemo_xml是项目名称</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190407181641330-913375113.png" alt></p>
 
       
 
@@ -254,7 +398,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/maven%E4%B9%8Bweb.xml%20is%20missing%20and%20%20is%20set%20to%20true%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
+          <a class="article-more-a" href="/Javaweb%E4%B9%8B%E6%B3%A8%E8%A7%A3%E8%AE%BF%E9%97%AEservlet%E5%92%8Cweb.xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">展开全文 >></a>
         </p>
       
 
@@ -284,50 +428,42 @@
 
 
   
-    <article id="post-maven之Dynamic Web Module 3.0 requires Java 1.6 or newer.错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-KMP算法笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/maven%E4%B9%8BDynamic%20Web%20Module%203.0%20requires%20Java%201.6%20or%20newer.%E9%94%99%E8%AF%AF/">maven之Dynamic Web Module 3.0 requires Java 1.6 or newer.错误</a>
+      <a class="article-title" href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">KMP算法笔记</a>
     </h1>
   
 
         
-        <a href="/maven%E4%B9%8BDynamic%20Web%20Module%203.0%20requires%20Java%201.6%20or%20newer.%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.965Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#maven之Dynamic Web Module 3.0 requires Java 1.6 or newer.错误<br>学习maven第一个难点就是学习配置环境，这通常是由于对项目的不理解和不熟悉导致的。<br>一方面是maven的setting.xml自带的默认配置<br>所以因为如果没有特别制定，那么就会造成这个一直出错<br>有两种解决方式：<br>1、改setting.xml</p>
-<pre><code>&lt;profile&gt;
-            &lt;id&gt;jdk-1.8&lt;/id&gt;
-            &lt;activation&gt;
-                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
-                &lt;jdk&gt;1.8&lt;/jdk&gt;
-            &lt;/activation&gt;
-            &lt;properties&gt;  
-                &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;  
-                &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;  
-                &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;  
-            &lt;/properties&gt;
-    &lt;/profile&gt;</code></pre><p>2、改pom.xml<br>这里推荐第二种方式，因为这样移植性以及操作性更好<br>在pom.xml的<build></build>添加:</p>
-<pre><code>&lt;plugins&gt;
-       &lt;plugin&gt;
-          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-          &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-          &lt;version&gt;3.0&lt;/version&gt;
-          &lt;configuration&gt;
-              &lt;source&gt;1.8&lt;/source&gt;
-              &lt;target&gt;1.8&lt;/target&gt;
-           &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;</code></pre>
+        <h1 id="KMP算法笔记"><a href="#KMP算法笔记" class="headerlink" title="KMP算法笔记"></a>KMP算法笔记</h1><p>说实话，目前对于KMP算法还不是了解的特别通透<br>但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下<br>参考博客：<br><a href="https://blog.csdn.net/u012043391/article/details/52815909" target="_blank" rel="noopener">https://blog.csdn.net/u012043391/article/details/52815909</a><br><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a><br><a href="http://blog.csdn.net/guo_love_peng/article/details/6618170" target="_blank" rel="noopener">http://blog.csdn.net/guo_love_peng/article/details/6618170</a><br>会转载其中一些图片，和内容<br>首先KMP算法主要是用来减少初始字符串的匹配<br>举一个很简单的例子</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203050408-1395110002.png" alt></p>
+<p>在i=4与j=4时不匹配，传统做法是i回归原位，并右移一位重新开始下一轮的匹配</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203138796-1556217707.png" alt></p>
+<p>可以看出，这种方法速度极慢<br>那么KMP算法来了，其好处就是对于已经可以匹配的解直接跳过，也就是i不用回归原位，而j可以从不匹配的位置重新开始<br>word is cheap ，show you the example</p>
+<hr>
+<p>第一个是关于部分匹配值的计算<br>首先这个东西还是很好理解的<br>例如你现在要匹配的模式串为：<br>而前缀就是：去除最后一个所有顺序子集<br>例：123512<br>前缀集有：1,12,123，1235,12351<br>后缀就是：去除第一个所有的顺序子集<br>23512,3512,512，12,2<br>所有有公共的元素12，即长度为2<br>例一个完整的部分匹配集数组：<br>ababacacba<br>p[1]=a ，显然没有前后缀，长度为0<br>p[2]=ab，前缀为a，后缀为b，没有公共元素，长度为0<br>p[3]=aba,前缀a，ab，后缀ba，a，公共元素a，长度为1<br>p[4]=abab,前缀a，ab,aba，后缀bab,ab,公共元素ab长度为2<br>p[5]=ababa,前缀a,ab,aba,abab，后缀baba,aba,ba,a公共元素aba长度3，（注这里还有一个a公共，但是根据定义为最长的）<br>……..<br>就可以获取一个表</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210054798-1605384518.png" alt></p>
+<p>如果出现这种情况</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210335085-1237127204.png" alt></p>
+<p>那么我们只需要将下面的匹配表移动=匹配的字符数-部分匹配值====》3-1（最后一个匹配字符为是3，所以为p[3]=1）=2，即向右移动两位</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210944047-1745817785.png" alt></p>
+<h2 id="虽然结果依旧是错的，但是看懂才是关键。"><a href="#虽然结果依旧是错的，但是看懂才是关键。" class="headerlink" title="虽然结果依旧是错的，但是看懂才是关键。"></a>虽然结果依旧是错的，但是看懂才是关键。</h2><p>如果使用KMP算法</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203320146-1670626661.png" alt></p>
+<p>是不是一下省略了大量的计算，虽然目前结果依然不对，但是没关系。<br>那么其核心就是如何找出next数组<br>网上找next数组的方法特别多，但是其实比较正宗的就在上面的博客链接里<br>然后也分为未改进的KMP算法和改进后的KMP算法<br>首先是改进前的next数组<br>未完待续。。。。。</p>
+
       
 
       
@@ -339,7 +475,269 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/maven%E4%B9%8BDynamic%20Web%20Module%203.0%20requires%20Java%201.6%20or%20newer.%E9%94%99%E8%AF%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java继承属性相关介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/">java继承属性相关介绍</a>
+    </h1>
+  
+
+        
+        <a href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java继承属性相关介绍"><a href="#java继承属性相关介绍" class="headerlink" title="java继承属性相关介绍"></a>java继承属性相关介绍</h1><p>这个只需要记住一点，父类的任何属性（变量可以看做属性），子类均可继承并覆盖，allType（father）——》changeAnyType（son）——》AnyType<br>这是父类的所有代表属性（我能想到的），包含普通实例变量，修饰符，访问权限，数据类型，常量修饰符，静态修饰符<br>package ExtendVariable;</p>
+<pre><code>package ExtendVariable;
+
+public class Ancestor {//父类
+
+
+    int ix=0;//普通实例成员属性
+    double dx = 1;//不同类型实例成员变量
+    int bx=10000;
+
+    final int fy=2;//普通常量成员属性
+
+    static int sz=3;//普通静态成员属性
+
+    private     int priVar = 4;//不同权限的成员属性
+                int defVar = 5;//缺省权限
+    protected     int proVar = 6;
+    public        int pubVar = 7;
+
+}</code></pre><p>子类通过extend继承父类之后，通过更改相关属性</p>
+<pre><code>package ExtendVariable;
+
+public class son extends Ancestor{
+
+    //将int型改为double，将double改为int,将int型改为布尔型
+    double ix = 0.1;
+    int    dx = 10;
+    boolean bx=true;
+
+    //将普通常量变量改为普通变量
+    int    fy = 20;
+
+    //将静态成员变量改为普通实例成员变量
+    int     sz=30;
+
+    //将所有权限颠倒过来
+    public         int priVar=40;
+    protected      int    defVar=50;
+                int proVar=60;
+    private     int pubVar=70;
+
+    public  void showAllMember() {
+        System.out.println(&quot;ix= &quot;+this.ix);
+        System.out.println(&quot;dx= &quot;+this.dx);
+        System.out.println(&quot;bx= &quot;+this.bx);
+        System.out.println(&quot;fy= &quot;+this.fy);
+        System.out.println(&quot;sz= &quot;+this.sz);
+        System.out.println(&quot;priVar= &quot;+this.priVar);
+        System.out.println(&quot;defVar= &quot;+this.defVar);
+        System.out.println(&quot;proVar= &quot;+this.proVar);
+        System.out.println(&quot;proVar= &quot;+this.pubVar);
+    }
+
+    public static void main(String args[]) {
+        son oa = new son();
+        oa.showAllMember();
+    }
+
+}</code></pre><p>得出结果为：<br>ix= 0.1dx= 10bx= truefy= 20sz= 30priVar= 40defVar= 50<br>这里说明父类的任何属性均可被子类继承并任意覆盖</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java继承方法规则或规律" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/java%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95%E8%A7%84%E5%88%99%E6%88%96%E8%A7%84%E5%BE%8B/">java继承方法规则或规律</a>
+    </h1>
+  
+
+        
+        <a href="/java%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95%E8%A7%84%E5%88%99%E6%88%96%E8%A7%84%E5%BE%8B/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java继承方法规则或规律"><a href="#java继承方法规则或规律" class="headerlink" title="java继承方法规则或规律"></a>java继承方法规则或规律</h1><p>方法的继承与属性的继承有很大的不同，属性任何继承方式均可，而方法则有各种限制，于是在这里做了一个简单的总结：<br>1、修饰符相同的方法覆盖，即只改内部，不改外部<br>2、访问权限不同的方法覆盖，子类只能相对父类越来越宽松，例如父类是public，子类就不能是缺省或protect，private<br>3、返回值的类型覆盖，只允许相容的返回类型，例如不能将返回值为int型改为double型，但是复合类型则例外<br>4、final的方法覆盖,只能是父类无，子类有，而不能是父类有，子类无<br>5、static（静态）的方法覆盖不能有任何变动，即父类有，子类必须有，父类无，子类也必须无<br>实例如下：<br>父类：</p>
+<pre><code>package ExtendMethod;
+
+public class CommonMethod {
+    protected int x=100;
+    public int getX() {//定义一个普通返回值的实例方法
+        return x;
+    }
+    public CommonMethod getObject() {//定义一个返回复合类型的方法
+        return new CommonMethod();
+    }
+    public final void setX(int ix) {
+        x=ix;
+    }
+    protected  void proShowMsg() {//定义一个具有保护权限的方法
+        System.out.println(&quot;this is protected ShowMsg() in Common class&quot;);
+    }
+
+    public void pubShowMsg() {//定义一个具有公共访问权限的方法
+        System.out.println(&quot;this is public showMsg() in Common class&quot;);
+    }
+    static public void stShowMsg() {//定义一个静态方法
+        System.out.println(&quot;this is static showMsg() in Common class&quot;);
+    }
+}</code></pre><p>一、修饰符相同的可以任意覆盖：</p>
+<pre><code>public class OverrideMember_1 extends Common{
+    //覆盖父类中的同名实例方法
+    public void pubShowMsg() {
+        System.out.println(&quot;this is public showMsg in derive class&quot;);
+    }
+    //覆盖父类中的同名静态方法
+    static public void stShowMsg() {
+        System.out.println(&quot;this is static showMsg() in derive class&quot;);
+    }
+    //可以任意覆盖
+    public static void main(String args[]) {
+        OverrideMember_1 oa =new OverrideMember_1();
+        oa.pubShowMsg();
+        oa.proShowMsg();
+    }
+}</code></pre><p>二、访问权限不同的覆盖，只能越来越宽松，private——&gt;public的方向</p>
+<pre><code>public class OverrideMember_2 extends Common{
+    public void proShowMsg() {//覆盖父类中的protect方法，public &gt; protect，正确
+        System.out.println(&quot;this is public ShowMsg()&quot;);
+    }
+    /*protected void pubShowMsg() {//权限越来越严格,错误，protect &lt; public
+        System.out.println(&quot;this is protect ShowMsg()&quot;);
+    }*/
+}</code></pre><p>三、返回值类型的覆盖</p>
+<pre><code>public class OverrideMember_3 extends Common {
+    //覆盖getX（）方法，但返回的数据类型不同,原方法是int型，错误
+    /*public double getX() {
+        return (double)x;
+    }*/
+    //覆盖getObject(),返回类型相容，正确,原方法的返回类型是新common对象，复合类型
+    public OverrideMember_3 getObject() {
+        return new OverrideMember_3();
+    }
+}</code></pre><p>四、final的方法覆盖，只能从无到有，不能从有到无</p>
+<pre><code>public class OverrideMember_4 extends Common{
+    //覆盖getX()方法，并将其指定为最终方法，正确,原方法为public int getX()
+    public final int  getX() {
+        return x;
+    }
+    //覆盖最终方法，错误，原方法为 public final void setX()
+    /*public void setX(int ix) {
+        x=ix;
+    }*/
+}</code></pre><p>五、static不能有任何改变</p>
+<pre><code>public class OverrideMember_5 extends Common{
+    //试图覆盖实例方法，将其改为静态方法，错误，原型为 public void pubShowMsg()
+    /*public static void pubShowMsg() {
+        System.out.println(&quot;this is public ShowMsg()&quot;);
+    }*/
+    //试图覆盖静态方法，并将其指定为实例方法，错误
+    /*public void stShowMsg() {
+        System.out.println(&quot;this is static ShowMsg()&quot;);
+    }*/
+}
+//总结，静态与实例之间不能相互转换</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/java%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95%E8%A7%84%E5%88%99%E6%88%96%E8%A7%84%E5%BE%8B/">展开全文 >></a>
         </p>
       
 

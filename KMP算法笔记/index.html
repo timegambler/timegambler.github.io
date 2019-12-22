@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>KMP算法笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#KMP算法笔记说实话，目前对于KMP算法还不是了解的特别通透但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u012043391&#x2F;article&#x2F;details&#x2F;52815909http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2013&#x2F;05&#x2F;Knuth%E2%80%93Morris%E2%">
+  <meta name="description" content="KMP算法笔记说实话，目前对于KMP算法还不是了解的特别通透但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u012043391&#x2F;article&#x2F;details&#x2F;52815909http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2013&#x2F;05&#x2F;Knuth%E2%80%93Morris%E2%8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KMP算法笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#KMP算法笔记说实话，目前对于KMP算法还不是了解的特别通透但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u012043391&#x2F;article&#x2F;details&#x2F;52815909http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2013&#x2F;05&#x2F;Knuth%E2%80%93Morris%E2%">
+<meta property="og:description" content="KMP算法笔记说实话，目前对于KMP算法还不是了解的特别通透但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下参考博客：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u012043391&#x2F;article&#x2F;details&#x2F;52815909http:&#x2F;&#x2F;www.ruanyifeng.com&#x2F;blog&#x2F;2013&#x2F;05&#x2F;Knuth%E2%80%93Morris%E2%8">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627203050408-1395110002.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627203138796-1556217707.png">
@@ -21,8 +21,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627210335085-1237127204.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627210944047-1745817785.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627203320146-1670626661.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.261Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.569Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.489Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.285Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180627203050408-1395110002.png">
@@ -162,27 +162,27 @@
 
         
         <a href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.261Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#KMP算法笔记<br>说实话，目前对于KMP算法还不是了解的特别通透<br>但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下<br>参考博客：<br><a href="https://blog.csdn.net/u012043391/article/details/52815909" target="_blank" rel="noopener">https://blog.csdn.net/u012043391/article/details/52815909</a><br><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a><br><a href="http://blog.csdn.net/guo_love_peng/article/details/6618170" target="_blank" rel="noopener">http://blog.csdn.net/guo_love_peng/article/details/6618170</a><br>会转载其中一些图片，和内容<br>首先KMP算法主要是用来减少初始字符串的匹配<br>举一个很简单的例子</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203050408-1395110002.png" alt=""></p>
+        <h1 id="KMP算法笔记"><a href="#KMP算法笔记" class="headerlink" title="KMP算法笔记"></a>KMP算法笔记</h1><p>说实话，目前对于KMP算法还不是了解的特别通透<br>但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下<br>参考博客：<br><a href="https://blog.csdn.net/u012043391/article/details/52815909" target="_blank" rel="noopener">https://blog.csdn.net/u012043391/article/details/52815909</a><br><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a><br><a href="http://blog.csdn.net/guo_love_peng/article/details/6618170" target="_blank" rel="noopener">http://blog.csdn.net/guo_love_peng/article/details/6618170</a><br>会转载其中一些图片，和内容<br>首先KMP算法主要是用来减少初始字符串的匹配<br>举一个很简单的例子</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203050408-1395110002.png" alt></p>
 <p>在i=4与j=4时不匹配，传统做法是i回归原位，并右移一位重新开始下一轮的匹配</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203138796-1556217707.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203138796-1556217707.png" alt></p>
 <p>可以看出，这种方法速度极慢<br>那么KMP算法来了，其好处就是对于已经可以匹配的解直接跳过，也就是i不用回归原位，而j可以从不匹配的位置重新开始<br>word is cheap ，show you the example</p>
 <hr>
 <p>第一个是关于部分匹配值的计算<br>首先这个东西还是很好理解的<br>例如你现在要匹配的模式串为：<br>而前缀就是：去除最后一个所有顺序子集<br>例：123512<br>前缀集有：1,12,123，1235,12351<br>后缀就是：去除第一个所有的顺序子集<br>23512,3512,512，12,2<br>所有有公共的元素12，即长度为2<br>例一个完整的部分匹配集数组：<br>ababacacba<br>p[1]=a ，显然没有前后缀，长度为0<br>p[2]=ab，前缀为a，后缀为b，没有公共元素，长度为0<br>p[3]=aba,前缀a，ab，后缀ba，a，公共元素a，长度为1<br>p[4]=abab,前缀a，ab,aba，后缀bab,ab,公共元素ab长度为2<br>p[5]=ababa,前缀a,ab,aba,abab，后缀baba,aba,ba,a公共元素aba长度3，（注这里还有一个a公共，但是根据定义为最长的）<br>……..<br>就可以获取一个表</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210054798-1605384518.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210054798-1605384518.png" alt></p>
 <p>如果出现这种情况</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210335085-1237127204.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210335085-1237127204.png" alt></p>
 <p>那么我们只需要将下面的匹配表移动=匹配的字符数-部分匹配值====》3-1（最后一个匹配字符为是3，所以为p[3]=1）=2，即向右移动两位</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210944047-1745817785.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210944047-1745817785.png" alt></p>
 <h2 id="虽然结果依旧是错的，但是看懂才是关键。"><a href="#虽然结果依旧是错的，但是看懂才是关键。" class="headerlink" title="虽然结果依旧是错的，但是看懂才是关键。"></a>虽然结果依旧是错的，但是看懂才是关键。</h2><p>如果使用KMP算法</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203320146-1670626661.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203320146-1670626661.png" alt></p>
 <p>是不是一下省略了大量的计算，虽然目前结果依然不对，但是没关系。<br>那么其核心就是如何找出next数组<br>网上找next数组的方法特别多，但是其实比较正宗的就在上面的博客链接里<br>然后也分为未改进的KMP算法和改进后的KMP算法<br>首先是改进前的next数组<br>未完待续。。。。。</p>
 
       
@@ -277,11 +277,11 @@
   
 <nav id="article-nav">
   
-    <a href="/linux&ubuntu%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Javaweb%E4%B9%8B%E6%B3%A8%E8%A7%A3%E8%AE%BF%E9%97%AEservlet%E5%92%8Cweb.xml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          linux&amp;ubuntu谷歌浏览器无法安装扩展程序
+          Javaweb之注解访问servlet和web.xml配置文件
         
       </div>
     </a>
@@ -315,7 +315,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#虽然结果依旧是错的，但是看懂才是关键。"><span class="toc-number">1.</span> <span class="toc-text">虽然结果依旧是错的，但是看懂才是关键。</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KMP算法笔记"><span class="toc-number">1.</span> <span class="toc-text">KMP算法笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#虽然结果依旧是错的，但是看懂才是关键。"><span class="toc-number">1.1.</span> <span class="toc-text">虽然结果依旧是错的，但是看懂才是关键。</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

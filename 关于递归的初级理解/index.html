@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>关于递归的初级理解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#关于递归的初级理解我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：要理解递归，请理解递归。这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。于是我将我对递归中的一部分理解心得供大家慢慢参考。本文将举出三个基本例子，这样也是一层一层的深入。第一个">
+  <meta name="description" content="关于递归的初级理解我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：要理解递归，请理解递归。这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。于是我将我对递归中的一部分理解心得供大家慢慢参考。本文将举出三个基本例子，这样也是一层一层的深入。第一个例">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于递归的初级理解">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92%E7%9A%84%E5%88%9D%E7%BA%A7%E7%90%86%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#关于递归的初级理解我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：要理解递归，请理解递归。这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。于是我将我对递归中的一部分理解心得供大家慢慢参考。本文将举出三个基本例子，这样也是一层一层的深入。第一个">
+<meta property="og:description" content="关于递归的初级理解我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：要理解递归，请理解递归。这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。于是我将我对递归中的一部分理解心得供大家慢慢参考。本文将举出三个基本例子，这样也是一层一层的深入。第一个例">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201804&#x2F;1343872-20180406114343482-877216118.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.161Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.837Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.708Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.629Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201804&#x2F;1343872-20180406114343482-877216118.png">
@@ -157,14 +157,14 @@
 
         
         <a href="/%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92%E7%9A%84%E5%88%9D%E7%BA%A7%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.161Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.708Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#关于递归的初级理解<br>我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。<br>但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：<br>要理解递归，请理解递归。<br>这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。<br>于是我将我对递归中的一部分理解心得供大家慢慢参考。<br>本文将举出三个基本例子，这样也是一层一层的深入。<br>第一个例子是求阶乘，作为递归思维的饭前甜点</p>
+        <h1 id="关于递归的初级理解"><a href="#关于递归的初级理解" class="headerlink" title="关于递归的初级理解"></a>关于递归的初级理解</h1><p>我觉得一开始理解递归是比较难的，特别是我们会习惯性的会将递归进行分解，当然这个也没有错，这会有助于我们去理解递归。<br>但是我觉得网上恶心的是什么呢？他们只会留下这么简单的一句：<br>要理解递归，请理解递归。<br>这句话谁都懂，对递归的概念其实大多数人也懂，但难懂的是如何去学会理解并使用递归。<br>于是我将我对递归中的一部分理解心得供大家慢慢参考。<br>本文将举出三个基本例子，这样也是一层一层的深入。<br>第一个例子是求阶乘，作为递归思维的饭前甜点</p>
 <pre><code>public class jiecheng {
 
     public static int  jiecheng(int n) {
@@ -209,7 +209,7 @@
         System.out.print(s[i]+&quot; &quot;);
     }
 }</code></pre><p>如果有什么代码思路上的不懂（除了递归思路在下面解释），可以看注释，写得很详细</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201804/1343872-20180406114343482-877216118.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201804/1343872-20180406114343482-877216118.png" alt></p>
 <p>快速排序中的递归其实就相当于一个深度二叉树，找到叶子而叶子就是key为止，比如最先找到的是返回是是s[0]=4,然后找到key的顺序是1,0,2,3，5，6,7,8,9，实际上快排就是查找一个key的过程</p>
 
       
@@ -304,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/%E5%85%B3%E4%BA%8Ejava%E5%A4%9A%E6%80%81%E4%B8%AD%E9%87%8D%E8%BD%BD%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          关于如何使用VC6.0+Graphics图形库画出二维图形全教程
+          关于java多态中重载的理解
         
       </div>
     </a>
   
   
-    <a href="/%E5%85%B3%E4%BA%8Ejava%E5%A4%9A%E6%80%81%E4%B8%AD%E9%87%8D%E8%BD%BD%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于java多态中重载的理解</div>
+    <a href="/%E5%85%B3%E4%BA%8E8%E6%95%B0%E7%A0%81%E7%9A%84%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于8数码的搜索问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -342,7 +342,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于递归的初级理解"><span class="toc-number">1.</span> <span class="toc-text">关于递归的初级理解</span></a></li></ol>
                     </div>
                 </span>
             </div>

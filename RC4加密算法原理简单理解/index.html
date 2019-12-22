@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>RC4加密算法原理简单理解 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#RC4加密算法原理简单理解学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。重点讲解RC4秘钥生成步骤感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;block2016&#x2F;p&#x2F;5601925.html）  1、先初始化状态向量">
+  <meta name="description" content="RC4加密算法原理简单理解学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。重点讲解RC4秘钥生成步骤感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;block2016&#x2F;p&#x2F;5601925.html）  1、先初始化状态向量S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RC4加密算法原理简单理解">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#RC4加密算法原理简单理解学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。重点讲解RC4秘钥生成步骤感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;block2016&#x2F;p&#x2F;5601925.html）  1、先初始化状态向量">
+<meta property="og:description" content="RC4加密算法原理简单理解学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。重点讲解RC4秘钥生成步骤感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;block2016&#x2F;p&#x2F;5601925.html）  1、先初始化状态向量S">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;929265&#x2F;201606&#x2F;929265-20160620213652444-560250478.jpg">
-<meta property="article:published_time" content="2019-12-20T06:37:41.058Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.622Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.614Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.348Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2015.cnblogs.com&#x2F;blog&#x2F;929265&#x2F;201606&#x2F;929265-20160620213652444-560250478.jpg">
@@ -157,15 +157,15 @@
 
         
         <a href="/RC4%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.058Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#RC4加密算法原理简单理解<br>学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的<br>RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。<br>重点讲解RC4秘钥生成步骤<br>感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：<a href="https://www.cnblogs.com/block2016/p/5601925.html）" target="_blank" rel="noopener">https://www.cnblogs.com/block2016/p/5601925.html）</a></p>
-<p><img src="https://images2015.cnblogs.com/blog/929265/201606/929265-20160620213652444-560250478.jpg" alt=""></p>
+        <h1 id="RC4加密算法原理简单理解"><a href="#RC4加密算法原理简单理解" class="headerlink" title="RC4加密算法原理简单理解"></a>RC4加密算法原理简单理解</h1><p>学了这么多加密算法，首先要了解的是：对明文使用同一个密钥异或两次最后是得到原文的<br>RC4加密算法其实也是比较简单的，重点是在秘钥流生成器那里，其实也是比较简单的。<br>重点讲解RC4秘钥生成步骤<br>感觉这个流程图画的很不错，拿过来作为大家参考一下（图片转载地址：<a href="https://www.cnblogs.com/block2016/p/5601925.html）" target="_blank" rel="noopener">https://www.cnblogs.com/block2016/p/5601925.html）</a></p>
+<p><img src="https://images2015.cnblogs.com/blog/929265/201606/929265-20160620213652444-560250478.jpg" alt></p>
 <p>1、先初始化状态向量S（256个字节，用来作为密钥流生成的种子1）<br>按照升序，给每个字节赋值0,1,2,3,4,5,6…..,254,255<br>2、初始密钥（由用户输入），长度任意<br>如果输入长度小于256个字节，则进行轮转，直到填满<br>例如输入密钥的是1,2,3,4,5   ,  那么填入的是1,2,3,4,5,1,2,3,4,5,1,2,3,4,5……..<br>由上述轮转过程得到256个字节的向量T（用来作为密钥流生成的种子2）<br>3、开始对状态向量S进行置换操作（用来打乱初始种子1）<br>按照下列规则进行<br>从第零个字节开始，执行256次，保证每个字节都得到处理<br>j = 0;<br>for (i = 0 ; i &lt; 256 ; i++){<br>j = (j + S[i] + T[i]) mod 256;<br>swap(S[i] , S[j]);<br>}<br>这样处理后的状态向量S几乎是带有一定的随机性了<br>4、最后是秘钥流的生成与加密，很多人在这里不是特别理解，别的博客也没有写的很简洁明了<br>假设我的明文字节数是datalength=1024个字节（当然可以是任意个字节）<br>i=0;<br>j=0;<br>while(datalength–){//相当于执行1024次，这样生成的秘钥流也是1024个字节<br>i = (i + 1) mod 256;<br>j = (j + S[i]) mod 256;<br>swap(S[i] , S[j]);<br>t = (S[i] + S[j]) mod 256;<br>k = S[t];这里的K就是当前生成的一个秘钥流中的一位<br>//可以直接在这里进行加密，当然也可以将密钥流保存在数组中，最后进行异或就ok<br>data[]=data[]^k； //进行加密，”^”是异或运算符<br>}<br>解密按照前面写的，异或两次就是原文，所以只要把密钥流重新拿过来异或一次就能得到原文了<br>这样就完成了一次生成密钥流及加密的过程，这也是RC4的全部工作，是不是很简单呢？</p>
 
       
@@ -260,18 +260,18 @@
   
 <nav id="article-nav">
   
-    <a href="/spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/ubuntu%2018.04%20%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3pycharm%20professional%20%E4%B8%93%E4%B8%9A%E7%89%88/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          spring学习笔记
+          ubuntu 18.04 安装破解pycharm professional 专业版
         
       </div>
     </a>
   
   
-    <a href="/pytorchhub%E6%95%99%E7%A8%8B%E4%B9%8B%E5%AE%89%E8%A3%85pytorch%E6%88%96pytorchversion/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">pytorchhub教程之安装pytorch或pytorchversion</div>
+    <a href="/python%E4%B8%AD%E7%9A%84yield%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python中的yield通俗理解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -298,7 +298,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RC4加密算法原理简单理解"><span class="toc-number">1.</span> <span class="toc-text">RC4加密算法原理简单理解</span></a></li></ol>
                     </div>
                 </span>
             </div>

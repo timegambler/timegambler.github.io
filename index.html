@@ -140,29 +140,35 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-matplotlib之饼图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-centos安装ftp服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/matplotlib%E4%B9%8B%E9%A5%BC%E5%9B%BE/">matplotlib之饼图</a>
+      <a class="article-title" href="/centos%E5%AE%89%E8%A3%85ftp%E6%9C%8D%E5%8A%A1/">centos安装ftp服务</a>
     </h1>
   
 
         
-        <a href="/matplotlib%E4%B9%8B%E9%A5%BC%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.291Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/centos%E5%AE%89%E8%A3%85ftp%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:20.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#matplotlib之饼图<br>I、饼状图<br>1、pyplot.pie函数</p>
-<pre><code>matplotlib.pyplot.pie(x, explode=None, labels=None, colors=None, autopct=None, pctdistance=0.6, shadow=False, labeldistance=1.1, startangle=None, radius=None, counterclock=True, wedgeprops=None, textprops=None, center=(0, 0), frame=False, rotatelabels=False, *, data=None)</code></pre><p>2、主要参数说明<br>布尔类型，可选参数，默认为：False。如果为True，旋转每个label到指定的角度。</p>
-<p>III、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html?highlight=pie#matplotlib.pyplot.pie" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html?highlight=pie#matplotlib.pyplot.pie</a><br>IV、代码测试</p>
+        <h1 id="centos安装ftp服务"><a href="#centos安装ftp服务" class="headerlink" title="centos安装ftp服务"></a>centos安装ftp服务</h1><p>I、安装ftp服务器（vsftpd）test</p>
+<pre><code>yum -y install vsftpd</code></pre><p>2、在服务器安装ftp命令（客户端）</p>
+<pre><code>yum -y install ftp</code></pre><p>3、配置用户（默认root用户被禁止，如果是root用户，需要解禁）</p>
+<pre><code>vim /etc/vsftpd/ftpusers</code></pre><p>注释掉</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201912/1343872-20191215113106088-2024524564.png" alt></p>
+<pre><code>vim /etc/vsftpd/user_list</code></pre><p>同样注释掉</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201912/1343872-20191215113159026-1557491886.png" alt></p>
+<p>4、重启ftp服务器</p>
+<pre><code>/sbin/service vsftpd restart</code></pre><p>参考网址：<a href="https://www.cnblogs.com/zhi-leaf/p/5983550.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhi-leaf/p/5983550.html</a><br>参考网址：<a href="https://blog.csdn.net/bamuta/article/details/7821607" target="_blank" rel="noopener">https://blog.csdn.net/bamuta/article/details/7821607</a></p>
 
       
 
@@ -175,7 +181,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/matplotlib%E4%B9%8B%E9%A5%BC%E5%9B%BE/">展开全文 >></a>
+          <a class="article-more-a" href="/centos%E5%AE%89%E8%A3%85ftp%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
         </p>
       
 
@@ -205,48 +211,31 @@
 
 
   
-    <article id="post-matplotlib数据可视化之坐标图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-anaconda下安装的TensorFlow没有代码补全解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9D%90%E6%A0%87%E5%9B%BE/">matplotlib数据可视化之坐标图</a>
+      <a class="article-title" href="/anaconda%E4%B8%8B%E5%AE%89%E8%A3%85%E7%9A%84TensorFlow%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">anaconda下安装的TensorFlow没有代码补全解决方案</a>
     </h1>
   
 
         
-        <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9D%90%E6%A0%87%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.287Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/anaconda%E4%B8%8B%E5%AE%89%E8%A3%85%E7%9A%84TensorFlow%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:20.894Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#matplotlib数据可视化之坐标图<br>I、坐标图<br>1、plot函数</p>
-<pre><code>matplotlib.pyplot.plot(*args, scalex=True, scaley=True, data=None, **kwargs)</code></pre><p>2、主要参数</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191128143801227-1967058029.png" alt=""></p>
-<p>3、官方链接文档<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot#matplotlib.pyplot.plot</a><br>4、代码测试</p>
-<pre><code># 多线多子图
-def f(t):
-    return np.exp(-t) * np.cos(2 * np.pi * t)
-
-
-t1 = np.arange(0.0, 5.0, 0.1)
-t2 = np.arange(0.0, 5.0, 0.02)
-plt.figure(1)
-plt.subplot(221)
-# plt.plot(t1, f(t1), &apos;bo&apos;, t2, f(t2), &apos;k&apos;)
-plt.plot(t1, f(t1), &apos;bo&apos;)
-plt.plot(t2, f(t2), &apos;k&apos;)
-plt.subplot(222)
-plt.plot(t2, np.cos(2 * np.pi * t2), &apos;r--&apos;,  label=&apos;line 1&apos;)
-plt.subplot(212)
-plt.plot(t1, f(t1), &apos;bo&apos;, t2, f(t2), label=&apos;line 1&apos;)
-# plt.plot([1,2,3], [1,2,3], &apos;go-&apos;, label=&apos;line 1&apos;)
-plt.show()</code></pre><p><img src="https://common.cnblogs.com/images/loading.gif" alt=""></p>
+        <h1 id="anaconda下安装的TensorFlow没有代码补全解决方案"><a href="#anaconda下安装的TensorFlow没有代码补全解决方案" class="headerlink" title="anaconda下安装的TensorFlow没有代码补全解决方案"></a>anaconda下安装的TensorFlow没有代码补全解决方案</h1><p>本人的ide工具是pycharm，python环境是通过anaconda安装的python3.6<br>问题：TensorFlow和TensorFlow -gpu两个包均安装成功，但是在ide pycharm中，没有代码提示<br>解决方案，进入你的IED依赖工具包路径中，也就是你的ide工具python运行所在的环境下的安装包，<br>如anaconda默认的依赖工具包路径（root 路径为：C:\ProgramData\Anaconda3\Lib\site-packages\tensorflow）<br>本人使用的是虚拟环境，安装包目录为：C:\ProgramData\Anaconda3\envs\faceidentify\Lib\site-packages\tensorflow<br>如果上述之中没有的话，可能是你在创建虚拟环境时，非管理员身份，用户目录：C:\Users\XXXXXX（你的用户名）\AppData\Local\conda\conda\envs\faceswap\Lib\site-packages<br>打开TensorFlow安装包后，有一个<strong>init</strong>.py文件，编辑（建议先复制一个副本）<br>将下列几行删除</p>
+<pre><code>contrib = LazyLoader(&apos;contrib&apos;, globals(), &apos;tensorflow.contrib&apos;,
+                     _CONTRIB_WARNING)
+del LazyLoader</code></pre><p>改成</p>
+<pre><code>from tensorflow import contrib</code></pre><p>重新启动你的ide工具，即可发现TensorFlow能够进行提示补全了</p>
 
       
 
@@ -259,7 +248,7 @@ plt.show()</code></pre><p><img src="https://common.cnblogs.com/images/loading.gi
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9D%90%E6%A0%87%E5%9B%BE/">展开全文 >></a>
+          <a class="article-more-a" href="/anaconda%E4%B8%8B%E5%AE%89%E8%A3%85%E7%9A%84TensorFlow%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -289,69 +278,27 @@ plt.show()</code></pre><p><img src="https://common.cnblogs.com/images/loading.gi
 
 
   
-    <article id="post-matplotlib数据可视化之柱形图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Failed to start component [StandardEngine[Catalina].StandardHost[localhost].错误解决方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E6%9F%B1%E5%BD%A2%E5%9B%BE/">matplotlib数据可视化之柱形图</a>
+      <a class="article-title" href="/Failed%20to%20start%20component%20%5BStandardEngine%5BCatalina%5D.StandardHost%5Blocalhost%5D.%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Failed to start component [StandardEngine[Catalina].StandardHost[localhost].错误解决方案</a>
     </h1>
   
 
         
-        <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E6%9F%B1%E5%BD%A2%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.283Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/Failed%20to%20start%20component%20%5BStandardEngine%5BCatalina%5D.StandardHost%5Blocalhost%5D.%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#matplotlib数据可视化之柱形图<br>I、柱状图<br>1、pyplot.bar函数</p>
-<pre><code>matplotlib.pyplot.bar(x, height, width=0.8, bottom=None, *, align=&apos;center&apos;, data=None, **kwargs)</code></pre><p>2、主要参数说明</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126152929811-941810386.png" alt=""></p>
-<p>3、官方文档直达链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.bar.html?highlight=bar#matplotlib.pyplot.bar" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.bar.html?highlight=bar#matplotlib.pyplot.bar</a><br>4、相关代码测试<br>①、图形1</p>
-<pre><code>import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
-import seaborn as sns
-import numpy as np
-import pandas as pd
-
-&apos;&apos;&apos;
-matplotlib.pyplot.bar(x, height, width=0.8, bottom=None, *, align=&apos;center&apos;, data=None, **kwargs)[source]
-&apos;&apos;&apos;
-# 解决中文不能在图片中显示的问题
-plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]
-
-x_data = [&apos;2011&apos;, &apos;2012&apos;, &apos;2013&apos;, &apos;2014&apos;, &apos;2015&apos;, &apos;2016&apos;, &apos;2017&apos;]
-y_data = [58000, 60200, 63000, 71000, 84000, 90500, 107000]
-y_data2 = [52000, 54200, 51500, 58300, 56800, 59500, 62700]
-# x表示起始位置
-plt.bar(x=x_data, height=y_data, )
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126143036904-1963357794.png" alt=""></p>
-<p>②、图形2</p>
-<pre><code># height只是代表高度，不代表数值，width代表宽度比例，因此范围是0-1，bottom代表y轴启始值
-plt.bar(x=x_data, height=y_data, width=0.5, bottom=100000)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126145520365-1243431441.png" alt=""></p>
-<p>③、图形3</p>
-<pre><code># 多个柱值叠加
-plt.bar(x_data, y_data)
-plt.bar(x_data, y_data2)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126145919581-732868732.png" alt=""></p>
-<p>④、图形4</p>
-<pre><code># 多个柱并列
-# 因为原始值是字符串类型，无法将x轴进行偏倚，所以先转换成普通值，后面使用tick_label修改命名即可
-x_range = np.arange(7)
-plt.bar(x=x_range, height=y_data, width=0.3, tick_label=x_data)# x只表示位置关系，因此加上0.3，等于将图像偏移0.3
-plt.bar(x=x_range+0.3, height=y_data2, width=0.3)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126151520118-1893010159.png" alt=""></p>
-<p>⑤、图形5</p>
-<pre><code># 绘制水平柱状图
-x_range = np.arange(7)# 使用barh函数
-plt.barh(x_range, y_data, tick_label=x_data, color=&apos;y&apos;)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126153943718-150362454.png" alt=""></p>
+        <h1 id="Failed-to-start-component-StandardEngine-Catalina-StandardHost-localhost-错误解决方案"><a href="#Failed-to-start-component-StandardEngine-Catalina-StandardHost-localhost-错误解决方案" class="headerlink" title="Failed to start component [StandardEngine[Catalina].StandardHost[localhost].错误解决方案"></a>Failed to start component [StandardEngine[Catalina].StandardHost[localhost].错误解决方案</h1><p>遇到这个问题一般是移动项目，复制项目，改名等导致路径以及相关文件配置出现问题。<br>解决方法（只针对普通的web项目）：<br>一、如果是复制或者移动文件重命名项目文件之类的，参照这个博客核查一遍：<br><a href="https://blog.csdn.net/lee_charles/article/details/82154299" target="_blank" rel="noopener">https://blog.csdn.net/lee_charles/article/details/82154299</a><br>二、运行之后肯定还是有问题存在，主要是server和eclipse等IDE工具还存在缓存，所以需要重启<br>关闭server，例如Tomcat，清除配置，然后关闭eclipse，打开eclipse，运行项目，重新选择Tomcat——-&gt;over</p>
 
       
 
@@ -364,7 +311,7 @@ plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/2
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E6%9F%B1%E5%BD%A2%E5%9B%BE/">展开全文 >></a>
+          <a class="article-more-a" href="/Failed%20to%20start%20component%20%5BStandardEngine%5BCatalina%5D.StandardHost%5Blocalhost%5D.%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -394,110 +341,29 @@ plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/2
 
 
   
-    <article id="post-matplotlib数据可视化之画布及子图处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-github使用笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/">matplotlib数据可视化之画布及子图处理</a>
+      <a class="article-title" href="/github%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">github使用笔记</a>
     </h1>
   
 
         
-        <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.278Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/github%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#matplotlib数据可视化之画布及子图处理<br>I、画布<br>1、pyplot.figure()函数</p>
-<pre><code>matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)</code></pre><pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数说明</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126155542677-2058824003.png" alt=""></p>
-<p>3、官方文档直达链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.figure.html?highlight=figure#matplotlib.pyplot.figure</a><br>4、相关代码测试<br>1、图形1</p>
-<pre><code>import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
-import seaborn as sns
-import numpy as np
-import pandas as pd
-
-&apos;&apos;&apos;
-matplotlib.pyplot.figure(num=None, figsize=None, dpi=None, facecolor=None, edgecolor=None, frameon=True, FigureClass=&lt;class &apos;matplotlib.figure.Figure&apos;&gt;, clear=False, **kwargs)[source]
-&apos;&apos;&apos;
-
-# 解决中文不能在图片中显示的问题
-plt.rcParams[&apos;font.sans-serif&apos;] = [&apos;SimHei&apos;]
-# 用来正常显示负号
-plt.rcParams[&apos;axes.unicode_minus&apos;] = False
-
-#
-plt.figure()
-x_range = np.arange(7)
-y_range = np.random.randint(1, 7, size=7)
-plt.plot(y_range)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164118651-1970360627.png" alt=""></p>
-<p>2、图形2</p>
-<pre><code>#修改参数plt.figure(figsize=(2, 2), dpi=100)
-x_range = np.arange(7)
-y_range = np.random.randint(1, 7, size=7)
-plt.plot(x_range, y_range)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126164507404-192172268.png" alt=""></p>
-<p>II、子图切割<br>1、subplot函数方法</p>
-<pre><code>matplotlib.pyplot.subplot(*args, **kwargs)</code></pre><p>2、主要参数</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126193243169-1190491227.png" alt=""></p>
-<p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=subplot#matplotlib.pyplot.subplot</a><br>4、简单测试<br>①图形1</p>
-<pre><code>plt.figure(figsize=(8, 8))
-x_range = np.arange(7)
-y_range = np.random.randint(1, 7, size=7)
-plt.subplot(221)
-plt.plot(x_range, y_range)
-plt.subplot(222)
-plt.plot(x_range, np.random.randint(1, 7, size=7))
-plt.subplot(223)
-plt.plot(x_range, np.random.randint(1, 7, size=7))
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171132362-372254195.png" alt=""></p>
-<p>②、图形2</p>
-<pre><code># 指定多个画布，并创建多个子图，并修改指定子图
-plt.figure(1, figsize=(8, 8))
-x_range = np.arange(7)
-y_range = np.random.randint(1, 7, size=7)
-plt.subplot(221)
-plt.plot(x_range, y_range)
-plt.subplot(222)
-plt.plot(x_range, np.random.randint(1, 7, size=7))
-plt.subplot(223)
-plt.plot(x_range, np.random.randint(1, 7, size=7))
-# plt.show()
-
-plt.figure(2, figsize=(4, 4))
-plt.subplot(212)
-plt.plot(x_range, np.random.randint(1,7,size=7))
-
-# 修改指定画布，及相关子图
-plt.figure(1)
-plt.subplot(222)
-plt.title(&apos;for testfigure&apos;)
-plt.show()</code></pre><p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126171858571-1874229886.png" alt=""></p>
-<p>III、子图叠加在主图上<br>1、aexs函数</p>
-<pre><code>matplotlib.pyplot.axes(arg=None, **kwargs)</code></pre><p>2、主要参数说明</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191126210541229-402806917.png" alt=""></p>
-<p>3、官方文档链接<br><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes" target="_blank" rel="noopener">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.axes.html?highlight=axes#matplotlib.pyplot.axes</a><br>4、测试</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201911/1343872-20191128113610871-1689781561.png" alt=""></p>
-<pre><code># 在主图上叠加小图形
-# 列表前两位数字表示为起始坐标，后两位表示为图形的横纵比（长宽）
-x_range = np.arange(7)
-y_range = np.random.randint(1, 7, size=7)
-plt.figure()
-plt.plot(x_range, y_range)
-plt.title(&apos;主图&apos;)
-plt.axes([0.2, 0.2, 0.2, 0.2])
-plt.plot(x_range, y_range)
-plt.axes([0.5, 0.5, 0.2, 0.2])
-plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
-
+        <h1 id="github使用笔记"><a href="#github使用笔记" class="headerlink" title="github使用笔记"></a>github使用笔记</h1><p>I、在readme.md添加图片有两种方式</p>
+<pre><code>![image]xxx
+&lt;img src=&quot;xxx&quot;&gt;</code></pre>
       
 
       
@@ -509,7 +375,7 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E7%94%BB%E5%B8%83%E5%8F%8A%E5%AD%90%E5%9B%BE%E5%A4%84%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/github%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
@@ -539,36 +405,55 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
 
 
   
-    <article id="post-MapReduce解析之Map，Context，Reduce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-git命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce/">MapReduce解析之Map，Context，Reduce</a>
+      <a class="article-title" href="/git%E5%91%BD%E4%BB%A4/">git命令</a>
     </h1>
   
 
         
-        <a href="/MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.275Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/git%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.786Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#MapReduce解析之Map，Context，Reduce<br>要理解MapReduce，就必须理解其框架结构，把这三者放在一起讲是为了便于大家理解。<br>也就是两大组件Map与Reduce<br>首先看看Map<br>（声明：这里感谢<a href="Pig2">Pig2</a>的文章，对我启发很大，也顺便引用一下她的一些东西）<br>首先看看Map类中包含哪些方法：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163133406-1364776962.png" alt=""></p>
-<p>首先看看run方法，它就像是一个控制器</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603163443354-1105486812.png" alt=""></p>
-<p>很明显，Map中的run方法遵循setup—&gt;map—–&gt;cleanup<br>setup源码：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603170208408-402352261.png" alt=""></p>
-<p>很明显，只传入了一个context对象<br>那么这个Context对象究竟为何物<br>Context，中文释义：环境，背景，上下文<br>很明显，开发过Android的人肯定知道，在Context就是一个保存所有信息的中介桥梁，与java中的session有着异曲同工之妙<br>Context包含了几乎关于这个任务的所有信息</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180603174025959-712706211.png" alt=""></p>
-<p>那么问题就over了，很明显传入这个context对象就像传入一个session来记录一些信息的，避免信息错乱<br>好的，再重新回过头看看run方法中的map方法，很显然，这就是我们通常普通用户需要进行更改的<br>它的最大用处就是对信息进行预处理，让最后得到的</p>
+        <h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><p>1、撤销add</p>
+<pre><code># 如果是文件git rm --cached &lt;file&gt;
 
+#如果是文件夹
+git rm --cached -r &lt;dir&gt;</code></pre><p>2、去除commit历史记录</p>
+<pre><code>1.新建分支
+
+   git checkout --orphan latest_branch
+
+2. 添加文件
+
+   git add -A
+
+3. 提交
+
+   git commit -am &quot;commit message&quot;
+
+
+4. 删除主分支
+
+   git branch -D master
+
+5.将新分支重命名为主分支
+
+   git branch -m master
+
+6.push到主分支中
+
+   git push -f origin master</code></pre>
       
 
       
@@ -580,7 +465,7 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/MapReduce%E8%A7%A3%E6%9E%90%E4%B9%8BMap%EF%BC%8CContext%EF%BC%8CReduce/">展开全文 >></a>
+          <a class="article-more-a" href="/git%E5%91%BD%E4%BB%A4/">展开全文 >></a>
         </p>
       
 
@@ -610,267 +495,31 @@ plt.plot(x_range, y_range)</code></pre><p>over！！！</p>
 
 
   
-    <article id="post-Linux系统中出现依赖libssl1.1.0问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-C语言取大随机数的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%BE%9D%E8%B5%96libssl1.1.0%E9%97%AE%E9%A2%98/">Linux系统中出现依赖libssl1.1.0问题</a>
+      <a class="article-title" href="/C%E8%AF%AD%E8%A8%80%E5%8F%96%E5%A4%A7%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/">C语言取大随机数的问题</a>
     </h1>
   
 
         
-        <a href="/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%BE%9D%E8%B5%96libssl1.1.0%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.271Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/C%E8%AF%AD%E8%A8%80%E5%8F%96%E5%A4%A7%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#Linux系统中出现依赖libssl1.1.0问题<br>首先，我出现这个问题是在安装并运行VMware中出现缺失linux-headers-4.18.0-041800rc5-generic这个文件</p>
-<p>让我联想到上次在升级Ubuntu16.04内核的时候，给自己埋下的坑，这个文件没有安装</p>
-<p>于是在官网下载了这个文件linux-headers-4.18.0-041800rc5-generic_4.18.0-041800rc5.201807152130_amd64.deb</p>
-<p>手动进行安装的时候出现了上述文件依赖‘libssl1.1.0(&gt;=1.1.0）’出现问题</p>
-<p>然后我就开始了作死之路，依照网上照葫芦画瓢的升级了我的openssl，直接升级到openssl1.1.0i，然后浪费很多时间搞定之后发现这个问题依旧存在</p>
-<p>吃完午饭后我转念一想，openssl与这个libssl会不会没有直接关联，于是我回到宿舍之后谷歌了一下，给的答案直接让我安装一个libssl1.1_1.1.0g-2ubuntu4.1_amd64.deb文件</p>
-<p>于是果断下载安装，泪牛满面，终于成功了。因为是国外资源，为方便大家使用，特地下载下来，放到百度网盘上给大家使用</p>
-<p>百度网盘地址： 链接:<a href="https://pan.baidu.com/s/155rYJB2NnAvGOW65zVpCvQ" target="_blank" rel="noopener"> https://pan.baidu.com/s/155rYJB2NnAvGOW65zVpCvQ</a> 密码: 5mdr</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%87%BA%E7%8E%B0%E4%BE%9D%E8%B5%96libssl1.1.0%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-    </h1>
-  
-
-        
-        <a href="/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.268Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#linux常用命令<br>参考文档：<a href="https://blog.csdn.net/qq_23329167/article/details/83856430" target="_blank" rel="noopener">https://blog.csdn.net/qq_23329167/article/details/83856430</a><br>I、后台执行并且打印日志</p>
-<pre><code>命令脚本 &gt; log(输出文件) 2&gt;&amp;1 &amp;</code></pre><p>2、查看后台运行的进程</p>
-<pre><code>jobs</code></pre><p>3、查看剩余空间</p>
-<pre><code>#查看磁盘空间df -h#查看文件目录空间</code></pre><pre><code>du -h --max-depth=1</code></pre><p>4、查看系统所有进程</p>
-<pre><code>psps -aux</code></pre><p>5、端口占用</p>
-<pre><code>netstat -anptelnet xxx.xxx.xxx portcurl  xxx.xxx.xxx:portwget xxx.xxx.xxx:port</code></pre><p>6、防火墙相关命令</p>
-<pre><code>查看防火墙状态： systemctl status firewalld.service
-绿的running表示防火墙开启
-执行关闭命令： systemctl stop firewalld.service
-再次执行查看防火墙命令：systemctl status firewalld.service
-执行开机禁用防火墙自启命令  ： systemctl disable firewalld.service
-启动：systemctl start firewalld.service
-防火墙随系统开启启动  ： systemctl enable firewalld.service</code></pre><p>7、实时查看log日志</p>
-<pre><code>tail -f xx.log</code></pre><p>8、zip压缩和解压缩</p>
-<pre><code>#压缩
-zip -r file 
-#解压缩
-unzip file</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux&amp;ubuntu谷歌浏览器无法安装扩展程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/linux&ubuntu%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">linux&amp;ubuntu谷歌浏览器无法安装扩展程序</a>
-    </h1>
-  
-
-        
-        <a href="/linux&ubuntu%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.264Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#linux&amp;ubuntu谷歌浏览器无法安装扩展程序<br>谷歌已经不支持直接从非Google store导入扩展程序，所以需要另辟蹊径，曲线救国。<br>下面这个方法非常有效！！！<br>例如:Ubuntu安装switchyomega等扩展程序，不能直接通过crx文件安装<br>1、先下载好crx文件</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406153006068-728357986.png" alt=""></p>
-<p>2、需要将crx文件重命名为zip</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406153053283-662299930.png" alt=""></p>
-<p>3、然后再解压成文件</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406154250115-463240340.png" alt=""></p>
-<p>4、然后打开Google的扩展程序（直接在导航栏里输入：<a href="chrome://extensions/">chrome://extensions/</a>）：</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406154514313-74838427.png" alt=""></p>
-<p>5、点击右上角的开发者模式</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406154615343-1325971293.png" alt=""></p>
-<p>6、点击加载已解压的扩展程序</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406154730458-2045173473.png" alt=""></p>
-<p>7、选定后直接点击右上角打开，然后就OK了</p>
-<p><img src="https://img2018.cnblogs.com/blog/1343872/201904/1343872-20190406154828788-1775499755.png" alt=""></p>
-<p>转载请注明：<a href="https://www.cnblogs.com/gambler/p/10661973.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/10661973.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/linux&ubuntu%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-KMP算法笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">KMP算法笔记</a>
-    </h1>
-  
-
-        
-        <a href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.261Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#KMP算法笔记<br>说实话，目前对于KMP算法还不是了解的特别通透<br>但是为了先记住它，主要是因为现在没有那么多时间，所以先放在这里，等以后有空再重新编辑一下<br>参考博客：<br><a href="https://blog.csdn.net/u012043391/article/details/52815909" target="_blank" rel="noopener">https://blog.csdn.net/u012043391/article/details/52815909</a><br><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a><br><a href="http://blog.csdn.net/guo_love_peng/article/details/6618170" target="_blank" rel="noopener">http://blog.csdn.net/guo_love_peng/article/details/6618170</a><br>会转载其中一些图片，和内容<br>首先KMP算法主要是用来减少初始字符串的匹配<br>举一个很简单的例子</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203050408-1395110002.png" alt=""></p>
-<p>在i=4与j=4时不匹配，传统做法是i回归原位，并右移一位重新开始下一轮的匹配</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203138796-1556217707.png" alt=""></p>
-<p>可以看出，这种方法速度极慢<br>那么KMP算法来了，其好处就是对于已经可以匹配的解直接跳过，也就是i不用回归原位，而j可以从不匹配的位置重新开始<br>word is cheap ，show you the example</p>
+        <h1 id="C语言取大随机数的问题"><a href="#C语言取大随机数的问题" class="headerlink" title="C语言取大随机数的问题"></a>C语言取大随机数的问题</h1><p>首先rand()取得的随机数是在一定的范围内的，一般是0x7fff，即32767<br>那么要利用此函数取比此大的随机数该怎么办，我觉得只有一个办法，就是拼接<br>通常我们会犯这样的错误：即rand()*rand()这样感觉是不是取到了一个更大的随机数，因为随机乘以随机还是随机嘛，但实际上是错误的<br>你可以把rand()函数当做一个重复的全排列，假设现在有6个数字（取得的概率是相同的）<br>rand1（） ：1       2        3        4          5　　　6</p>
+<p>rand2（） ：1       2        3        4          5　　　6</p>
+<p>那么现在看看结果与其取得的概率(仅举两例)<br>rand1（）<em>rand2（）                              P<br>2=1</em>2，2<em>1　　　　　　　　　1/6  *  1/6+1/6  *  1/6=2/36<br>12=3</em>4，4<em>3,2</em>6,6*2　　　　　1/6  *  1/6+1/6  *  1/6+1/6  *  1/6+1/6  *  1/6=4/36<br>可以由此看出这样取是不可取的，因为获取的数字概率是不相同的，这肯定就不满足随机的概念（即每个数字被选取到的概率应该相同）。<br>但是拼接是可取的<br>比如2和12<br>我们可以想象成两个空位（分别代表rand1与rand2）</p>
 <hr>
-<p>第一个是关于部分匹配值的计算<br>首先这个东西还是很好理解的<br>例如你现在要匹配的模式串为：<br>而前缀就是：去除最后一个所有顺序子集<br>例：123512<br>前缀集有：1,12,123，1235,12351<br>后缀就是：去除第一个所有的顺序子集<br>23512,3512,512，12,2<br>所有有公共的元素12，即长度为2<br>例一个完整的部分匹配集数组：<br>ababacacba<br>p[1]=a ，显然没有前后缀，长度为0<br>p[2]=ab，前缀为a，后缀为b，没有公共元素，长度为0<br>p[3]=aba,前缀a，ab，后缀ba，a，公共元素a，长度为1<br>p[4]=abab,前缀a，ab,aba，后缀bab,ab,公共元素ab长度为2<br>p[5]=ababa,前缀a,ab,aba,abab，后缀baba,aba,ba,a公共元素aba长度3，（注这里还有一个a公共，但是根据定义为最长的）<br>……..<br>就可以获取一个表</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210054798-1605384518.png" alt=""></p>
-<p>如果出现这种情况</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210335085-1237127204.png" alt=""></p>
-<p>那么我们只需要将下面的匹配表移动=匹配的字符数-部分匹配值====》3-1（最后一个匹配字符为是3，所以为p[3]=1）=2，即向右移动两位</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627210944047-1745817785.png" alt=""></p>
-<h2 id="虽然结果依旧是错的，但是看懂才是关键。"><a href="#虽然结果依旧是错的，但是看懂才是关键。" class="headerlink" title="虽然结果依旧是错的，但是看懂才是关键。"></a>虽然结果依旧是错的，但是看懂才是关键。</h2><p>如果使用KMP算法</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180627203320146-1670626661.png" alt=""></p>
-<p>是不是一下省略了大量的计算，虽然目前结果依然不对，但是没关系。<br>那么其核心就是如何找出next数组<br>网上找next数组的方法特别多，但是其实比较正宗的就在上面的博客链接里<br>然后也分为未改进的KMP算法和改进后的KMP算法<br>首先是改进前的next数组<br>未完待续。。。。。</p>
+<p>每个空位有如下选择<br>0　　　　0<br>1　　　　1<br>2　　　　2<br>3　　　　3<br>4　　　　4<br>5　　　　5<br>6　　　　6<br>7　　　　7<br>8　　　　8<br>9　　　　9<br>那么  2就是0     　　2    　　所以P（x=2）=1/10<em>1/10=1/100<br>那么12就是1     　　 2    　　所以P（x=12）=1/10</em>1/10=1/100<br>毫无疑问，拼接是没有任何问题的</p>
 
       
 
@@ -883,7 +532,7 @@ unzip file</code></pre>
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/KMP%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/C%E8%AF%AD%E8%A8%80%E5%8F%96%E5%A4%A7%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -913,85 +562,47 @@ unzip file</code></pre>
 
 
   
-    <article id="post-java继承属性相关介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-eclipse导入web出现错误的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/">java继承属性相关介绍</a>
+      <a class="article-title" href="/eclipse%E5%AF%BC%E5%85%A5web%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">eclipse导入web出现错误的解决方法</a>
     </h1>
   
 
         
-        <a href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.257Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+        <a href="/eclipse%E5%AF%BC%E5%85%A5web%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#java继承属性相关介绍<br>这个只需要记住一点，父类的任何属性（变量可以看做属性），子类均可继承并覆盖，allType（father）——》changeAnyType（son）——》AnyType<br>这是父类的所有代表属性（我能想到的），包含普通实例变量，修饰符，访问权限，数据类型，常量修饰符，静态修饰符<br>package ExtendVariable;</p>
-<pre><code>package ExtendVariable;
-
-public class Ancestor {//父类
-
-
-    int ix=0;//普通实例成员属性
-    double dx = 1;//不同类型实例成员变量
-    int bx=10000;
-
-    final int fy=2;//普通常量成员属性
-
-    static int sz=3;//普通静态成员属性
-
-    private     int priVar = 4;//不同权限的成员属性
-                int defVar = 5;//缺省权限
-    protected     int proVar = 6;
-    public        int pubVar = 7;
-
-}</code></pre><p>子类通过extend继承父类之后，通过更改相关属性</p>
-<pre><code>package ExtendVariable;
-
-public class son extends Ancestor{
-
-    //将int型改为double，将double改为int,将int型改为布尔型
-    double ix = 0.1;
-    int    dx = 10;
-    boolean bx=true;
-
-    //将普通常量变量改为普通变量
-    int    fy = 20;
-
-    //将静态成员变量改为普通实例成员变量
-    int     sz=30;
-
-    //将所有权限颠倒过来
-    public         int priVar=40;
-    protected      int    defVar=50;
-                int proVar=60;
-    private     int pubVar=70;
-
-    public  void showAllMember() {
-        System.out.println(&quot;ix= &quot;+this.ix);
-        System.out.println(&quot;dx= &quot;+this.dx);
-        System.out.println(&quot;bx= &quot;+this.bx);
-        System.out.println(&quot;fy= &quot;+this.fy);
-        System.out.println(&quot;sz= &quot;+this.sz);
-        System.out.println(&quot;priVar= &quot;+this.priVar);
-        System.out.println(&quot;defVar= &quot;+this.defVar);
-        System.out.println(&quot;proVar= &quot;+this.proVar);
-        System.out.println(&quot;proVar= &quot;+this.pubVar);
-    }
-
-    public static void main(String args[]) {
-        son oa = new son();
-        oa.showAllMember();
-    }
-
-}</code></pre><p>得出结果为：<br>ix= 0.1dx= 10bx= truefy= 20sz= 30priVar= 40defVar= 50<br>这里说明父类的任何属性均可被子类继承并任意覆盖</p>
+        <h1 id="eclipse导入web出现错误的解决方法"><a href="#eclipse导入web出现错误的解决方法" class="headerlink" title="eclipse导入web出现错误的解决方法"></a>eclipse导入web出现错误的解决方法</h1><p>本人是java初学者，对eclipse还不是很了解，在导入老师给的web项目时也出现了问题，在网上找了若干解决方法，但实际上没有一个很具体的解决方案，都是比较零散的，于是我就在此把我遇到的解决方法在这里写一下，提供大家参考。<br>一，首先第一步，在eclipse右键project项目，选择buildpath，进去后全部勾上，并apply。<br>二、这是在网上翻找好久才找到的，因为看到什么./seting/org.eclipse.wst.common.project.facet.core.xml更改文件等，但是没有project上根本就没有该文件夹。于是费了半天劲儿，找到了解决方法。<br>先找到那个小三角图案，选择filter and customzition</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180329203227316-1896361510.png" alt></p>
+<p>将resource选项的勾勾去掉</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180329203347401-1121632918.png" alt></p>
+<p>然后apply后就会显示./seting文件夹<br>找到文件org.eclipse.wst.common.project.facet.core.xml，显示如下，可以根据自己的计算机配置自行更改，但是我建议跟我一样的初学者直接在本机上新建或打开已有的web工程，将该工程的该文件的东西直接复制过来</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;faceted-project&gt;
+  &lt;runtime name=&quot;Apache Tomcat v7.0&quot;/&gt;
+  &lt;fixed facet=&quot;java&quot;/&gt;
+  &lt;fixed facet=&quot;wst.jsdt.web&quot;/&gt;
+  &lt;fixed facet=&quot;jst.web&quot;/&gt;
+  &lt;installed facet=&quot;java&quot; version=&quot;1.8&quot;/&gt;
+  &lt;installed facet=&quot;jst.web&quot; version=&quot;2.5&quot;/&gt;
+  &lt;installed facet=&quot;wst.jsdt.web&quot; version=&quot;1.0&quot;/&gt;
+&lt;/faceted-project&gt;</code></pre><p>搞完之后居然还有两个错误怎么办</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180329204240267-554449254.png" alt></p>
+<p>这里大家是classpath文件的问题（这个文件可以在自己的project最下面直接看到），这个是因为生成web项目是就已经根据定义好的，然后我也看了网上的各种更改方案，要么是太复杂，要么就是根本没有，很多都太老了<br>解决方法与上面一样，直接找到一个已有的web项目或者新建一个web项目，直接将文件的配置复制过来，保存后，就可以直接运行了</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180329204711355-2033533395.png" alt></p>
+<p>最后运行给各位老铁看看：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201803/1343872-20180329204900009-1435546104.png" alt></p>
+<p>说实话，现在大家都不怎愿意写这些东西了，很多东西都是几年前的，而且大多写的比较复杂，对我们这些小白不是太友好，哎，没办法，大家都慢慢探索吧！！！</p>
 
       
 
@@ -1004,7 +615,214 @@ public class son extends Ancestor{
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/java%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
+          <a class="article-more-a" href="/eclipse%E5%AF%BC%E5%85%A5web%E5%87%BA%E7%8E%B0%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）</a>
+    </h1>
+  
+
+        
+        <a href="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="faceswap安装，配置，使用记录（RTX2060s-CUDA10-1-cudnn7-6-2-Anaconda3-5-2-tensorflow-gpu）（一）"><a href="#faceswap安装，配置，使用记录（RTX2060s-CUDA10-1-cudnn7-6-2-Anaconda3-5-2-tensorflow-gpu）（一）" class="headerlink" title="faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）"></a>faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）</h1><p>声明和提示：<br>因为每个人的电脑软硬件环境配置均不同，所以所面临的问题往往也不同，我也是安装了一些时间，各种配置，重装，因此在尽可能保证通用性的情况下，在此记录下来，减少大家走弯路的过程。尤其是一些细节的地方，往往容易出错，也很难找出错误所在，这点大家要注意一下。并且网上给的方案要么已经过时，要么没有系统性，因此写下本人所有软件硬件的全套方案。</p>
+<p>第一步、环境准备，各种文件的安装下载<br>（1）硬件驱动相关的准备<br>首先参照这张表：（英伟达官方配置参照：<a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930230833168-2039413382.png" alt></p>
+<p>建议去英伟达官方下载最新驱动：<a href="https://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">https://www.nvidia.cn/Download/index.aspx?lang=cn</a><br>根据你的显卡进行选择，然后搜索下载（可能这里会比较慢，建议用迅雷，速度非常快）</p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930231422429-2004677739.png" alt></p>
+<p>全部默认安装下载即可。这里不需要进行什么额外配置<br>（2）安装cuda和cudnn，这两个也建议安装最新版本的<br>（也建议用迅雷下载，不少人表示cuda10比cuda9要快，而且本人用的均是最新版都没问题，所以大家放心用吧）<br>ps：cuda不需要注册，但是cudnn需要注册，自行注册下载即可<br>这里是cuda10.1下载地址：<a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exelocal" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exelocal</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930232108430-15636787.png" alt></p>
+<p>ps:画红框的地方注意一下，建议下载本地安装版的，联网安装的非常慢。<br>如果需要其他版本的cuda，官方链接：<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930232307873-1587075602.png" alt></p>
+<p>点击对应所需的cuda版本即可。<br>下载完成后，之间点击安装，所有选项默认即可。<br>接下来是cudnn的下载，这里需要注册，大家自行注册，然后下载（依旧用迅雷）。<br>下载网址：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930233949364-1983846485.png" alt></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201909/1343872-20190930233453403-1799952721.png" alt></p>
+<p>下载版本对照，官方对照地址：（<a href="https://tensorflow.google.cn/install/source_windows" target="_blank" rel="noopener">https://tensorflow.google.cn/install/source_windows</a><br>（ps：谷歌官方没有及时更新，导致cuda10没有出现在其中，可以直接忽略，参照上面图片中nvidia官方提供对照即可）<br>下载完成后，解压，然后里面有三个文件夹和一个说明的txt文档</p>
+<p>将cudnn解压bin文件夹中的cudnn64_7.dll文件复制到cuda默认安装目录：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\bin<br>（同上）将cudnn解压include文件夹中的cudnn.h文件复制到：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\include<br>（同上）将cudnn解压lib文件夹中的x64文件夹的cudnn.lib复制到：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\lib\x64<br>基本上硬件驱动及相关环境配置基本完成，可以进行以下测试，用nvcc -V监测cuda是否安装成功，cudnn因为暂时没有用到，所以无法测试，后期修改cudnn比较简单，无需担心<br>（2）安装anaconda，这里建议安装anaconda3.5.2版本，最新版本是3.5.3<br>ps：之所以这么建议，主要是博主本人遇到过两个问题，一个是3.5.3默认是python3.7（目前很多都只支持到python3.6），虽然可以退回python3.6，但是依旧麻烦不已，很费时间，第二个是动态链接库缺失的问题，这个问题至今没有搞明白，因为通过直接安装3.5.2版本没有出现后就没有深究了，主要怀疑是环境变量那里出现了问题。<br>这里下载推荐使用清华镜像下载源：<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<p><img src="https://img2018.cnblogs.com/blog/1343872/201910/1343872-20191001000510978-1644292006.png" alt></p>
+<p>然后是安装的过程，直接一路next就行，其中也可以进行一些选择，但是本着‘傻瓜式’安装的原则，建议直接全部下一步进行安装。<br>安装完成之后，就是配环境变量了。</p>
+<p>至于如何详细使用anaconda，请参照这个博主：<a href="https://blog.csdn.net/ITLearnHall/article/details/81708148（虽然有些杂乱，但还是可以参考）" target="_blank" rel="noopener">https://blog.csdn.net/ITLearnHall/article/details/81708148（虽然有些杂乱，但还是可以参考）</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-资源积累" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E8%B5%84%E6%BA%90%E7%A7%AF%E7%B4%AF/">资源积累</a>
+    </h1>
+  
+
+        
+        <a href="/%E8%B5%84%E6%BA%90%E7%A7%AF%E7%B4%AF/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.770Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="资源积累"><a href="#资源积累" class="headerlink" title="资源积累"></a>资源积累</h1><p>淘宝爬取：<a href="https://blog.csdn.net/weixin_43173093/article/details/87716555" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43173093/article/details/87716555</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E8%B5%84%E6%BA%90%E7%A7%AF%E7%B4%AF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-云计算DHT分布式存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E4%BA%91%E8%AE%A1%E7%AE%97DHT%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/">云计算DHT分布式存储</a>
+    </h1>
+  
+
+        
+        <a href="/%E4%BA%91%E8%AE%A1%E7%AE%97DHT%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/" class="archive-article-date">
+  	<time datetime="2019-12-22T08:20:04.755Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="云计算DHT分布式存储"><a href="#云计算DHT分布式存储" class="headerlink" title="云计算DHT分布式存储"></a>云计算DHT分布式存储</h1><p>因为DHT包含多种存储模式，因为学习需要，这里暂时只讲解chord，这个也是相对比较简单的<br>首先使用的hash格式数据&lt;key,value&gt;<br>key是关键字，用来作为寻找节点，即通过K=hash（key），然后查找K来找出存储节点信息表<br>value是包含了数据存储的具体节点信息，例如IP等<br>接下来是看是如何查找的：<br>1、有以下节点N1，N8，N14，N21，N32，N38，N42，N48，N51，N56，每个节点都存有一张大小为8的finger表，前面三个指向附近节点，后面指向远处节点<br>2、我们要查找K54（即K=hash（key）=54）<br>3、初始查找节点为N8</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180607091352020-240921317.png" alt></p>
+<p>4、记住，节点查找规则是由远及近，首先对于newnode=N8+32—-&gt;42节点，符合8&lt;newnode&lt;54，所以跳到当前节点，继续查找（注，这里的大小符号仅仅指范围，并非真的只是数字大小）<br>5、newnode=N42+32—–&gt;14,显然不符合42&lt;newnode&lt;54,继续newnode=N42+16—–&gt;1,依旧不符合，再继续newnode=N42+8—-&gt;51,符合，调到51节点继续查找<br>6、最终发现在N51节点到N56节点之间，所以节点信息在N56查找到Value，再通过value上的信息直接找到数据存储的物理位置。<br>关于删增节点<br>最重要的是维护好后继节点，与前序节点<br>这里暂不详述。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E4%BA%91%E8%AE%A1%E7%AE%97DHT%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8/">展开全文 >></a>
         </p>
       
 

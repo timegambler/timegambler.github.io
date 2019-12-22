@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>mysql学习训练记录及笔记（一） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(">
+  <meta name="description" content="mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql学习训练记录及笔记（一）">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(">
+<meta property="og:description" content="mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(2">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201912&#x2F;1343872-20191203151744160-1095337361.png">
-<meta property="article:published_time" content="2019-12-20T06:37:40.996Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.092Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.567Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:23.598Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;img2018.cnblogs.com&#x2F;i-beta&#x2F;1343872&#x2F;201912&#x2F;1343872-20191203151744160-1095337361.png">
@@ -157,14 +157,14 @@
 
         
         <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:40.996Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#mysql学习训练记录及笔记（一）<br>写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、建表语句</p>
+        <h1 id="mysql学习训练记录及笔记（一）"><a href="#mysql学习训练记录及笔记（一）" class="headerlink" title="mysql学习训练记录及笔记（一）"></a>mysql学习训练记录及笔记（一）</h1><p>写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、建表语句</p>
 <pre><code>--建表
 --学生表
 CREATE TABLE `Student`(
@@ -309,7 +309,7 @@ select s_id,sum(s_score) as sum_score
 from score group by s_id order by sum(s_score) desc
 ) b,(select @i:=0) a</code></pre><p>III、总结一下，前20题涉及知识点包括<br>1、各语句执行顺序：<br>sql语句顺序</p>
 <pre><code>&lt;SELECT clause&gt; [&lt;FROM clause&gt;] [&lt;WHERE clause&gt;] [&lt;GROUP BY clause&gt;] [&lt;HAVING clause&gt;] [&lt;ORDER BY clause&gt;] [&lt;LIMIT clause&gt;]</code></pre><p>数据库底层执行顺序</p>
-<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201912/1343872-20191203151744160-1095337361.png" alt=""></p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1343872/201912/1343872-20191203151744160-1095337361.png" alt></p>
 <p>2、子查询<br>a、   where型子查询：指把内部查询的结果作为外层查询的比较条件。 b、   from型子查询：把内层的查询结果当成临时表，供外层sql再次查询。 c、 in子查询：内层查询语句仅返回一个数据列，这个数据列的值将供外层查询语句进行比较。 d、 exists子查询：把外层的查询结果，拿到内层，看内层是否成立，简单来说后面的返回true,外层（也就是前面的语句）才会执行，否则不执行。 e、 any子查询：只要满足内层子查询中的任意一个比较条件，就返回一个结果作为外层查询条件。 f、  all子查询：内层子查询返回的结果需同时满足所有内层查询条件。 g、 比较运算符子查询：子查询中可以使用的比较运算符如 “&gt;” “&lt;” “= ” “!=”<br>3、group_concat连接列数据，需要配合groupby使用<br>4、@符号使用，声明用户变量<br>oracle中有rownum这个伪列，自增序号，但是mysql中没有，因此借用@进行递增赋值<br>注意需要先进行子查询排序，再补加序列号，因为@i：=@i+1赋值语句执行在order by之前<br>在from中增加select @i:=0,是进行初始赋值<br>5、case when<br>通常使用方法为case when xxx then [value] else [value] end</p>
 
       
@@ -404,18 +404,18 @@ from score group by s_id order by sum(s_score) desc
   
 <nav id="article-nav">
   
-    <a href="/pandas%E4%B8%AA%E4%BA%BAbug/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          pandas个人bug
+          python实战项目之爬虫（一）
         
       </div>
     </a>
   
   
-    <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mysql学习训练记录及笔记（三）</div>
+    <a href="/pandas%E4%B8%AA%E4%BA%BAbug/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pandas个人bug</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -442,7 +442,7 @@ from score group by s_id order by sum(s_score) desc
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql学习训练记录及笔记（一）"><span class="toc-number">1.</span> <span class="toc-text">mysql学习训练记录及笔记（一）</span></a></li></ol>
                     </div>
                 </span>
             </div>

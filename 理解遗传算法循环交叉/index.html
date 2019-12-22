@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>理解遗传算法循环交叉 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#理解遗传算法循环交叉 遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类不多说，上图，其实根据图去理解最简单假设有下面两个个体  随机选择一个交叉位点：  接下来开始进行循环交叉  很显然发生冲突，那么此时我们就再次交叉  发现又产生冲突  于是我们再接着交叉  交叉完之后又冲突，于是再次进行交叉  至此，循环交叉过程结束。可以思考一下，循环">
+  <meta name="description" content="理解遗传算法循环交叉遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类不多说，上图，其实根据图去理解最简单假设有下面两个个体  随机选择一个交叉位点：  接下来开始进行循环交叉  很显然发生冲突，那么此时我们就再次交叉  发现又产生冲突  于是我们再接着交叉  交叉完之后又冲突，于是再次进行交叉  至此，循环交叉过程结束。可以思考一下，循环交叉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解遗传算法循环交叉">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E7%90%86%E8%A7%A3%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%BE%AA%E7%8E%AF%E4%BA%A4%E5%8F%89&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#理解遗传算法循环交叉 遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类不多说，上图，其实根据图去理解最简单假设有下面两个个体  随机选择一个交叉位点：  接下来开始进行循环交叉  很显然发生冲突，那么此时我们就再次交叉  发现又产生冲突  于是我们再接着交叉  交叉完之后又冲突，于是再次进行交叉  至此，循环交叉过程结束。可以思考一下，循环">
+<meta property="og:description" content="理解遗传算法循环交叉遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类不多说，上图，其实根据图去理解最简单假设有下面两个个体  随机选择一个交叉位点：  接下来开始进行循环交叉  很显然发生冲突，那么此时我们就再次交叉  发现又产生冲突  于是我们再接着交叉  交叉完之后又冲突，于是再次进行交叉  至此，循环交叉过程结束。可以思考一下，循环交叉">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602105809480-828104464.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602105905925-1542444743.png">
@@ -24,8 +24,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602110715600-585170709.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602111205925-636807065.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602111308054-1143455219.png">
-<meta property="article:published_time" content="2019-12-20T06:37:41.176Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:27.606Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.723Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:24.332Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;images2018.cnblogs.com&#x2F;blog&#x2F;1343872&#x2F;201806&#x2F;1343872-20180602105809480-828104464.png">
@@ -165,32 +165,31 @@
 
         
         <a href="/%E7%90%86%E8%A7%A3%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%BE%AA%E7%8E%AF%E4%BA%A4%E5%8F%89/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.176Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.723Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#理解遗传算法循环交叉</p>
-<p>遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类<br>不多说，上图，其实根据图去理解最简单<br>假设有下面两个个体</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602105809480-828104464.png" alt=""></p>
+        <h1 id="理解遗传算法循环交叉"><a href="#理解遗传算法循环交叉" class="headerlink" title="理解遗传算法循环交叉"></a>理解遗传算法循环交叉</h1><p>遗传算法采用循环交叉一般是因为个体是有某个序列组成，染色体不能有相同的情况，例如（TSP问题）排列组合类<br>不多说，上图，其实根据图去理解最简单<br>假设有下面两个个体</p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602105809480-828104464.png" alt></p>
 <p>随机选择一个交叉位点：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602105905925-1542444743.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602105905925-1542444743.png" alt></p>
 <p>接下来开始进行循环交叉</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110137556-1113315353.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110137556-1113315353.png" alt></p>
 <p>很显然发生冲突，那么此时我们就再次交叉</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110308162-1139146079.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110308162-1139146079.png" alt></p>
 <p>发现又产生冲突</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110404257-95864383.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110404257-95864383.png" alt></p>
 <p>于是我们再接着交叉</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110541243-1521936881.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110541243-1521936881.png" alt></p>
 <p>交叉完之后又冲突，于是再次进行交叉</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110715600-585170709.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602110715600-585170709.png" alt></p>
 <p>至此，循环交叉过程结束。<br>可以思考一下，循环交叉如果它的交叉范围是在一块的话（中间没有非交叉染色体），那么是不是可以看为块交叉（整块整块的交叉），所以这其实就块交叉的变体<br>块交叉示例：</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602111205925-636807065.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602111205925-636807065.png" alt></p>
 <p>交叉完成</p>
-<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602111308054-1143455219.png" alt=""></p>
+<p><img src="https://images2018.cnblogs.com/blog/1343872/201806/1343872-20180602111308054-1143455219.png" alt></p>
 
       
 
@@ -294,8 +293,8 @@
     </a>
   
   
-    <a href="/%E5%BF%AB%E6%89%8B%E9%80%86%E5%90%91%E8%AE%B0%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">快手逆向记录</div>
+    <a href="/%E5%85%B3%E4%BA%8Eecho$PATH%E4%B8%AD%E7%9A%84PTAH%E6%9D%A5%E6%BA%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于echo$PATH中的PTAH来源</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -322,7 +321,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理解遗传算法循环交叉"><span class="toc-number">1.</span> <span class="toc-text">理解遗传算法循环交叉</span></a></li></ol>
                     </div>
                 </span>
             </div>

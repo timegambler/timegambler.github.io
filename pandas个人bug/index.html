@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>pandas个人bug | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#pandas个人bug1、bug pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393解决方法：在read_csv()函数中添加 engine&#x3D;’python’示例： df &#x3D; pd.read_csv(csv_path, error_bad_lines&#x3D;F">
+  <meta name="description" content="pandas个人bug1、bug pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393解决方法：在read_csv()函数中添加 engine&#x3D;’python’示例： df &#x3D; pd.read_csv(csv_path, error_bad_lines&#x3D;Fa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pandas个人bug">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;pandas%E4%B8%AA%E4%BA%BAbug&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#pandas个人bug1、bug pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393解决方法：在read_csv()函数中添加 engine&#x3D;’python’示例： df &#x3D; pd.read_csv(csv_path, error_bad_lines&#x3D;F">
+<meta property="og:description" content="pandas个人bug1、bug pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393解决方法：在read_csv()函数中添加 engine&#x3D;’python’示例： df &#x3D; pd.read_csv(csv_path, error_bad_lines&#x3D;Fa">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-20T06:37:41.000Z">
-<meta property="article:modified_time" content="2019-12-20T06:08:26.971Z">
+<meta property="article:published_time" content="2019-12-22T08:20:04.567Z">
+<meta property="article:modified_time" content="2019-12-22T08:19:23.426Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
   
@@ -155,14 +155,14 @@
 
         
         <a href="/pandas%E4%B8%AA%E4%BA%BAbug/" class="archive-article-date">
-  	<time datetime="2019-12-20T06:37:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-20</time>
+  	<time datetime="2019-12-22T08:20:04.567Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#pandas个人bug<br>1、<br>bug</p>
+        <h1 id="pandas个人bug"><a href="#pandas个人bug" class="headerlink" title="pandas个人bug"></a>pandas个人bug</h1><p>1、<br>bug</p>
 <pre><code>pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 2393</code></pre><p>解决方法：<br>在read_csv()函数中添加 engine=’python’<br>示例：</p>
 <pre><code>df = pd.read_csv(csv_path, error_bad_lines=False, sep=sep, encoding=&apos;utf-8&apos;,engine=’python’ )</code></pre>
       
@@ -257,18 +257,18 @@
   
 <nav id="article-nav">
   
-    <a href="/pom.xml%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          pom.xml学习笔记
+          mysql学习训练记录及笔记（一）
         
       </div>
     </a>
   
   
-    <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mysql学习训练记录及笔记（一）</div>
+    <a href="/pom.xml%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pom.xml学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -295,7 +295,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pandas个人bug"><span class="toc-number">1.</span> <span class="toc-text">pandas个人bug</span></a></li></ol>
                     </div>
                 </span>
             </div>
