@@ -140,6 +140,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-随机算法之蒙特卡罗算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95/">随机算法之蒙特卡罗算法</a>
+    </h1>
+  
+
+        
+        <a href="/%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2019-12-22T14:00:50.208Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x4E4B;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;"><a href="#&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x4E4B;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;" class="headerlink" title="&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x4E4B;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;"></a>&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x4E4B;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;</h1><p>&#x8BF4;&#x5230;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;&#xFF0C;&#x5C31;&#x4E0D;&#x5F97;&#x4E0D;&#x63D0;&#x4E00;&#x4E0B;&#x5916;&#x56FD;&#x4EBA;&#x7684;&#x4E2D;&#x6587;&#x8BD1;&#x540D;<br>&#x5982;&#x679C;&#x50CF;&#x9AD8;&#x65AF;&#x6216;&#x8005;&#x725B;&#x987F;&#x8FD8;&#x597D;&#xFF0C;&#x5927;&#x5BB6;&#x90FD;&#x8BA4;&#x8BC6;&#xFF0C;&#x4F46;&#x662F;&#x5149;&#x4EA4;&#x6C64;&#x59C6;&#x7684;&#x5916;&#x56FD;&#x4EBA;&#x4E0D;&#x8BF4;&#x8FC7;&#x5343;&#x4E07;&#xFF0C;&#x8D77;&#x7801;&#x767E;&#x4E07;&#x8FD8;&#x662F;&#x6709;&#x7684;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x6DF7;&#x6DC6;&#x7684;&#xFF0C;&#x6253;&#x5B57;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7ECF;&#x5E38;&#x51FA;&#x73B0;&#x8499;&#x7279;&#x5361;&#x6D1B;&#x4E0E;&#x8499;&#x7279;&#x5361;&#x7F57;<br>&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x7684;&#x601D;&#x60F3;&#x662F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;<br>&#x4E00;&#x4E2A;&#x6700;&#x7ECF;&#x5178;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#xFF1A;<br>100&#x4E2A;&#x82F9;&#x679C;&#xFF0C;&#x8981;&#x4F60;&#x627E;&#x51FA;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x4F60;&#x53EA;&#x80FD;&#x968F;&#x673A;&#x6478;&#xFF0C;&#x6478;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x5982;&#x679C;&#x6BD4;&#x4F60;&#x4E0A;&#x4E00;&#x4E2A;&#x5927;&#xFF0C;&#x5C31;&#x4FDD;&#x7559;&#x8FD9;&#x4E2A;&#x82F9;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x5C0F;&#x5C31;&#x653E;&#x56DE;&#x53BB;<br>&#x663E;&#x7136;&#xFF0C;&#x6478;&#x7684;&#x6B21;&#x6570;&#x8D8A;&#x591A;&#xFF0C;&#x5C31;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x63A5;&#x8FD1;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x4E5F;&#x5373;&#x6700;&#x4F18;&#x89E3;&#xFF0C;&#x5F53;&#x7136;&#x6478;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x624B;&#x4E2D;&#x7684;&#x82F9;&#x679C;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x81EA;&#x7136;&#x5F97;&#x5230;&#x7684;&#x89E3;&#x4E5F;&#x8D8A;&#x6765;&#x8D8A;&#x4F18;&#x3002;<br>&#xFF08;&#x53EF;&#x80FD;&#x6709;&#x4EBA;&#x4F1A;&#x8BF4;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x628A;&#x5C0F;&#x7684;&#x653E;&#x56DE;&#x53BB;&#xFF0C;&#x5176;&#x5B9E;&#x4F60;&#x53EF;&#x4EE5;&#x60F3;&#x60F3;&#x5BF9;&#x4E8E;&#x4E00;&#x822C;&#x89C4;&#x6A21;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5176;&#x5DE8;&#x5927;&#x7684;&#x89E3;&#x7A7A;&#x95F4;&#xFF0C;&#x4F60;&#x5C31;&#x662F;&#x53BB;&#x9664;&#x4E86;&#x90E8;&#x5206;&#x7A7A;&#x95F4;&#x4E5F;&#x662F;&#x6CA1;&#x6709;&#x7528;&#x7684;&#xFF0C;<br>&#x5C31;&#x50CF;&#x5982;&#x679C;&#x8FD9;&#x91CC;&#x7ED9;&#x4F60;10&#x4EBF;&#x4E2A;&#x82F9;&#x679C;&#xFF0C;&#x4F60;&#x53EA;&#x80FD;&#x6478;10&#x4E07;&#x6B21;&#xFF0C;&#x4F60;&#x8BF4;&#x653E;&#x56DE;&#x53BB;&#x6709;&#x610F;&#x4E49;&#x5417;&#xFF1F;<br>&#x800C;&#x4E14;&#x4F60;&#x8FD8;&#x8981;&#x91CD;&#x65B0;&#x5F00;&#x8F9F;&#x7A7A;&#x95F4;&#xFF0C;&#x5B58;&#x50A8;&#x8FD9;&#x4E9B;&#x5C0F;&#x82F9;&#x679C;&#xFF0C;&#x5BF9;&#x4E8E;&#x968F;&#x673A;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x5B8C;&#x5168;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;10&#x4EBF;&#x5206;&#x4E4B;&#x4E00;&#x4E0E;&#xFF08;10&#x4EBF;-10&#x4E07;&#xFF09;&#x5206;&#x4E4B;&#x4E00;&#x6709;&#x533A;&#x522B;&#x4E48;&#xFF1F;&#xFF09;<br>&#x7136;&#x540E;&#x662F;&#x5173;&#x4E8E;&#x504F;&#x771F;&#x8499;&#x7279;&#x5361;&#x7F57;&#x7B97;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x611F;&#x89C9;&#x4F3C;&#x4E4E;&#x4E5F;&#x4E0D;&#x662F;&#x5F88;&#x61C2;&#xFF0C;&#x4F46;&#x662F;&#x5F88;&#x591A;&#x7B97;&#x6CD5;&#x4E66;&#x4E0A;&#x4E5F;&#x63D0;&#x5230;&#x8FD9;&#x4E2A; &#xFF0C;&#x6211;&#x89C9;&#x5F97;&#x5176;&#x5E94;&#x8BE5;&#x662F;&#x5C31;&#x67D0;&#x7C7B;&#x95EE;&#x9898;&#x7684;&#x4E00;&#x4E9B;&#x53D8;&#x79CD;<br>&#x5927;&#x7EA6;&#x5C31;&#x662F;&#x53EA;&#x8981;&#x6C42;&#x51FA;&#x4E00;&#x4E2A;&#x7B26;&#x5408;&#x8981;&#x6C42;&#x7684;&#x89E3;&#x5373;&#x53EF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x89E3;&#x7A7A;&#x95F4;&#x91CC;&#x5BFB;&#x627E;&#x6700;&#x4F18;&#x89E3;<br>&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x540E;&#x7EED;&#x6709;&#x7A7A;&#x8865;&#x5145;&#x5B8C;&#x6574;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Python学习笔记之占位符Python %" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -169,7 +232,7 @@ print(&apos;the number is % d % d&apos; %(+250,-250))</code></pre><p>&#x7ED3;&#x
 <p>3&#x3001;[width]&#x5C5E;&#x6027;&#xFF0C;&#x6839;&#x636E;&#x540D;&#x5B57;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x6307;&#x7684;&#x662F;&#x5BBD;&#x5EA6;<br>&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code>print(&apos;my salary is %4d yuan in this month&apos; %(2504637))#set the width to four
 print(&apos;my salary is %9d yuan in this month&apos; %(2504637))#set the width to nine</code></pre><p>&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</p>
-<p>![](/Python&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4E4B;&#x5360;&#x4F4D;&#x7B26;Python %/1_Python&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4E4B;&#x5360;&#x4F4D;&#x7B26;Python %.png)</p>
+<p>![](Python&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4E4B;&#x5360;&#x4F4D;&#x7B26;Python %/1_Python&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4E4B;&#x5360;&#x4F4D;&#x7B26;Python %.png)</p>
 <p>&#x8BF4;&#x660E;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x5BBD;&#x5EA6;&#x4F4E;&#x4E8E;&#x5B9E;&#x9645;&#x5B57;&#x7B26;&#x5BBD;&#x5EA6;&#x65F6;&#xFF0C;&#x4F1A;&#x6309;&#x7167;&#x5B9E;&#x9645;&#x7684;&#x5BBD;&#x5EA6;&#x6765;&#x8F93;&#x51FA;<br>&#x4F46;&#x662F;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x5BBD;&#x5EA6;&#x9AD8;&#x4E8E;&#x5B57;&#x7B26;&#x5BBD;&#x5EA6;&#x65F6;&#xFF0C;&#x4F1A;&#x6309;&#x7167;&#x8BBE;&#x7F6E;&#x7684;&#x5BBD;&#x5EA6;&#x8F93;&#x51FA;&#xFF0C;&#x7A7A;&#x767D;&#x7B26;&#x81EA;&#x52A8;&#x8865;&#x4F4D;&#xFF0C;&#x53F3;&#x5BF9;&#x9F50;</p>
 <p>4&#x3001;.[precision]&#x5C5E;&#x6027;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4E0E;c&#x548C;c++&#x76F8;&#x4F3C;&#xFF0C;&#x7528;&#x6765;&#x8868;&#x793A;&#x8F93;&#x51FA;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x51E0;&#x4F4D;<br>&#x793A;&#x4F8B;&#xFF1A;</p>
 <pre><code>print(&apos;the answer to the question is %.3f&apos; % (12.34567))</code></pre><p>&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;<br>the answer to the question is 12.346<br>&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x7528;&#x89E3;&#x91CA;&#x4E86;</p>
@@ -698,19 +761,19 @@ while True:
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One-or-more-issues-caused-the-setup-to-fail-Windows7&#x5B89;&#x88C5;Python3-7"><a href="#Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One-or-more-issues-caused-the-setup-to-fail-Windows7&#x5B89;&#x88C5;Python3-7" class="headerlink" title="Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7"></a>Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7</h1><p>&#x9996;&#x5148;&#x5927;&#x90E8;&#x5206;&#x4EBA;&#x51FA;&#x73B0;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#x5B89;&#x88C5;&#x7248;&#x672C;&#x662F;&#x5927;&#x4E8E;python3.4&#x7684;&#xFF0C;&#x65E9;&#x671F;&#x7684;&#x7248;&#x672C;&#x5BF9;win7&#x90FD;&#x662F;&#x6BD4;&#x8F83;&#x517C;&#x5BB9;&#x7684;<br>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x8F83;&#x65B0;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5B89;&#x88C5;Windows 7 Service Pack 1&#x548C;&#x66F4;&#x65B0;&#x7CFB;&#x7EDF;<br>&#x7B2C;&#x4E00;&#x6B65;&#x3001;&#x4E0B;&#x8F7D;&#x5E76;&#x5B89;&#x88C5;Windows 7 Service Pack 1<br>&#x8FDB;&#x5165;&#x7F51;&#x5740;&#xFF1A;<a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=5842&#xFF0C;&#x9009;&#x62E9;&#x4E2D;&#x6587;&#x5E76;&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;" target="_blank" rel="noopener">https://www.microsoft.com/zh-CN/download/details.aspx?id=5842&#xFF0C;&#x9009;&#x62E9;&#x4E2D;&#x6587;&#x5E76;&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;</a><br>&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x9009;&#x9879;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/1_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/1_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x9009;&#x62E9;&#x7B2C;&#x4E09;&#x4E2A;&#xFF0C;&#x6839;&#x636E;&#x4F60;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x6211;&#x7684;&#x662F;64&#x4F4D;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x62E9;AMD64FRE&#xFF0C;&#x4E0B;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x76F4;&#x63A5;&#x5B89;&#x88C5;&#x5C31;&#x597D;&#xFF0C;&#x6309;&#x7167;&#x5F15;&#x5BFC;&#xFF0C;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;&#x968F;&#x610F;<br>&#x7B2C;&#x4E8C;&#x6B65;&#x3001;&#x66F4;&#x65B0;&#x7CFB;&#x7EDF;<br>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x66F4;&#x65B0;&#x8F6F;&#x4EF6;&#xFF0C;&#x8FDB;&#x5165;&#x4E0B;&#x9762;&#x754C;&#x9762;&#x540E;&#xFF0C;&#x51FA;&#x73B0;&#x63D0;&#x793A;&#x5B89;&#x88C5;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x7684;&#x8F6F;&#x4EF6;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x754C;&#x9762;&#x5728;&#x54EA;&#x91CC;&#xFF0C;&#x5148;&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x90A3;&#x4E2A;Windows&#x56FE;&#x6807;&#xFF0C;&#x5728;&#x8F93;&#x5165;&#x6846;&#x91CC;&#x76F4;&#x63A5;&#x8F93;&#x5165;Windows Update,&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x70B9;&#x51FB;&#x8FDB;&#x53BB;&#x5C31;&#x597D;&#x4E86;&#xFF09;<br>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x754C;&#x9762;&#xFF0C;&#x663E;&#x793A;&#x5C1A;&#x672A;&#x66F4;&#x65B0;&#xFF0C;&#x70B9;&#x51FB;&#x5B89;&#x88C5;&#x66F4;&#x65B0;&#xFF0C;&#x5C06;&#x53EF;&#x9009;&#x66F4;&#x65B0;&#x4E5F;&#x70B9;&#x4E0A;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/2_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/2_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x4E4B;&#x540E;<br>&#x70B9;&#x51FB;&#x91CD;&#x542F;&#xFF0C;&#x4F1A;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x65B0;<br>&#x7B2C;&#x4E09;&#x6B65;&#x3001;&#x6B63;&#x5F0F;&#x5B89;&#x88C5;Python3.7<br>&#x70B9;&#x51FB;&#x5B89;&#x88C5;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x754C;&#x9762;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/3_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/3_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x9009;&#x62E9;Install Now&#xFF0C;&#x4EE5;&#x53CA;&#x5168;&#x90E8;&#x52FE;&#x9009;&#x4E0B;&#x9762;&#x7B2C;&#x4E8C;&#x4E2A;&#x9009;&#x9879;&#xFF08;&#x6839;&#x636E;&#x5176;&#x4ED6;&#x4EBA;&#x53CD;&#x9988;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x52A0;&#x8F7D;&#x7ED9;&#x6240;&#x6709;&#x7528;&#x6237;&#xFF09;&#xFF0C;&#x4E3B;&#x8981;&#x907F;&#x514D;&#x540E;&#x671F;&#x8FD8;&#x8981;&#x81EA;&#x5DF1;&#x914D;&#x73AF;&#x5883;&#x53D8;&#x91CF;<br>&#x7B2C;&#x56DB;&#x6B65;&#x3001;&#x8FD0;&#x884C;<br>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x6253;&#x5F00;cmd&#x7A97;&#x53E3;&#xFF08;&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;Windows&#x56FE;&#x6807;&#xFF0C;&#x586B;&#x5165;cmd&#xFF0C;&#x6309;enter&#x5C31;&#x51FA;&#x6765;&#x4E86;&#xFF09;<br>&#x5728;&#x9ED1;&#x7A97;&#x53E3;&#x6572;&#x5165;    &#x300B;python   &#x547D;&#x4EE4;&#x540E;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x9519;&#x8BEF;&#x63D0;&#x793A;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/4_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/4_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x63A8;&#x8350;&#x767E;&#x5EA6;&#x7ECF;&#x9A8C;&#x91CC;&#x7684;&#x7B54;&#x6848;&#xFF1A;<a href="https://jingyan.baidu.com/article/ab0b563067358ac15afa7dc5.html&#xFF0C;&#x5C31;&#x4E0D;&#x91CD;&#x590D;&#x9020;&#x8F6E;&#x5B50;&#x4E86;" target="_blank" rel="noopener">https://jingyan.baidu.com/article/ab0b563067358ac15afa7dc5.html&#xFF0C;&#x5C31;&#x4E0D;&#x91CD;&#x590D;&#x9020;&#x8F6E;&#x5B50;&#x4E86;</a><br>&#x539F;&#x56E0;&#x5728;&#x4E8E;&#x6211;&#x4EEC;&#x5728;&#x4E0A;&#x9762;&#x91CD;&#x65B0;&#x5B89;&#x88C5;&#x4E86;Windows7 service page 1&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8FDB;&#x884C;&#x4E86;&#x66F4;&#x65B0;&#xFF0C;&#x800C;&#x4E0A;&#x8FF0;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x66F4;&#x65B0;&#xFF0C;&#x867D;&#x7136;&#x8BE5;&#x6587;&#x4EF6;&#x5C5E;&#x4E8E;Windows Visual  2015&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x66F4;&#x65B0;<br>&#x7136;&#x540E;&#x91CD;&#x590D;&#x4E0A;&#x8FF0;&#x5728;&#x9ED1;&#x7A97;&#x53E3;&#x7684;&#x64CD;&#x4F5C;<br>&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x754C;&#x9762;&#x5219;&#x8BF4;&#x660E;&#x8FD0;&#x884C;&#x6210;&#x529F;&#x4E86;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/5_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/5_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x7B2C;&#x4E94;&#x6B65;&#x3001;&#x6D4B;&#x8BD5;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/6_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/6_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x7ED3;&#x679C;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x57FA;&#x672C;&#x6CA1;&#x95EE;&#x9898;&#x4E86;</p>
-<p>![](/Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/7_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
+<p>![](Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7/7_Python&#x5B89;&#x88C5;&#x95EE;&#x9898;&#x4E4B;One or more issues caused the setup to fail.Windows7&#x5B89;&#x88C5;Python3.7.png)</p>
 <p>&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#xFF1A;<a href="https://www.cnblogs.com/gambler/p/9575556.html" target="_blank" rel="noopener">https://www.cnblogs.com/gambler/p/9575556.html</a><br>&#x5982;&#x679C;&#x6709;&#x4EFB;&#x4F55;&#x7591;&#x95EE;&#xFF0C;&#x6B22;&#x8FCE;&#x5728;&#x4E0B;&#x65B9;&#x7559;&#x8A00;</p>
 
       
@@ -725,225 +788,6 @@ while True:
       
         <p class="article-more-link">
           <a class="article-more-a" href="/Python%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E4%B9%8BOne%20or%20more%20issues%20caused%20the%20setup%20to%20fail.Windows7%E5%AE%89%E8%A3%85Python3.7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python实战项目之爬虫（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/">python实战项目之爬虫（一）</a>
-    </h1>
-  
-
-        
-        <a href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2019-12-22T14:00:36.608Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="python&#x5B9E;&#x6218;&#x9879;&#x76EE;&#x4E4B;&#x722C;&#x866B;&#xFF08;&#x4E00;&#xFF09;"><a href="#python&#x5B9E;&#x6218;&#x9879;&#x76EE;&#x4E4B;&#x722C;&#x866B;&#xFF08;&#x4E00;&#xFF09;" class="headerlink" title="python&#x5B9E;&#x6218;&#x9879;&#x76EE;&#x4E4B;&#x722C;&#x866B;&#xFF08;&#x4E00;&#xFF09;"></a>python&#x5B9E;&#x6218;&#x9879;&#x76EE;&#x4E4B;&#x722C;&#x866B;&#xFF08;&#x4E00;&#xFF09;</h1><p>&#x56E0;&#x4E3A;&#x9A6C;&#x4E0A;&#x5C31;&#x8981;&#x5927;&#x56DB;&#x5B9E;&#x4E60;&#x4E86;&#xFF0C;&#x535A;&#x4E3B;&#x5B9E;&#x5728;&#x61D2;&#x5F97;&#x5728;&#x5B66;&#x6821;&#x5B98;&#x7F51;&#x4E0A;&#x4E00;&#x4E2A;&#x4E2A;&#x7FFB;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x722C;&#x866B;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x722C;&#x4E0B;&#x6765;<br>&#x653E;&#x5728;&#x8868;&#x683C;&#x91CC;&#xFF0C;&#x8FD9;&#x6837;&#x611F;&#x89C9;&#x7B80;&#x5355;&#x591A;&#x4E86;&#xFF0C;&#x53EF;&#x60DC;&#x8FD8;&#x6CA1;&#x627E;&#x5230;&#x5DE5;&#x4F5C;&#xFF0C;so sad<br>&#x603B;&#x5171;&#x9009;&#x62E9;&#x4E86;&#x4E09;&#x4E2A;&#x5B66;&#x6821;&#xFF1A;&#x6E56;&#x5357;&#x5927;&#x5B66;&#xFF0C;&#x4E2D;&#x5357;&#x5927;&#x5B66;&#xFF0C;&#x6E58;&#x6F6D;&#x5927;&#x5B66;<br>&#x4E09;&#x4E2A;&#x9879;&#x76EE;&#x4EE3;&#x7801;&#x5206;&#x522B;&#x5982;&#x4E0B;&#xFF08;&#x65B0;&#x624B;&#x4EE3;&#x7801;&#xFF0C;&#x60E8;&#x4E0D;&#x5FCD;&#x7779;&#xFF09;&#xFF1A;<br>&#x6E58;&#x6F6D;&#x5927;&#x5B66;&#xFF1A;</p>
-<pre><code>#!/usr/bin/python3
-#coding=utf-8
-import requests
-import json
-import logging
-import os
-import xlwt
-basic_url = &apos;http://jobs.xtu.edu.cn/index/getdaycareers?day=2018-10-&apos;
-logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
-
-workbook = xlwt.Workbook()
-sheet1 = workbook.add_sheet(&apos;list1&apos;)
-sheet1.write(0,0,&apos;&#x65F6;&#x95F4;&apos;)
-sheet1.write(0,1,&apos;&#x5730;&#x70B9;&apos;)
-sheet1.write(0,2,&apos;&#x516C;&#x53F8;&#x540D;&#x79F0;&apos;)
-sheet1.write(0,3,&apos;&#x4E13;&#x4E1A;&#x8981;&#x6C42;&apos;)
-sheet1.write(0,5,&apos;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&apos;)
-count=1
-for i in range(1,32):
-    url = basic_url+str(i)
-    logging.debug(&apos;the clawer web site is:&apos;+url)
-    clawertext = requests.get(url)
-    logging.debug(type(clawertext))
-    logging.debug(clawertext.json())
-    logging.debug(clawertext.json()[&apos;data&apos;])
-    logging.debug(type(clawertext.json()[&apos;data&apos;]))
-
-    data_list = clawertext.json()[&apos;data&apos;]#the useful data 
-
-    for i in data_list:
-        sheet1.write(count,0,i[&apos;meet_day&apos;])
-        sheet1.write(count,1,i[&apos;address&apos;])
-        sheet1.write(count,2,i[&apos;meet_name&apos;])
-        sheet1.write(count,3,i[&apos;professionals&apos;])
-        sheet1.write(count,5,&apos;http://jobs.xtu.edu.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
-        count=count+1
-workbook.save(&apos;&#x6E58;&#x6F6D;&#x5927;&#x5B66;&#x5341;&#x6708;&#x4EFD;&#x62DB;&#x8058;&#x4FE1;&#x606F;.xlsx&apos;)</code></pre><p>&#x4E2D;&#x5357;&#x5927;&#x5B66;&#xFF1A;<br>&#x8FD9;&#x4E2A;&#x6700;&#x5751;&#xFF0C;&#x82B1;&#x4E86;&#x6211;&#x4E00;&#x4E2A;&#x591A;&#x5C0F;&#x65F6;</p>
-<pre><code>#!/usr/bin/python3
-#coding=utf-8
-import requests
-import xlwt
-import json
-import logging
-import bs4
-from bs4 import BeautifulSoup
-#&#x521D;&#x59CB;&#x5316;&#x65E5;&#x5FD7;&#x4FDD;&#x5B58;&#x8DEF;&#x52B2;&#xFF0C;&#x53CA;&#x683C;&#x5F0F;
-logging.basicConfig(filename=&apos;log.txt&apos;,level=logging.DEBUG,format=&apos;%(asctime)s - %(levelname)s - %(message)s&apos;)
-logging.getLogger(&apos;requests&apos;).setLevel(logging.WARNING)#&#x7981;&#x7528;requests&#x7684;&#x65E5;&#x5FD7;
-
-#&#x521D;&#x59CB;&#x5316;&#x8868;&#x683C;
-workbook = xlwt.Workbook()
-sheet1 = workbook.add_sheet(&apos;list&apos;)
-sheet1.write(0,0,&apos;&#x65F6;&#x95F4;&apos;)
-sheet1.write(0,1,&apos;&#x5730;&#x70B9;&apos;)
-sheet1.write(0,2,&apos;&#x516C;&#x53F8;&#x540D;&#x79F0;&apos;)
-sheet1.write(0,3,&apos;&#x804C;&#x4F4D;&#x540D;&#x79F0;&apos;)
-sheet1.write(0,4,&apos;&#x6559;&#x80B2;&#x6C34;&#x5E73;&apos;)
-sheet1.write(0,5,&apos;&#x4E13;&#x4E1A;&#x8981;&#x6C42;&apos;)
-sheet1.write(0,6,&apos;&#x7A7A;&#x7F3A;&#x6570;&#x91CF;&apos;)
-sheet1.write(0,7,&apos;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&apos;)
-
-#&#x521D;&#x59CB;&#x5316;&#x5730;&#x5740;
-json_all_url = &apos;http://jobsky.csu.edu.cn/Home/SearchDateAllMonth&apos;
-dt1={&apos;Date&apos;:&apos;2018-09-04&apos;}
-post_data = requests.post(json_all_url,data=dt1)
-json_data = post_data.json()
-logging.debug(type(json_data))
-&apos;&apos;&apos;with open(&apos;json.txt&apos;,&apos;w&apos;) as fileTxt:
-    for i in json_data:
-        fileTxt.write(str(i)+&apos;\n&apos;)    
-&apos;&apos;&apos;
-basic_html_url = &apos;http://jobsky.csu.edu.cn/Home/ArticleDetails/&apos;
-
-counter_all = 1
-for data in json_data:
-    company_Id=data[&apos;NewsID&apos;]
-    #logging.debug(&apos;the commpanyID is:&apos;+company_Id)
-    html_url=basic_html_url+company_Id
-#html_url=basic_html_url+&apos;13713&apos;#static url,please delete and repaire after you have used it
-
-    html_txt = requests.get(html_url)
-#  logging.debug(&apos;the web site using code is:&apos;+str(html_txt.status_code))
-    bs = BeautifulSoup(html_txt.text,&apos;lxml&apos;)
-
-    #get the commpanyName
-
-    list_soup_CN = bs.find(&apos;h1&apos;,attrs={&apos;class&apos;:&apos;text-center title&apos;})
-    try:    
-        advertise_company_name=list_soup_CN.getText()
-        sheet1.write(counter_all,2,advertise_company_name)
-    except:
-        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
-    #get the time and place
-    try:
-        list_soup_TP = bs.find(&apos;div&apos;,attrs={&apos;id&apos;:&apos;placeAndTime&apos;})
-        advertise_time=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center time&apos;}).getText()
-        advertise_place=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center place&apos;}).getText()
-        sheet1.write(counter_all,0,advertise_time)
-        sheet1.write(counter_all,1,advertise_place)
-    except:
-        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
-
-    try:     
-        list_soup_demand = bs.find(&apos;table&apos;,attrs={&apos;class&apos;:&apos;table table-bordered&apos;})
-        list_td = list_soup_demand.find_all(&apos;td&apos;)
-        counter_even = 0#use to counter ,so that we can find the number of td,and get we need data
-        #we can get the useful data by looking the source
-        for td in list_td:
-            if counter_even==1 :
-                sheet1.write(counter_all,3,td.getText())
-            if counter_even==3 :
-                sheet1.write(counter_all,4,td.getText())
-            if counter_even==5 :
-                sheet1.write(counter_all,5,td.getText())
-            if counter_even==7 :
-                sheet1.write(counter_all,6,td.getText())
-            counter_even =counter_even+1
-        sheet1.write(counter_all,7,html_url)
-        counter_all+=1
-    except:
-        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
-    #&#x4FDD;&#x5B58;&#x6587;&#x4EF6;
-    workbook.save(&apos;&#x4E2D;&#x5357;&#x5927;&#x5B66;&#x62DB;&#x8058;&#x4FE1;&#x606F;.xlsx&apos;)</code></pre><p>&#x6700;&#x540E;&#x662F;&#x6E56;&#x5357;&#x5927;&#x5B66;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#xFF0C;&#x6E56;&#x5357;&#x5927;&#x5B66;&#x62DB;&#x8058;&#x4FE1;&#x606F;&#x5C11;&#x7684;&#x53EF;&#x601C;</p>
-<pre><code>#!/usr/bin/python3
-#coding=utf-8
-import requests
-import json
-import logging
-import os
-import xlwt
-json_url = &apos;https://hnu.bysjy.com.cn/module/getcareers?start_page=1&amp;keyword=&amp;type=inner&amp;day=&amp;count=15&amp;start=1&amp;_=1536044186160&apos;
-logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
-
-json_data = requests.get(json_url)
-#print(json_data.text)
-
-workbook = xlwt.Workbook()
-sheet1 = workbook.add_sheet(&apos;list1&apos;)
-sheet1.write(0,0,&apos;&#x65F6;&#x95F4;&apos;)
-sheet1.write(0,1,&apos;&#x5730;&#x70B9;&apos;)
-sheet1.write(0,2,&apos;&#x516C;&#x53F8;&#x540D;&#x79F0;&apos;)
-sheet1.write(0,3,&apos;&#x62DB;&#x8058;&#x4F1A;&apos;)
-sheet1.write(0,4,&apos;&#x4E13;&#x4E1A;&#x8981;&#x6C42;&apos;)
-sheet1.write(0,6,&apos;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&apos;)
-count=1
-
-data_list = json_data.json()[&apos;data&apos;]#the useful data 
-
-for i in data_list:
-        sheet1.write(count,0,i[&apos;meet_day&apos;]+i[&apos;meet_time&apos;])
-        sheet1.write(count,1,i[&apos;address&apos;])
-        sheet1.write(count,2,i[&apos;company_name&apos;])
-        sheet1.write(count,3,i[&apos;meet_name&apos;])
-        sheet1.write(count,4,i[&apos;professionals&apos;])
-        sheet1.write(count,5,&apos;https://hnu.bysjy.com.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
-        count=count+1
-workbook.save(&apos;&#x6E56;&#x5357;&#x5927;&#x5B66;&#x62DB;&#x8058;&#x4FE1;&#x606F;.xlsx&apos;)</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/">展开全文 >></a>
         </p>
       
 

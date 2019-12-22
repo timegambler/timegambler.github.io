@@ -16,7 +16,7 @@
 <meta property="og:description" content="MongoDB bug&amp;#x6C47;&amp;#x603B;1&amp;#x3001;bug&amp;#xFF1A;Exceeded memory limit for $group, but didn&amp;#x2019;t allow external sort. Pass allowDiskUse:true to opt in.&amp;#x539F;&amp;#x56E0;&amp;#x53CA;&amp;#x89E3;&amp;#x51B3;&amp;#x529E">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-12-22T14:00:17.854Z">
-<meta property="article:modified_time" content="2019-12-22T14:00:17.854Z">
+<meta property="article:modified_time" content="2019-12-22T14:35:19.910Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
   
@@ -164,7 +164,7 @@
       
         <h1 id="MongoDB-bug&#x6C47;&#x603B;"><a href="#MongoDB-bug&#x6C47;&#x603B;" class="headerlink" title="MongoDB bug&#x6C47;&#x603B;"></a>MongoDB bug&#x6C47;&#x603B;</h1><p>1&#x3001;bug&#xFF1A;Exceeded memory limit for $group, but didn&#x2019;t allow external sort. Pass allowDiskUse:true to opt in.<br>&#x539F;&#x56E0;&#x53CA;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;&#x4E3B;&#x8981;&#x662F;MongoDB&#x5355;&#x6B21;&#x67E5;&#x8BE2;&#x5185;&#x5B58;&#x9650;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x5728;option&#x4E2D;&#x89E3;&#x9664;&#x9650;&#x5236;</p>
 <pre><code>{ allowDiskUse: true }&#x5B9E;&#x4F8B;&#xFF1A;</code></pre><pre><code>db.souhu_three.aggregate( [ { $group : { _id : &quot;$id&quot; ,total_count:{$sum:1} }} ] ,{ allowDiskUse: true })</code></pre><p>&#x53C2;&#x8003;&#x6587;&#x6863;&#xFF1A;<a href="https://blog.csdn.net/u013683233/article/details/70172541" target="_blank" rel="noopener">https://blog.csdn.net/u013683233/article/details/70172541</a><br>2&#x3001;pymongo&#x4F7F;&#x7528;limit&#x51FD;&#x6570;&#x6216;skip&#x51FD;&#x6570;&#xFF0C;count()&#x8BA1;&#x6570;&#x65E0;&#x6548;<br>&#x539F;&#x56E0;&#x53CA;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;<br>&#x56E0;&#x4E3A;count&#x4E2D;&#x6709;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;with_limit_and_skip</p>
-<p>![](/MongoDB bug&#x6C47;&#x603B;/1_MongoDB bug&#x6C47;&#x603B;.png)</p>
+<p>![](MongoDB bug&#x6C47;&#x603B;/1_MongoDB bug&#x6C47;&#x603B;.png)</p>
 <p>&#x56E0;&#x6B64;&#x5982;&#x679C;&#x524D;&#x9762;&#x4F7F;&#x7528;&#x8FC7;limit&#x7B49;&#xFF0C;&#x5F53;&#x6267;&#x884C;count&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x53C2;&#x6570;with_limit_and_skip=true</p>
 
       

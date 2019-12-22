@@ -16,7 +16,7 @@
 <meta property="og:description" content="ubuntu 18.04 &amp;#x5B89;&amp;#x88C5;&amp;#x7834;&amp;#x89E3;pycharm professional &amp;#x4E13;&amp;#x4E1A;&amp;#x7248;&amp;#x7B2C;&amp;#x4E00;&amp;#x6B65;&amp;#xFF0C;&amp;#x4E0B;&amp;#x8F7D;&amp;#xFF08;&amp;#x4E0D;&amp;#x5F97;&amp;#x4E0D;&amp;#x8BF4;&amp;#x901F;&amp;#x5EA6;&amp;#x5F8">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-12-22T14:00:30.560Z">
-<meta property="article:modified_time" content="2019-12-22T14:00:30.560Z">
+<meta property="article:modified_time" content="2019-12-22T14:36:07.362Z">
 <meta property="article:author" content="timegambler">
 <meta name="twitter:card" content="summary">
   
@@ -168,12 +168,12 @@
 <pre><code>sudo sh /opt/pycharm-XXX/bin/pycharm.sh</code></pre><p>&#x70B9;&#x51FB;&#x8BD5;&#x7528;&#x5C31;&#x884C;&#xFF0C;&#x4E0D;&#x7528;&#x7BA1;&#x5176;&#x4ED6;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6CA1;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x7684;<br>&#x57FA;&#x672C;&#x7B97;&#x662F;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;<br>&#x7B2C;&#x4E09;&#x6B65;&#xFF0C;&#x7834;&#x89E3;&#xFF08;&#x91CD;&#x70B9;&#x554A;&#xFF01;&#xFF01;&#xFF01;&#x6211;&#x8BD5;&#x8FC7;&#x5F88;&#x591A;&#x65B9;&#x6CD5;&#xFF0C;&#x76EE;&#x524D;&#x53EA;&#x6709;&#x8FD9;&#x4E2A;&#x53EF;&#x884C;&#xFF09;<br>&#x7834;&#x89E3;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF1A;jetbrains-agent.jar &#xFF0C;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#xFF1A;<a href="https://pan.baidu.com/s/1Z89HKV1VidyZHY0BnOWP7w" target="_blank" rel="noopener">https://pan.baidu.com/s/1Z89HKV1VidyZHY0BnOWP7w</a>    &#x63D0;&#x53D6;&#x7801;&#xFF1A;bn7h<br>&#x4E0B;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#x79FB;&#x52A8;&#x5230;&#x521A;&#x521A;&#x89E3;&#x538B;&#x7684;&#x5728;/opt&#x76EE;&#x5F55;&#x7684;pycharm/bin&#x76EE;&#x5F55;&#x4E2D;</p>
 <pre><code>sudo mv jetbrains-agent.jar  /opt/pycharm-XXX/bin</code></pre><p>&#x91CD;&#x70B9;&#x6765;&#x4E86;&#xFF01;&#xFF01;&#xFF01;</p>
 <pre><code>cd /opt/pycharm-XXX/bin &#x5148;&#x8FDB;&#x5165;pycharm&#x7684;bin&#x76EE;&#x5F55;&#x4E2D;ll</code></pre><p>&#x4F1A;&#x770B;&#x5230;&#x7EFF;&#x6846;&#x4E2D;&#x7684;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF1A;pycharm64.vmoptions&#x548C;pycharm.vmoptions&#xFF0C;&#x4FEE;&#x6539;&#x8FD9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;</p>
-<p>![](/ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;/1_ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;.png)</p>
+<p>![](ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;/1_ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;.png)</p>
 <p>&#x5728;&#x8FD9;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x6700;&#x540E;&#x4E00;&#x884C;&#x5747;&#x52A0;&#x4E0A;&#x4E00;&#x884C;&#x5185;&#x5BB9;&#x8DEF;&#x5F84;&#x5E76;&#x4FDD;&#x5B58;&#xFF1A;</p>
 <pre><code>sudo gedit pycharm.vmoptions
 #&#x6700;&#x540E;&#x4E00;&#x884C; &#x52A0;&#x4E0A;-javaagent&#xFF1A;/opt/pycharm-XXX/bin/jarbrains-agent.jar
 sudo gedit pycharm64.vmoptions#&#x540C;&#x4E0A;</code></pre><p>-javaagent&#xFF1A;/opt/pycharm-XXX/bin/jarbrains-agent.jar( &#x5C31;&#x662F;&#x521A;&#x521A;&#x4E0B;&#x8F7D;&#x7684;jar&#x6587;&#x4EF6;&#x8DEF;&#x5F84;)<br>&#x4FDD;&#x5B58;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x91CD;&#x65B0;&#x542F;&#x52A8;</p>
-<pre><code>sudo sh pycharm.sh</code></pre><p>![](/ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;/2_ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;.png)</p>
+<pre><code>sudo sh pycharm.sh</code></pre><p>![](ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;/2_ubuntu 18.04 &#x5B89;&#x88C5;&#x7834;&#x89E3;pycharm professional &#x4E13;&#x4E1A;&#x7248;.png)</p>
 <p>&#x51FA;&#x73B0;&#x4E0A;&#x8FF0;&#xFF0C;&#x8868;&#x793A;&#x6FC0;&#x6D3B;&#x6210;&#x529F;</p>
 
       
