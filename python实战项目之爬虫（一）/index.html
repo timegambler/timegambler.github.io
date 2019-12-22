@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python实战项目之爬虫（一）因为马上就要大四实习了，博主实在懒得在学校官网上一个个翻，直接用爬虫将所有数据都爬下来放在表格里，这样感觉简单多了，可惜还没找到工作，so sad总共选择了三个学校：湖南大学，中南大学，湘潭大学三个项目代码分别如下（新手代码，惨不忍睹）：湘潭大学： #!&#x2F;usr&#x2F;bin&#x2F;python3 #coding&#x3D;utf-8 import requests import jso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python实战项目之爬虫（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="python实战项目之爬虫（一）因为马上就要大四实习了，博主实在懒得在学校官网上一个个翻，直接用爬虫将所有数据都爬下来放在表格里，这样感觉简单多了，可惜还没找到工作，so sad总共选择了三个学校：湖南大学，中南大学，湘潭大学三个项目代码分别如下（新手代码，惨不忍睹）：湘潭大学： #!&#x2F;usr&#x2F;bin&#x2F;python3 #coding&#x3D;utf-8 import requests import jso">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-22T14:00:36.608Z">
+<meta property="article:modified_time" content="2019-12-22T14:00:36.608Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/python实战项目之爬虫（一）/"/>
+
+
+
+
+
+  <title>python实战项目之爬虫（一） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/python%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%E4%B9%8B%E7%88%AC%E8%99%AB%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python实战项目之爬虫（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:00:36+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="python实战项目之爬虫（一）"><a href="#python实战项目之爬虫（一）" class="headerlink" title="python实战项目之爬虫（一）"></a>python实战项目之爬虫（一）</h1><p>因为马上就要大四实习了，博主实在懒得在学校官网上一个个翻，直接用爬虫将所有数据都爬下来<br>放在表格里，这样感觉简单多了，可惜还没找到工作，so sad<br>总共选择了三个学校：湖南大学，中南大学，湘潭大学<br>三个项目代码分别如下（新手代码，惨不忍睹）：<br>湘潭大学：</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import json
+import logging
+import os
+import xlwt
+basic_url = &apos;http://jobs.xtu.edu.cn/index/getdaycareers?day=2018-10-&apos;
+logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
+
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list1&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;专业要求&apos;)
+sheet1.write(0,5,&apos;详细信息&apos;)
+count=1
+for i in range(1,32):
+    url = basic_url+str(i)
+    logging.debug(&apos;the clawer web site is:&apos;+url)
+    clawertext = requests.get(url)
+    logging.debug(type(clawertext))
+    logging.debug(clawertext.json())
+    logging.debug(clawertext.json()[&apos;data&apos;])
+    logging.debug(type(clawertext.json()[&apos;data&apos;]))
+
+    data_list = clawertext.json()[&apos;data&apos;]#the useful data 
+
+    for i in data_list:
+        sheet1.write(count,0,i[&apos;meet_day&apos;])
+        sheet1.write(count,1,i[&apos;address&apos;])
+        sheet1.write(count,2,i[&apos;meet_name&apos;])
+        sheet1.write(count,3,i[&apos;professionals&apos;])
+        sheet1.write(count,5,&apos;http://jobs.xtu.edu.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
+        count=count+1
+workbook.save(&apos;湘潭大学十月份招聘信息.xlsx&apos;)</code></pre><p>中南大学：<br>这个最坑，花了我一个多小时</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import xlwt
+import json
+import logging
+import bs4
+from bs4 import BeautifulSoup
+#初始化日志保存路劲，及格式
+logging.basicConfig(filename=&apos;log.txt&apos;,level=logging.DEBUG,format=&apos;%(asctime)s - %(levelname)s - %(message)s&apos;)
+logging.getLogger(&apos;requests&apos;).setLevel(logging.WARNING)#禁用requests的日志
+
+#初始化表格
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;职位名称&apos;)
+sheet1.write(0,4,&apos;教育水平&apos;)
+sheet1.write(0,5,&apos;专业要求&apos;)
+sheet1.write(0,6,&apos;空缺数量&apos;)
+sheet1.write(0,7,&apos;详细信息&apos;)
+
+#初始化地址
+json_all_url = &apos;http://jobsky.csu.edu.cn/Home/SearchDateAllMonth&apos;
+dt1={&apos;Date&apos;:&apos;2018-09-04&apos;}
+post_data = requests.post(json_all_url,data=dt1)
+json_data = post_data.json()
+logging.debug(type(json_data))
+&apos;&apos;&apos;with open(&apos;json.txt&apos;,&apos;w&apos;) as fileTxt:
+    for i in json_data:
+        fileTxt.write(str(i)+&apos;\n&apos;)    
+&apos;&apos;&apos;
+basic_html_url = &apos;http://jobsky.csu.edu.cn/Home/ArticleDetails/&apos;
+
+counter_all = 1
+for data in json_data:
+    company_Id=data[&apos;NewsID&apos;]
+    #logging.debug(&apos;the commpanyID is:&apos;+company_Id)
+    html_url=basic_html_url+company_Id
+#html_url=basic_html_url+&apos;13713&apos;#static url,please delete and repaire after you have used it
+
+    html_txt = requests.get(html_url)
+#  logging.debug(&apos;the web site using code is:&apos;+str(html_txt.status_code))
+    bs = BeautifulSoup(html_txt.text,&apos;lxml&apos;)
+
+    #get the commpanyName
+
+    list_soup_CN = bs.find(&apos;h1&apos;,attrs={&apos;class&apos;:&apos;text-center title&apos;})
+    try:    
+        advertise_company_name=list_soup_CN.getText()
+        sheet1.write(counter_all,2,advertise_company_name)
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+    #get the time and place
+    try:
+        list_soup_TP = bs.find(&apos;div&apos;,attrs={&apos;id&apos;:&apos;placeAndTime&apos;})
+        advertise_time=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center time&apos;}).getText()
+        advertise_place=list_soup_TP.find(&apos;p&apos;,attrs={&apos;class&apos;:&apos;text-center place&apos;}).getText()
+        sheet1.write(counter_all,0,advertise_time)
+        sheet1.write(counter_all,1,advertise_place)
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+
+    try:     
+        list_soup_demand = bs.find(&apos;table&apos;,attrs={&apos;class&apos;:&apos;table table-bordered&apos;})
+        list_td = list_soup_demand.find_all(&apos;td&apos;)
+        counter_even = 0#use to counter ,so that we can find the number of td,and get we need data
+        #we can get the useful data by looking the source
+        for td in list_td:
+            if counter_even==1 :
+                sheet1.write(counter_all,3,td.getText())
+            if counter_even==3 :
+                sheet1.write(counter_all,4,td.getText())
+            if counter_even==5 :
+                sheet1.write(counter_all,5,td.getText())
+            if counter_even==7 :
+                sheet1.write(counter_all,6,td.getText())
+            counter_even =counter_even+1
+        sheet1.write(counter_all,7,html_url)
+        counter_all+=1
+    except:
+        logging.debug(&quot;the url&quot;+html_url+&apos;has some problem&apos;)
+    #保存文件
+    workbook.save(&apos;中南大学招聘信息.xlsx&apos;)</code></pre><p>最后是湖南大学，不知道为什么，湖南大学招聘信息少的可怜</p>
+<pre><code>#!/usr/bin/python3
+#coding=utf-8
+import requests
+import json
+import logging
+import os
+import xlwt
+json_url = &apos;https://hnu.bysjy.com.cn/module/getcareers?start_page=1&amp;keyword=&amp;type=inner&amp;day=&amp;count=15&amp;start=1&amp;_=1536044186160&apos;
+logging.basicConfig(level=logging.DEBUG,format=&apos;&apos;)
+
+json_data = requests.get(json_url)
+#print(json_data.text)
+
+workbook = xlwt.Workbook()
+sheet1 = workbook.add_sheet(&apos;list1&apos;)
+sheet1.write(0,0,&apos;时间&apos;)
+sheet1.write(0,1,&apos;地点&apos;)
+sheet1.write(0,2,&apos;公司名称&apos;)
+sheet1.write(0,3,&apos;招聘会&apos;)
+sheet1.write(0,4,&apos;专业要求&apos;)
+sheet1.write(0,6,&apos;详细信息&apos;)
+count=1
+
+data_list = json_data.json()[&apos;data&apos;]#the useful data 
+
+for i in data_list:
+        sheet1.write(count,0,i[&apos;meet_day&apos;]+i[&apos;meet_time&apos;])
+        sheet1.write(count,1,i[&apos;address&apos;])
+        sheet1.write(count,2,i[&apos;company_name&apos;])
+        sheet1.write(count,3,i[&apos;meet_name&apos;])
+        sheet1.write(count,4,i[&apos;professionals&apos;])
+        sheet1.write(count,5,&apos;https://hnu.bysjy.com.cn/detail/career?id=&apos;+i[&apos;career_talk_id&apos;])
+        count=count+1
+workbook.save(&apos;湖南大学招聘信息.xlsx&apos;)</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/python%E4%B9%8B2018%E5%8F%8C%E5%8D%81%E4%B8%80%E7%A7%92%E6%9D%80%E8%84%9A%E6%9C%AC/" rel="next" title="python之2018双十一秒杀脚本">
+                <i class="fa fa-chevron-left"></i> python之2018双十一秒杀脚本
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Python%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98%E4%B9%8BOne%20or%20more%20issues%20caused%20the%20setup%20to%20fail.Windows7%E5%AE%89%E8%A3%85Python3.7/" rel="prev" title="Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7">
+                Python安装问题之One or more issues caused the setup to fail.Windows7安装Python3.7 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python实战项目之爬虫（一）"><span class="nav-number">1.</span> <span class="nav-text">python实战项目之爬虫（一）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

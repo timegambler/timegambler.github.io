@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于如何使用VC6.0+Graphics图形库画出二维图形全教程首先是安装VC6.0，网上各种版本很多，参差不齐，在这里给出一个非常好用的VC6.0（提取码：1bn9）不支持win10,8，如果非得使用，请用虚拟机或者重装win7系统按照提示安装就好了，不行就多装几遍（c盘不行就装载d盘），没什么需要特殊配置的然后就是关于Graphics图形库了，这个更简单，也是有脚本软件，可以直接安装使用，记得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于如何使用VC6.0+Graphics图形库画出二维图形全教程">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="关于如何使用VC6.0+Graphics图形库画出二维图形全教程首先是安装VC6.0，网上各种版本很多，参差不齐，在这里给出一个非常好用的VC6.0（提取码：1bn9）不支持win10,8，如果非得使用，请用虚拟机或者重装win7系统按照提示安装就好了，不行就多装几遍（c盘不行就装载d盘），没什么需要特殊配置的然后就是关于Graphics图形库了，这个更简单，也是有脚本软件，可以直接安装使用，记得">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;1_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;2_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;3_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;4_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;5_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+<meta property="article:published_time" content="2019-12-22T14:01:21.514Z">
+<meta property="article:modified_time" content="2019-12-22T14:01:21.514Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6&#x2F;1_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/关于如何使用VC6.0+Graphics图形库画出二维图形全教程/"/>
+
+
+
+
+
+  <title>关于如何使用VC6.0+Graphics图形库画出二维图形全教程 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于如何使用VC6.0+Graphics图形库画出二维图形全教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:01:21+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关于如何使用VC6-0-Graphics图形库画出二维图形全教程"><a href="#关于如何使用VC6-0-Graphics图形库画出二维图形全教程" class="headerlink" title="关于如何使用VC6.0+Graphics图形库画出二维图形全教程"></a>关于如何使用VC6.0+Graphics图形库画出二维图形全教程</h1><p>首先是安装VC6.0，网上各种版本很多，参差不齐，在这里给出一个非常好用的<a href="VC6.0">VC6.0</a>（提取码：1bn9）<br>不支持win10,8，如果非得使用，请用虚拟机或者重装win7系统<br>按照提示安装就好了，不行就多装几遍（c盘不行就装载d盘），没什么需要特殊配置的<br>然后就是关于Graphics图形库了，这个更简单，也是有脚本软件，可以直接安装使用，记得安装完VC6.0之后重启一下<br>可执行软件是：<a href="EasyX">EasyX</a>（提取码：9v9w）<br>安装完成直接打开后会有提示，可以点击自动添加Graphics图形库，如果不行就手动安装，里面有EasyX_help文档，里面写的很详细，按照里面提示的来就好<br>安装完成后，打开VC6.0<br>点击文件，选择新建，在新建窗口点击工程，选择新建的工程win32  Application，输入工程名称，点击确定</p>
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6/1_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png" alt></p>
+<p>出现以下窗口：</p>
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6/2_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png" alt></p>
+<p>建议直接点击一个空白工程，选择下一步，完成<br>然后出现下面的窗口，点击Source Files，然后再点击左上角的文件，选择第一个新建，选择C++ Source Flie，输入文件名，点击确定</p>
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6/3_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png" alt></p>
+<p>在出现的空白文件中，将下面的代码复制进去：</p>
+<pre><code>#include &lt;graphics.h&gt;      // 就是需要引用这个图形库 
+#include &lt;conio.h&gt; 
+#include&lt;iostream&gt;
+#include&lt;math.h&gt;
+using namespace std;
+#define PI 3.1415926
+int ix=300,iy=300;//围绕的圆心点
+double tx,ty;
+void change(int x,int y,double angle){
+    int length=x-ix+y-iy;//旋转轴长度 
+    tx=(x-ix)*cos(angle)-(y-iy)*sin(angle)+ix;//x0= (x - rx0)*cos(a) - (y - ry0)*sin(a) + rx0 ;angle表示顺时针旋转，-angle表示逆时针旋转
+    ty=(x-ix)*sin(angle)+(y-iy)*cos(angle)+iy;// y0= (x - rx0)*sin(a) + (y - ry0)*cos(a) + ry0 ;
+}
+void main() 
+{    
+    initgraph(640, 640);   // 这里和 TC 略有区别
+    int n=20;//n表示旋转了多少次 
+    int a=200,b=200,c=300,d=300;//矩形四个点分别为(200,200),(200,300),(300,300),(300,200) 
+    double perangle=2*PI/n;
+    //cout&lt;&lt;&quot;PI= &quot;&lt;&lt;PI&lt;&lt;&quot; perangle= &quot;&lt;&lt;perangle&lt;&lt;&quot; cos(perangle)= &quot;&lt;&lt;cos(perangle)&lt;&lt;&quot; cos(PI)=&quot;&lt;&lt;cos(PI*90/180);
+    for(int i=1;i&lt;=n;i++){
+        change(a,b,i*perangle);
+        moveto(tx,ty);
+        int ia=tx,ib=ty;
+        change(a,c,i*perangle);
+        lineto(tx,ty);
+        change(d,c,i*perangle);
+        lineto(tx,ty);
+        change(d,b,i*perangle);
+        lineto(tx,ty);
+        lineto(ia,ib);
+    }
+    getch();               // 按任意键继续    
+    closegraph();          // 关闭图形界面 
+
+}</code></pre><p>点击下面的感叹号</p>
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6/4_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png" alt></p>
+<p>如果出现下面的结果，恭喜你，完成了第一个Graphics图形demo</p>
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6/5_%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B.png" alt></p>
+<p>如果出现问题，请多次尝试一下，大部分是因为没有将头文件导入成功，不要急慢慢来，一步一步的重试</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/" rel="next" title="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载">
+                <i class="fa fa-chevron-left"></i> Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E5%85%B3%E4%BA%8E8%E6%95%B0%E7%A0%81%E7%9A%84%E6%90%9C%E7%B4%A2%E9%97%AE%E9%A2%98/" rel="prev" title="关于8数码的搜索问题">
+                关于8数码的搜索问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于如何使用VC6-0-Graphics图形库画出二维图形全教程"><span class="nav-number">1.</span> <span class="nav-text">关于如何使用VC6.0+Graphics图形库画出二维图形全教程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

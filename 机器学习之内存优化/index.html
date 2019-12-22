@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="机器学习之内存优化因为训练数据集往往比较大，而内存会出现不够用的情况，可以通过修改特征的数据类型，从而达到优化压缩的目的I、普通方法，直接复制调用就行参考网址：https:&#x2F;&#x2F;www.kaggle.com&#x2F;gemartin&#x2F;load-data-reduce-memory-usage def reduce_mem_usage(df, verbose&#x3D;True):     numerics &#x3D; [&amp;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习之内存优化">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="机器学习之内存优化因为训练数据集往往比较大，而内存会出现不够用的情况，可以通过修改特征的数据类型，从而达到优化压缩的目的I、普通方法，直接复制调用就行参考网址：https:&#x2F;&#x2F;www.kaggle.com&#x2F;gemartin&#x2F;load-data-reduce-memory-usage def reduce_mem_usage(df, verbose&#x3D;True):     numerics &#x3D; [&amp;a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-22T14:00:21.589Z">
+<meta property="article:modified_time" content="2019-12-22T14:00:21.589Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/机器学习之内存优化/"/>
+
+
+
+
+
+  <title>机器学习之内存优化 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习之内存优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:00:21+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="机器学习之内存优化"><a href="#机器学习之内存优化" class="headerlink" title="机器学习之内存优化"></a>机器学习之内存优化</h1><p>因为训练数据集往往比较大，而内存会出现不够用的情况，可以通过修改特征的数据类型，从而达到优化压缩的目的<br>I、普通方法，直接复制调用就行<br>参考网址：<a href="https://www.kaggle.com/gemartin/load-data-reduce-memory-usage" target="_blank" rel="noopener">https://www.kaggle.com/gemartin/load-data-reduce-memory-usage</a></p>
+<pre><code>def reduce_mem_usage(df, verbose=True):
+    numerics = [&apos;int16&apos;, &apos;int32&apos;, &apos;int64&apos;, &apos;float16&apos;, &apos;float32&apos;, &apos;float64&apos;]
+    start_mem = df.memory_usage().sum() / 1024**2    
+    for col in df.columns:
+        col_type = df[col].dtypes
+        if col_type in numerics:
+            c_min = df[col].min()
+            c_max = df[col].max()
+            if str(col_type)[:3] == &apos;int&apos;:
+                if c_min &gt; np.iinfo(np.int8).min and c_max &lt; np.iinfo(np.int8).max:
+                    df[col] = df[col].astype(np.int8)
+                elif c_min &gt; np.iinfo(np.int16).min and c_max &lt; np.iinfo(np.int16).max:
+                    df[col] = df[col].astype(np.int16)
+                elif c_min &gt; np.iinfo(np.int32).min and c_max &lt; np.iinfo(np.int32).max:
+                    df[col] = df[col].astype(np.int32)
+                elif c_min &gt; np.iinfo(np.int64).min and c_max &lt; np.iinfo(np.int64).max:
+                    df[col] = df[col].astype(np.int64)  
+            else:
+                if c_min &gt; np.finfo(np.float16).min and c_max &lt; np.finfo(np.float16).max:
+                    df[col] = df[col].astype(np.float16)
+                elif c_min &gt; np.finfo(np.float32).min and c_max &lt; np.finfo(np.float32).max:
+                    df[col] = df[col].astype(np.float32)
+                else:
+                    df[col] = df[col].astype(np.float64)    
+    end_mem = df.memory_usage().sum() / 1024**2
+    if verbose: print(&apos;Mem. usage decreased to {:5.2f} Mb ({:.1f}% reduction)&apos;.format(end_mem, 100 * (start_mem - end_mem) / start_mem))
+    return df</code></pre><p>2、封装完成的类<br>参考网址：<a href="https://www.kaggle.com/wkirgsn/fail-safe-parallel-memory-reduction" target="_blank" rel="noopener">https://www.kaggle.com/wkirgsn/fail-safe-parallel-memory-reduction</a></p>
+<pre><code>&quot;&quot;&quot;reducing.py
+Author: Kirgsn, 2018
+
+Use like this:调用方式:
+&gt;&gt;&gt; import reducing
+&gt;&gt;&gt; df = reducing.Reducer().reduce(df)
+&quot;&quot;&quot;
+import numpy as np
+import pandas as pd
+import time
+import gc
+from joblib import Parallel, delayed
+
+
+def measure_time_mem(func):
+    def wrapped_reduce(self, df, *args, **kwargs):
+        # pre
+        mem_usage_orig = df.memory_usage().sum() / self.memory_scale_factor
+        start_time = time.time()
+        # exec
+        ret = func(self, df, *args, **kwargs)
+        # post
+        mem_usage_new = ret.memory_usage().sum() / self.memory_scale_factor
+        end_time = time.time()
+        print(f&apos;reduced df from {mem_usage_orig:.4f} MB &apos;
+              f&apos;to {mem_usage_new:.4f} MB &apos;
+              f&apos;in {(end_time - start_time):.2f} seconds&apos;)
+        gc.collect()
+        return ret
+    return wrapped_reduce
+
+
+class Reducer:
+    &quot;&quot;&quot;
+    Class that takes a dict of increasingly big numpy datatypes to transform
+    the data of a pandas dataframe into, in order to save memory usage.
+    &quot;&quot;&quot;
+    memory_scale_factor = 1024**2  # memory in MB
+
+    def __init__(self, conv_table=None, use_categoricals=True, n_jobs=-1):
+        &quot;&quot;&quot;
+        :param conv_table: dict with np.dtypes-strings as keys
+        :param use_categoricals: Whether the new pandas dtype &quot;Categoricals&quot;
+                shall be used
+        :param n_jobs: Parallelization rate
+        &quot;&quot;&quot;
+
+        self.conversion_table = \
+            conv_table or {&apos;int&apos;: [np.int8, np.int16, np.int32, np.int64],
+                           &apos;uint&apos;: [np.uint8, np.uint16, np.uint32, np.uint64],
+                           &apos;float&apos;: [np.float32, ]}
+        self.use_categoricals = use_categoricals
+        self.n_jobs = n_jobs
+
+    def _type_candidates(self, k):
+        for c in self.conversion_table[k]:
+            i = np.iinfo(c) if &apos;int&apos; in k else np.finfo(c)
+            yield c, i
+
+    @measure_time_mem
+    def reduce(self, df, verbose=False):
+        &quot;&quot;&quot;Takes a dataframe and returns it with all data transformed to the
+        smallest necessary types.
+
+        :param df: pandas dataframe
+        :param verbose: If True, outputs more information
+        :return: pandas dataframe with reduced data types
+        &quot;&quot;&quot;
+        ret_list = Parallel(n_jobs=self.n_jobs)(delayed(self._reduce)
+                                                (df[c], c, verbose) for c in
+                                                df.columns)
+
+        del df
+        gc.collect()
+        return pd.concat(ret_list, axis=1)
+
+    def _reduce(self, s, colname, verbose):
+        # skip NaNs
+        if s.isnull().any():
+            if verbose: print(f&apos;{colname} has NaNs - Skip..&apos;)
+            return s
+        # detect kind of type
+        coltype = s.dtype
+        if np.issubdtype(coltype, np.integer):
+            conv_key = &apos;int&apos; if s.min() &lt; 0 else &apos;uint&apos;
+        elif np.issubdtype(coltype, np.floating):
+            conv_key = &apos;float&apos;
+        else:
+            if isinstance(coltype, object) and self.use_categoricals:
+                # check for all-strings series
+                if s.apply(lambda x: isinstance(x, str)).all():
+                    if verbose: print(f&apos;convert {colname} to categorical&apos;)
+                    return s.astype(&apos;category&apos;)
+            if verbose: print(f&apos;{colname} is {coltype} - Skip..&apos;)
+            return s
+        # find right candidate
+        for cand, cand_info in self._type_candidates(conv_key):
+            if s.max() &lt;= cand_info.max and s.min() &gt;= cand_info.min:
+                if verbose: print(f&apos;convert {colname} to {cand}&apos;)
+                return s.astype(cand)
+
+        # reaching this code is bad. Probably there are inf, or other high numbs
+        print(f&quot;WARNING: {colname} doesn&apos;t fit the grid with \nmax: {s.max()} &quot;
+              f&quot;and \nmin: {s.min()}&quot;)
+        print(&apos;Dropping it..&apos;)</code></pre><p>3、可以将其转换为feather格式，降低内存占用<br>ps：转为feather格式的化需要配合pyarrow这个包，所以 pip install pyarrow<br>用法很简单，结合1或者2方法先压缩数据类型，然后再生成feather文件</p>
+<pre><code># 生成一个feather文件
+your_df.to_feather(path)# 读取feather文件</code></pre><pre><code>pd.read_feather(path)</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/github%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" rel="next" title="github使用笔记">
+                <i class="fa fa-chevron-left"></i> github使用笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="mysql学习训练记录及笔记（三）">
+                mysql学习训练记录及笔记（三） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习之内存优化"><span class="nav-number">1.</span> <span class="nav-text">机器学习之内存优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

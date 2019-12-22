@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）声明和提示：因为每个人的电脑软硬件环境配置均不同，所以所面临的问题往往也不同，我也是安装了一些时间，各种配置，重装，因此在尽可能保证通用性的情况下，在此记录下来，减少大家走弯路的过程。尤其是一些细节的地方，往往容易出错，也很难找出错误所在，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）声明和提示：因为每个人的电脑软硬件环境配置均不同，所以所面临的问题往往也不同，我也是安装了一些时间，各种配置，重装，因此在尽可能保证通用性的情况下，在此记录下来，减少大家走弯路的过程。尤其是一些细节的地方，往往容易出错，也很难找出错误所在，">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;1_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;2_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;3_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;4_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;5_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;6_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;7_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="article:published_time" content="2019-12-22T14:00:30.170Z">
+<meta property="article:modified_time" content="2019-12-22T14:00:30.170Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5&#x2F;1_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）/"/>
+
+
+
+
+
+  <title>faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:00:30+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="faceswap安装，配置，使用记录（RTX2060s-CUDA10-1-cudnn7-6-2-Anaconda3-5-2-tensorflow-gpu）（一）"><a href="#faceswap安装，配置，使用记录（RTX2060s-CUDA10-1-cudnn7-6-2-Anaconda3-5-2-tensorflow-gpu）（一）" class="headerlink" title="faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）"></a>faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）</h1><p>声明和提示：<br>因为每个人的电脑软硬件环境配置均不同，所以所面临的问题往往也不同，我也是安装了一些时间，各种配置，重装，因此在尽可能保证通用性的情况下，在此记录下来，减少大家走弯路的过程。尤其是一些细节的地方，往往容易出错，也很难找出错误所在，这点大家要注意一下。并且网上给的方案要么已经过时，要么没有系统性，因此写下本人所有软件硬件的全套方案。</p>
+<p>第一步、环境准备，各种文件的安装下载<br>（1）硬件驱动相关的准备<br>首先参照这张表：（英伟达官方配置参照：<a href="https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）" target="_blank" rel="noopener">https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html）</a></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/1_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>建议去英伟达官方下载最新驱动：<a href="https://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener">https://www.nvidia.cn/Download/index.aspx?lang=cn</a><br>根据你的显卡进行选择，然后搜索下载（可能这里会比较慢，建议用迅雷，速度非常快）</p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/2_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>全部默认安装下载即可。这里不需要进行什么额外配置<br>（2）安装cuda和cudnn，这两个也建议安装最新版本的<br>（也建议用迅雷下载，不少人表示cuda10比cuda9要快，而且本人用的均是最新版都没问题，所以大家放心用吧）<br>ps：cuda不需要注册，但是cudnn需要注册，自行注册下载即可<br>这里是cuda10.1下载地址：<a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exelocal" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exelocal</a></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/3_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>ps:画红框的地方注意一下，建议下载本地安装版的，联网安装的非常慢。<br>如果需要其他版本的cuda，官方链接：<a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/4_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>点击对应所需的cuda版本即可。<br>下载完成后，之间点击安装，所有选项默认即可。<br>接下来是cudnn的下载，这里需要注册，大家自行注册，然后下载（依旧用迅雷）。<br>下载网址：<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/5_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/6_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>下载版本对照，官方对照地址：（<a href="https://tensorflow.google.cn/install/source_windows" target="_blank" rel="noopener">https://tensorflow.google.cn/install/source_windows</a><br>（ps：谷歌官方没有及时更新，导致cuda10没有出现在其中，可以直接忽略，参照上面图片中nvidia官方提供对照即可）<br>下载完成后，解压，然后里面有三个文件夹和一个说明的txt文档</p>
+<p>将cudnn解压bin文件夹中的cudnn64_7.dll文件复制到cuda默认安装目录：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\bin<br>（同上）将cudnn解压include文件夹中的cudnn.h文件复制到：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\include<br>（同上）将cudnn解压lib文件夹中的x64文件夹的cudnn.lib复制到：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1（这里根据cuda版本修改）\lib\x64<br>基本上硬件驱动及相关环境配置基本完成，可以进行以下测试，用nvcc -V监测cuda是否安装成功，cudnn因为暂时没有用到，所以无法测试，后期修改cudnn比较简单，无需担心<br>（2）安装anaconda，这里建议安装anaconda3.5.2版本，最新版本是3.5.3<br>ps：之所以这么建议，主要是博主本人遇到过两个问题，一个是3.5.3默认是python3.7（目前很多都只支持到python3.6），虽然可以退回python3.6，但是依旧麻烦不已，很费时间，第二个是动态链接库缺失的问题，这个问题至今没有搞明白，因为通过直接安装3.5.2版本没有出现后就没有深究了，主要怀疑是环境变量那里出现了问题。<br>这里下载推荐使用清华镜像下载源：<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<p><img src="/faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5/7_faceswap%E5%AE%89%E8%A3%85%EF%BC%8C%E9%85%8D%E7%BD%AE%EF%BC%8C%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95%EF%BC%88RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>然后是安装的过程，直接一路next就行，其中也可以进行一些选择，但是本着‘傻瓜式’安装的原则，建议直接全部下一步进行安装。<br>安装完成之后，就是配环境变量了。</p>
+<p>至于如何详细使用anaconda，请参照这个博主：<a href="https://blog.csdn.net/ITLearnHall/article/details/81708148（虽然有些杂乱，但还是可以参考）" target="_blank" rel="noopener">https://blog.csdn.net/ITLearnHall/article/details/81708148（虽然有些杂乱，但还是可以参考）</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/TensorFlow%E5%AE%9E%E7%8E%B0%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8/" rel="next" title="TensorFlow实现自编码器">
+                <i class="fa fa-chevron-left"></i> TensorFlow实现自编码器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ubuntu%2018.04%20%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3pycharm%20professional%20%E4%B8%93%E4%B8%9A%E7%89%88/" rel="prev" title="ubuntu 18.04 安装破解pycharm professional 专业版">
+                ubuntu 18.04 安装破解pycharm professional 专业版 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#faceswap安装，配置，使用记录（RTX2060s-CUDA10-1-cudnn7-6-2-Anaconda3-5-2-tensorflow-gpu）（一）"><span class="nav-number">1.</span> <span class="nav-text">faceswap安装，配置，使用记录（RTX2060s+CUDA10.1+cudnn7.6.2+Anaconda3.5.2+tensorflow-gpu）（一）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

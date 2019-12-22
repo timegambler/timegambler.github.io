@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql学习训练记录及笔记（一）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="mysql学习训练记录及笔记（一）写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中mysql学习训练记录及笔记（一）mysql学习训练记录及笔记（二）mysql学习训练记录及笔记（三）I、建表语句 --建表 --学生表 CREATE TABLE &#96;Student&#96;(     &#96;s_id&#96; VARCHAR(20),     &#96;s_name&#96; VARCHAR(2">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;1_mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89.png">
+<meta property="article:published_time" content="2019-12-22T14:00:21.871Z">
+<meta property="article:modified_time" content="2019-12-22T14:00:21.871Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;1_mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/mysql学习训练记录及笔记（一）/"/>
+
+
+
+
+
+  <title>mysql学习训练记录及笔记（一） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql学习训练记录及笔记（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:00:21+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="mysql学习训练记录及笔记（一）"><a href="#mysql学习训练记录及笔记（一）" class="headerlink" title="mysql学习训练记录及笔记（一）"></a>mysql学习训练记录及笔记（一）</h1><p>写这篇的缘由是因为感觉本地保存容易误删，存到云盘中，还要下载打开，麻烦，因此记录在博客中<br><a href="mysql学习训练记录及笔记（一）">mysql学习训练记录及笔记（一）</a><br><a href="mysql学习训练记录及笔记（二）">mysql学习训练记录及笔记（二）</a><br><a href="mysql学习训练记录及笔记（三）">mysql学习训练记录及笔记（三）</a><br>I、建表语句</p>
+<pre><code>--建表
+--学生表
+CREATE TABLE `Student`(
+    `s_id` VARCHAR(20),
+    `s_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `s_birth` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `s_sex` VARCHAR(10) NOT NULL DEFAULT &apos;&apos;,
+    PRIMARY KEY(`s_id`)
+);
+--课程表
+CREATE TABLE `Course`(
+    `c_id`  VARCHAR(20),
+    `c_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    `t_id` VARCHAR(20) NOT NULL,
+    PRIMARY KEY(`c_id`)
+);
+--教师表
+CREATE TABLE `Teacher`(
+    `t_id` VARCHAR(20),
+    `t_name` VARCHAR(20) NOT NULL DEFAULT &apos;&apos;,
+    PRIMARY KEY(`t_id`)
+);
+--成绩表
+CREATE TABLE `Score`(
+    `s_id` VARCHAR(20),
+    `c_id`  VARCHAR(20),
+    `s_score` INT(3),
+    PRIMARY KEY(`s_id`,`c_id`)
+);
+--插入学生表测试数据
+insert into Student values(&apos;01&apos; , &apos;赵雷&apos; , &apos;1990-01-01&apos; , &apos;男&apos;);
+insert into Student values(&apos;02&apos; , &apos;钱电&apos; , &apos;1990-12-21&apos; , &apos;男&apos;);
+insert into Student values(&apos;03&apos; , &apos;孙风&apos; , &apos;1990-05-20&apos; , &apos;男&apos;);
+insert into Student values(&apos;04&apos; , &apos;李云&apos; , &apos;1990-08-06&apos; , &apos;男&apos;);
+insert into Student values(&apos;05&apos; , &apos;周梅&apos; , &apos;1991-12-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;06&apos; , &apos;吴兰&apos; , &apos;1992-03-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;07&apos; , &apos;郑竹&apos; , &apos;1989-07-01&apos; , &apos;女&apos;);
+insert into Student values(&apos;08&apos; , &apos;王菊&apos; , &apos;1990-01-20&apos; , &apos;女&apos;);
+--课程表测试数据
+insert into Course values(&apos;01&apos; , &apos;语文&apos; , &apos;02&apos;);
+insert into Course values(&apos;02&apos; , &apos;数学&apos; , &apos;01&apos;);
+insert into Course values(&apos;03&apos; , &apos;英语&apos; , &apos;03&apos;);
+
+--教师表测试数据
+insert into Teacher values(&apos;01&apos; , &apos;张三&apos;);
+insert into Teacher values(&apos;02&apos; , &apos;李四&apos;);
+insert into Teacher values(&apos;03&apos; , &apos;王五&apos;);
+
+--成绩表测试数据
+insert into Score values(&apos;01&apos; , &apos;01&apos; , 80);
+insert into Score values(&apos;01&apos; , &apos;02&apos; , 90);
+insert into Score values(&apos;01&apos; , &apos;03&apos; , 99);
+insert into Score values(&apos;02&apos; , &apos;01&apos; , 70);
+insert into Score values(&apos;02&apos; , &apos;02&apos; , 60);
+insert into Score values(&apos;02&apos; , &apos;03&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;01&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;02&apos; , 80);
+insert into Score values(&apos;03&apos; , &apos;03&apos; , 80);
+insert into Score values(&apos;04&apos; , &apos;01&apos; , 50);
+insert into Score values(&apos;04&apos; , &apos;02&apos; , 30);
+insert into Score values(&apos;04&apos; , &apos;03&apos; , 20);
+insert into Score values(&apos;05&apos; , &apos;01&apos; , 76);
+insert into Score values(&apos;05&apos; , &apos;02&apos; , 87);
+insert into Score values(&apos;06&apos; , &apos;01&apos; , 31);
+insert into Score values(&apos;06&apos; , &apos;03&apos; , 34);
+insert into Score values(&apos;07&apos; , &apos;02&apos; , 89);
+insert into Score values(&apos;07&apos; , &apos;03&apos; , 98);</code></pre><p>II、sql语言训练<br>1、– 查询”01”课程比”02”课程成绩高的学生的信息及课程分数</p>
+<pre><code>select
+    a.*,
+    b.s_score,
+    c.s_score
+from
+    student a join score b on
+    a.s_id = b.s_id
+    and b.c_id=&apos;01&apos;
+    join score c on a.s_id = c.s_id and c.c_id = &apos;02&apos; or c.c_id =null
+where
+    b.s_score&gt; c.s_score;</code></pre><p>2、查询”01”课程比”02”课程成绩低的学生的信息及课程分数</p>
+<pre><code>select a.*, b.s_score, c.s_score
+from student a join score b on a.s_id =b.s_id and b.c_id =&apos;01&apos;
+join score c on a.s_id = c.s_id and c.c_id = &apos;02&apos;
+where b.s_score &lt; c.s_score;</code></pre><p>3、– 查询平均成绩大于等于60分的同学的学生编号和学生姓名和平均成绩</p>
+<pre><code>select a.s_id,a.s_name, avg(b.s_score) from student a join score b on a.s_id = b.s_id group by a.s_id,a.s_name having avg(b.s_score)&gt;60;</code></pre><p>4、– 查询平均成绩小于60分的同学的学生编号和学生姓名和平均成绩<br>– (包括有成绩的和无成绩的)</p>
+<pre><code>select a.s_id,a.s_name, avg(b.s_score) from student a join score b on a.s_id = b.s_id group by a.s_id,a.s_name having avg(b.s_score)&lt;60
+union
+select a.s_id,a.s_name,0  from student a where a.s_id not in (select distinct s_id from score); 
+;</code></pre><p>5、查询所有同学的学生编号、学生姓名、选课总数、所有课程的总成绩</p>
+<pre><code>select t1.s_id,t1.s_name,count(t2.c_id),sum(t2.s_score) from student t1 join score t2 on t1.s_id = t2.s_id
+group by t1.s_id,t1.s_name ;</code></pre><p>6、– 查询”李”姓老师的数量</p>
+<pre><code>select count(1) from teacher where t_name like &quot;李%&quot;;</code></pre><p>7、– 查询学过”张三”老师授课的同学的信息</p>
+<pre><code>select a.* from student a join score b on a.s_id  = b.s_id join course c on b.c_id = c.c_id join teacher d on c.t_id = d.t_id where d.t_name = &apos;张三&apos;;</code></pre><p>8、– 查询没学过”张三”老师授课的同学的信息</p>
+<pre><code>select a.* from student a where a.s_id  not in (
+    select s_id from score where c_id = (
+        select c_id from course where t_id = (
+            select t_id from teacher where t_name =&apos;张三&apos;
+        )
+    ));</code></pre><p>9、– 查询学过编号为”01”并且也学过编号为”02”的课程的同学的信息</p>
+<pre><code>select * from 
+    student a 
+    where a.s_id in (
+    select a.s_id from score a join score b on a.s_id=b.s_id and a.c_id = &apos;01&apos; and b.c_id=&apos;02&apos;);</code></pre><p>10、– 查询学过编号为”01”但是没有学过编号为”02”的课程的同学的信息</p>
+<pre><code>select * from student
+     where s_id in (
+     select a.s_id from score a where a.c_id = &apos;01&apos; and a.s_id not in (
+         select b.s_id from score b where b.c_id = &apos;02&apos;)
+     );</code></pre><p>11、– 查询没有学全所有课程的同学的信息</p>
+<pre><code>select * from
+    student a
+    where a.s_id not in (
+    select s_id from score b group by b.s_id  having count(*) = (select count(distinct c_id) from course)
+    )</code></pre><p>12、– 查询至少有一门课与学号为”01”的同学所学相同的同学的信息</p>
+<pre><code>select * from student
+    where s_id in (
+     select s_id from score where  c_id in (select c_id from score where s_id = &apos;01&apos;)
+    );</code></pre><p>13、 - 查询和”01”号的同学学习的课程完全相同的其他同学的信息、</p>
+<pre><code>select * from student
+where s_id in
+(select s_id from score group by s_id having group_concat(c_id order by c_id) = 
+(select group_concat(c_id order by c_id) from score  where s_id = &apos;01&apos;)
+)</code></pre><p>14、查询没学过”张三”老师讲授的任一门课程的学生姓名</p>
+<pre><code>select t1.s_name from student t1 where t1.s_id not in
+(select s_id from score t2 where t2.c_id in (select c_id from course a join  teacher b on a.t_id=b.t_id where t_name =&apos;张三&apos;))</code></pre><p>15、–查询两门及其以上不及格课程的同学的学号，姓名及其平均成绩</p>
+<pre><code>select t1.s_id ,t1.s_name,avg(t2.s_score) from student t1 join score t2 on t1.s_id=t2.s_id where t2.s_score&lt;60 group by t1.s_id having count(t2.s_score)&gt;1;</code></pre><p>– 16、检索”01”课程分数小于60，按分数降序排列的学生信息</p>
+<pre><code>select * from student t1 join score t2 on t1.s_id = t2.s_id where t2.s_score &lt; 60 and t2.c_id = &apos;01&apos; order by t2.s_score desc;</code></pre><p>– 17、按平均成绩从高到低显示所有学生的所有课程的成绩以及平均成绩</p>
+<pre><code>select s_id,(select s_score from score where t1.s_id=s_id and c_id=&apos;01&apos;) as a,
+(select s_score from score where t1.s_id=s_id and c_id=&apos;02&apos;) as b,
+(select s_score from score where t1.s_id= s_id and c_id=&apos;03&apos;) as c,
+avg(s_score)
+from score t1 group by s_id order by avg(s_score) desc;</code></pre><p>– 18、查询各科成绩最高分、最低分和平均分：以如下形式显示：课程ID，课程name，最高分，最低分，平均分，及格率，中等率，优良率，优秀率– 及格为&gt;=60，中等为：70-80，优良为：80-90，优秀为：&gt;=90</p>
+<pre><code>select score.c_id,course.c_name,max(s_score),min(s_score),avg(s_score),
+(sum(s_score&gt;=60)/count(s_score)),
+(sum(case when  s_score between 70 and 80 then 1 else 0 end)/count(s_score)),
+(sum(case when  s_score between 80 and 90 then 1 else 0 end)/count(s_score)),
+(sum(case when  s_score &gt;=90 then 1 else 0 end)/count(s_score))
+from score join course on score.c_id = course.c_id
+group by c_id</code></pre><p>19、按各科成绩进行排序，并显示排名</p>
+<pre><code>select @i:= @i + 1,s_score,s_id,c_id
+from score,(select @i:=0) as a order by s_score desc</code></pre><p>20、查询学生的总成绩并进行排名</p>
+<pre><code>select @i:=@i+1,sum_score,s_id
+from (
+select s_id,sum(s_score) as sum_score
+from score group by s_id order by sum(s_score) desc
+) b,(select @i:=0) a</code></pre><p>III、总结一下，前20题涉及知识点包括<br>1、各语句执行顺序：<br>sql语句顺序</p>
+<pre><code>&lt;SELECT clause&gt; [&lt;FROM clause&gt;] [&lt;WHERE clause&gt;] [&lt;GROUP BY clause&gt;] [&lt;HAVING clause&gt;] [&lt;ORDER BY clause&gt;] [&lt;LIMIT clause&gt;]</code></pre><p>数据库底层执行顺序</p>
+<p><img src="/.com//1_mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89.png" alt></p>
+<p>2、子查询<br>a、   where型子查询：指把内部查询的结果作为外层查询的比较条件。 b、   from型子查询：把内层的查询结果当成临时表，供外层sql再次查询。 c、 in子查询：内层查询语句仅返回一个数据列，这个数据列的值将供外层查询语句进行比较。 d、 exists子查询：把外层的查询结果，拿到内层，看内层是否成立，简单来说后面的返回true,外层（也就是前面的语句）才会执行，否则不执行。 e、 any子查询：只要满足内层子查询中的任意一个比较条件，就返回一个结果作为外层查询条件。 f、  all子查询：内层子查询返回的结果需同时满足所有内层查询条件。 g、 比较运算符子查询：子查询中可以使用的比较运算符如 “&gt;” “&lt;” “= ” “!=”<br>3、group_concat连接列数据，需要配合groupby使用<br>4、@符号使用，声明用户变量<br>oracle中有rownum这个伪列，自增序号，但是mysql中没有，因此借用@进行递增赋值<br>注意需要先进行子查询排序，再补加序列号，因为@i：=@i+1赋值语句执行在order by之前<br>在from中增加select @i:=0,是进行初始赋值<br>5、case when<br>通常使用方法为case when xxx then [value] else [value] end</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/mysql%E5%AD%A6%E4%B9%A0%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E5%8F%8A%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="mysql学习训练记录及笔记（二）">
+                <i class="fa fa-chevron-left"></i> mysql学习训练记录及笔记（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E4%B9%8B%E5%9D%90%E6%A0%87%E5%9B%BE/" rel="prev" title="matplotlib数据可视化之坐标图">
+                matplotlib数据可视化之坐标图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql学习训练记录及笔记（一）"><span class="nav-number">1.</span> <span class="nav-text">mysql学习训练记录及笔记（一）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

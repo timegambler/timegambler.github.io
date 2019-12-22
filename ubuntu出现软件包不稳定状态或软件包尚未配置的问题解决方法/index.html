@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法首先，不知道大家有没有跟我一样受尽了网上方案的各种折磨，鱼龙混杂，参差不齐吐槽结束，首先把我遇到的问题摆出来，大家应该都能找到一些影子正在读取软件包列表… 完成正在分析软件包的依赖关系树       正在读取状态信息… 完成       升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。有 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;ubuntu%E5%87%BA%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81%E6%88%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B0%9A%E6%9C%AA%E9%85%8D%E7%BD%AE%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法首先，不知道大家有没有跟我一样受尽了网上方案的各种折磨，鱼龙混杂，参差不齐吐槽结束，首先把我遇到的问题摆出来，大家应该都能找到一些影子正在读取软件包列表… 完成正在分析软件包的依赖关系树       正在读取状态信息… 完成       升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。有 2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-22T14:01:23.314Z">
+<meta property="article:modified_time" content="2019-12-22T14:01:23.314Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法/"/>
+
+
+
+
+
+  <title>ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/ubuntu%E5%87%BA%E7%8E%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E4%B8%8D%E7%A8%B3%E5%AE%9A%E7%8A%B6%E6%80%81%E6%88%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%B0%9A%E6%9C%AA%E9%85%8D%E7%BD%AE%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:01:23+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法"><a href="#ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法" class="headerlink" title="ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法"></a>ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法</h1><p>首先，不知道大家有没有跟我一样受尽了网上方案的各种折磨，鱼龙混杂，参差不齐<br>吐槽结束，首先把我遇到的问题摆出来，大家应该都能找到一些影子<br>正在读取软件包列表… 完成正在分析软件包的依赖关系树       正在读取状态信息… 完成       升级了 0 个软件包，新安装了 0 个软件包，要卸载 0 个软件包，有 0 个软件包未被升级。有 2 个软件包没有被完全安装或卸载。需要下载 0 B/4,084 kB 的归档。解压缩后会消耗 0 B 的额外空间。dpkg: 处理软件包 libavcodec-ffmpeg56:amd64 (–configure)时出错： 该软件包正处于非常不稳定的状态；您最好在配置它之前，先重新安装它dpkg: 依赖关系问题使得 libavformat-ffmpeg56:amd64 的配置工作不能继续： libavformat-ffmpeg56:amd64 依赖于 libavcodec-ffmpeg56 (&gt;= 7:2.7) | libavcodec-ffmpeg-extra56 (&gt;= 7:2.7)；然而：  软件包 libavcodec-ffmpeg56:amd64 尚未配置。  未安装软件包 libavcodec-ffmpeg-extra56。<br>因为错误消息指示这是由于上一个问题导致的错误，没有写入 apport 报告。                                                                    dpkg: 处理软件包 libavformat-ffmpeg56:amd64 (–configure)时出错： 依赖关系问题 - 仍未被配置在处理时有错误发生： libavcodec-ffmpeg56:amd64 libavformat-ffmpeg56:amd64E: Sub-process /usr/bin/dpkg returned an error code (1)<br>最开始在网上查找的解决方案是：<br>进行文件的替换（将/var/lib/dpkg中的info文件进行替换）<br>命令行如下：<br>sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old<br>sudo mkdir /var/lib/dpkg/info<br>sudo apt-get update<br>sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old<br>sudo rm -rf /var/lib/dpkg/info<br>sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info<br>以上就是替换方案（其他大体类似，如果这里成功了，那么恭喜你，就不用再往下看了）<br>接下来就是各种苦逼的寻找各种解决方案的时候，但是大多不靠谱<br>于是翻出去看看，终于找到了解决方法（居然发现我TM没看到这一句话）<br>您最好在配置它之前，先重新安装它！！！<br>您最好在配置它之前，先重新安装它！！！<br>您最好在配置它之前，先重新安装它！！！<br>于是故事就结束了！请轻轻的敲下以下一行<br>sudo apt-get –reinstall install libavcodec-ffmpeg56（注意红色的是你出问题的软件名称）<br>sudo apt-get –reinstall install libavformat-ffmpeg56</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ubuntu%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8ss+SwitchyOmega/" rel="next" title="ubuntu如何使用代理服务器ss+SwitchyOmega">
+                <i class="fa fa-chevron-left"></i> ubuntu如何使用代理服务器ss+SwitchyOmega
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/VMware%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90windows%EF%BC%88ubuntu%EF%BC%89vmx.lck%E6%96%87%E4%BB%B6%EF%BC%8C%E7%B3%BB%E7%BB%9F%E9%94%81%E4%BD%8F/" rel="prev" title="VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住">
+                VMware无法启动虚拟机，自动生成windows（ubuntu）vmx.lck文件，系统锁住 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法"><span class="nav-number">1.</span> <span class="nav-text">ubuntu出现软件包不稳定状态或软件包尚未配置的问题解决方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

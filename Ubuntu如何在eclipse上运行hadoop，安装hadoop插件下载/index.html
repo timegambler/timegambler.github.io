@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载其实出现这类错误，大部分是编译的插件有问题。（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;1_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;2_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;3_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;4_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.jpg">
+<meta property="article:published_time" content="2019-12-22T14:01:20.545Z">
+<meta property="article:modified_time" content="2019-12-22T14:01:20.545Z">
+<meta property="article:author" content="timegambler">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;.com&#x2F;&#x2F;1_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载/"/>
+
+
+
+
+
+  <title>Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="timegambler">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-22T22:01:20+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"><a href="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载" class="headerlink" title="Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"></a>Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</h1><p>其实出现这类错误，大部分是编译的插件有问题。<br>（最开始我也在网上找了各种解决方案，发现最后都有各种各样的问题，要么是没讲清，要么是遇到的问题不同<br>最后我翻了很多blog，也翻了一波墙，才发现问题是出在编译好的插件那里<br>因为版本不同，里面的jar包，配置都发生了一些变动，难免不出问题，所以干脆根据自己的版本编译一个插件才是最好的解决方案）那么问题来了，如何根据自己需要的版本编译插件呢？<br>请看我的另一篇博客：<br><a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a></p>
+<p>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9034402.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9034402.html</a><br>转载请注明出处：<a href="http://www.cnblogs.com/gambler/p/9028741.html" target="_blank" rel="noopener">http://www.cnblogs.com/gambler/p/9028741.html</a><br>一、要想在eclipse上运行hadoop，首先要依次解决下面问题：<br>1、安装jdk<br>2、安装ant<br>3、安装eclipse<br>4、安装hadoop<br>5、编译hadoop-eclipse-plugin插件<br>前面四个网上方案很多，但是却参差不齐，很多都是敷衍了事，于是我整理了一些优秀的文章，按照上面来，几乎没什么问题（对于小白，一定要注意路径问题，别到后面自己都不知道自己安装了什么）<br><a href="1、安装jdk">1、安装jdk</a>（注意，这里会出现一些小问题，例如本机已经安装了openjdk，可以百度）<br><a href="2、安装ant">2、安装ant</a>（这个很简单，但是也要记住，在配置文件的时候，也是在前面jdk配置文件（sudo gedit /etc/profile）那里添加）<br><a href="3、安装eclipse">3、安装eclipse</a>（这里jdk就不用重新安装了，选择下载java EE，毕竟什么都有）<br><a href="4、安装hadoop">4、安装hadoop</a>（免密登录，貌似这伙有问题，再贴一个，大家可以参考<a href="这个人">这个人</a>的免密登录）<br>5、编译hadoop-eclipse-plugin（这个很麻烦，而且网上的教程写的很乱，而且大多很老或者没用，主要是版本的更新）<br>二、如何编译hadoop-eclipse-plugin文件<br>1、首先，大家一般都是hadoop-2.*，所以可以在GitHub上下载提供的<a href="hadoop-eclipse-plugin">hadoop-eclipse-plugin</a></p>
+<p>2、下载完之后，直接进行解压，然后打开hadoop2x-eclipse-plugin-master —&gt;ivy —-&gt;libraries.properties<br>打开之后是这样的（当然，这是我更改之后的，我使用的是hadoop-2.7.6，如果你跟我一样，可以直接跳，在文章末尾下载编译好的）</p>
+<pre><code>#   Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#This properties file lists the versions of the various artifacts used by hadoop and components.
+#It drives ivy and the generation of a maven POM
+
+# This is the version of hadoop we are generating
+hadoop.version=2.7.6
+hadoop-gpl-compression.version=0.1.0
+
+#These are the versions of our dependencies (in alphabetical order)
+apacheant.version=1.7.0
+ant-task.version=2.0.10
+
+asm.version=3.2
+aspectj.version=1.6.5
+aspectj.version=1.6.11
+
+checkstyle.version=4.2
+
+commons-cli.version=1.2
+commons-codec.version=1.4
+commons-collections.version=3.2.2
+commons-configuration.version=1.6
+commons-daemon.version=1.0.13
+commons-httpclient.version=4.2.5
+commons-lang.version=2.6
+commons-logging.version=1.1.3
+commons-logging-api.version=1.0.4
+commons-math.version=2.1
+commons-el.version=1.0
+commons-fileupload.version=1.2
+commons-io.version=2.4
+commons-net.version=3.1
+core.version=3.1.1
+coreplugin.version=1.3.2
+
+hsqldb.version=1.8.0.10
+htrace.version=3.0.4
+
+ivy.version=2.1.0
+
+jasper.version=5.5.12
+jackson.version=1.9.13
+#not able to figureout the version of jsp &amp; jsp-api version to get it resolved throught ivy
+# but still declared here as we are going to have a local copy from the lib folder
+jsp.version=2.1
+jsp-api.version=5.5.12
+jsp-api-2.1.version=6.1.14
+jsp-2.1.version=6.1.14
+jets3t.version=0.9.0
+jetty.version=6.1.26
+jetty-util.version=6.1.26
+jersey-core.version=1.9
+jersey-json.version=1.9
+jersey-server.version=1.9
+junit.version=4.11
+jdeb.version=0.8
+jdiff.version=1.0.9
+json.version=1.0
+
+kfs.version=0.1
+
+log4j.version=1.2.17
+lucene-core.version=2.3.1
+
+mockito-all.version=1.8.5
+jsch.version=0.1.54
+
+oro.version=2.0.8
+
+rats-lib.version=0.5.1
+
+servlet.version=4.0.6
+servlet-api.version=2.5
+slf4j-api.version=1.7.10
+slf4j-log4j12.version=1.7.10
+
+wagon-http.version=1.0-beta-2
+xmlenc.version=0.52
+xerces.version=1.4.4
+
+protobuf.version=2.5.0
+guava.version=11.0.2
+netty.version=3.6.2.Final</code></pre><p>3、找到你最开始放置解压后hadoop文件的地方<br>打开hadoop文件 —-&gt; share —-&gt; hadoop<br>打开后是这样的:</p>
+<p><img src="/.com//1_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png" alt></p>
+<p>根据这个来更改版本（重点），比如前面</p>
+<pre><code>log4j.version=1.2.17（最开始我是log4j.version=1.2.10的，但是根据上面最下面一排，左边第三个，发现是1.2.17，所以需要改为log4j.version=1.2.17）这里有个小技巧，你可以一行一行的来查看，先对着libraries.properties，查看版本version，然后打开文件夹/你的hadoop文件夹/share/hadoop/，点击右边的那个放大镜（搜索），输入几个关键字符，这样就可以快速对照更改4、更改build.xml(重点，因为随着版本不同，有些jar包的名称发生改变)打开hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin ----&gt;build.xml(注意，有些版本不同，可能位置会不一样，只要在hadoop2x-eclipse-plugin-master找到eclipse-plugin就行)打开后：</code></pre><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+
+&lt;!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the &quot;License&quot;); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+--&gt;
+
+&lt;project default=&quot;jar&quot; name=&quot;eclipse-plugin&quot;&gt;
+
+  &lt;import file=&quot;../build-contrib.xml&quot;/&gt;
+
+  &lt;path id=&quot;eclipse-sdk-jars&quot;&gt;
+    &lt;fileset dir=&quot;${eclipse.home}/plugins/&quot;&gt;
+      &lt;include name=&quot;org.eclipse.ui*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.jdt*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.core*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.equinox*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.debug*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.osgi*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.swt*.jar&quot;/&gt;
+      &lt;include name=&quot;org.eclipse.jface*.jar&quot;/&gt;
+
+      &lt;include name=&quot;org.eclipse.team.cvs.ssh2*.jar&quot;/&gt;
+      &lt;include name=&quot;com.jcraft.jsch*.jar&quot;/&gt;
+    &lt;/fileset&gt; 
+  &lt;/path&gt;
+
+  &lt;path id=&quot;hadoop-sdk-jars&quot;&gt;
+    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/mapreduce&quot;&gt;
+      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+    &lt;/fileset&gt; 
+    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/hdfs&quot;&gt;
+      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+    &lt;/fileset&gt; 
+    &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/common&quot;&gt;
+      &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+    &lt;/fileset&gt; 
+  &lt;/path&gt;
+
+
+
+  &lt;!-- Override classpath to include Eclipse SDK jars --&gt;
+  &lt;path id=&quot;classpath&quot;&gt;
+    &lt;pathelement location=&quot;${build.classes}&quot;/&gt;
+    &lt;!--pathelement location=&quot;${hadoop.root}/build/classes&quot;/--&gt;
+    &lt;path refid=&quot;eclipse-sdk-jars&quot;/&gt;
+    &lt;path refid=&quot;hadoop-sdk-jars&quot;/&gt;
+  &lt;/path&gt;
+
+  &lt;!-- Skip building if eclipse.home is unset. --&gt;
+  &lt;target name=&quot;check-contrib&quot; unless=&quot;eclipse.home&quot;&gt;
+    &lt;property name=&quot;skip.contrib&quot; value=&quot;yes&quot;/&gt;
+    &lt;echo message=&quot;eclipse.home unset: skipping eclipse plugin&quot;/&gt;
+  &lt;/target&gt;
+
+ &lt;target name=&quot;compile&quot; depends=&quot;init, ivy-retrieve-common&quot; unless=&quot;skip.contrib&quot;&gt;
+    &lt;echo message=&quot;contrib: ${name}&quot;/&gt;
+    &lt;javac
+     encoding=&quot;${build.encoding}&quot;
+     srcdir=&quot;${src.dir}&quot;
+     includes=&quot;**/*.java&quot;
+     destdir=&quot;${build.classes}&quot;
+     debug=&quot;${javac.debug}&quot;
+     deprecation=&quot;${javac.deprecation}&quot;&gt;
+     &lt;classpath refid=&quot;classpath&quot;/&gt;
+    &lt;/javac&gt;
+  &lt;/target&gt;
+
+  &lt;!-- Override jar target to specify manifest --&gt;
+  &lt;target name=&quot;jar&quot; depends=&quot;compile&quot; unless=&quot;skip.contrib&quot;&gt;
+    &lt;mkdir dir=&quot;${build.dir}/lib&quot;/&gt;
+    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
+          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/mapreduce&quot;&gt;
+           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+          &lt;/fileset&gt;
+    &lt;/copy&gt;
+    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
+          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/common&quot;&gt;
+           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+          &lt;/fileset&gt;
+    &lt;/copy&gt;
+    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
+          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/hdfs&quot;&gt;
+           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+          &lt;/fileset&gt;
+    &lt;/copy&gt;
+    &lt;copy  todir=&quot;${build.dir}/lib/&quot; verbose=&quot;true&quot;&gt;
+          &lt;fileset dir=&quot;${hadoop.home}/share/hadoop/yarn&quot;&gt;
+           &lt;include name=&quot;hadoop*.jar&quot;/&gt;
+          &lt;/fileset&gt;
+    &lt;/copy&gt;
+
+    &lt;copy  todir=&quot;${build.dir}/classes&quot; verbose=&quot;true&quot;&gt;
+          &lt;fileset dir=&quot;${root}/src/java&quot;&gt;
+           &lt;include name=&quot;*.xml&quot;/&gt;
+          &lt;/fileset&gt;
+    &lt;/copy&gt;
+
+
+
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;  
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+
+    &lt;jar
+      jarfile=&quot;${build.dir}/hadoop-${name}-${hadoop.version}.jar&quot;
+      manifest=&quot;${root}/META-INF/MANIFEST.MF&quot;&gt;
+      &lt;manifest&gt;
+   &lt;attribute name=&quot;Bundle-ClassPath&quot; 
+    value=&quot;classes/, 
+ lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
+ lib/hadoop-auth-${hadoop.version}.jar,
+ lib/hadoop-common-${hadoop.version}.jar,
+ lib/hadoop-hdfs-${hadoop.version}.jar,
+ lib/protobuf-java-${protobuf.version}.jar,
+ lib/log4j-${log4j.version}.jar,
+ lib/commons-cli-${commons-cli.version}.jar,
+ lib/commons-configuration-${commons-configuration.version}.jar,
+ lib/commons-httpclient-${commons-httpclient.version}.jar,
+ lib/commons-lang-${commons-lang.version}.jar,  
+ lib/commons-collections-${commons-collections.version}.jar,  
+ lib/jackson-core-asl-${jackson.version}.jar,
+ lib/jackson-mapper-asl-${jackson.version}.jar,
+ lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
+ lib/slf4j-api-${slf4j-api.version}.jar,
+ lib/guava-${guava.version}.jar,
+ lib/netty-${netty.version}.jar,
+ lib/htrace-core-${htrace.version}.jar&quot;/&gt;
+   &lt;/manifest&gt;
+      &lt;fileset dir=&quot;${build.dir}&quot; includes=&quot;classes/ lib/&quot;/&gt;
+      &lt;!--fileset dir=&quot;${build.dir}&quot; includes=&quot;*.xml&quot;/--&gt;
+      &lt;fileset dir=&quot;${root}&quot; includes=&quot;resources/ plugin.xml&quot;/&gt;
+    &lt;/jar&gt;
+  &lt;/target&gt;
+
+&lt;/project&gt;
+
+
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/protobuf-java-${protobuf.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/log4j-${log4j.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-configuration-${commons-configuration.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-lang-${commons-lang.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-collections-${commons-collections.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;  
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-core-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/jackson-mapper-asl-${jackson.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-log4j12-${slf4j-log4j12.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/slf4j-api-${slf4j-api.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/guava-${guava.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/hadoop-auth-${hadoop.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/commons-cli-${commons-cli.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/netty-${netty.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+    &lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;
+
+    &lt;jar
+      jarfile=&quot;${build.dir}/hadoop-${name}-${hadoop.version}.jar&quot;
+      manifest=&quot;${root}/META-INF/MANIFEST.MF&quot;&gt;
+      &lt;manifest&gt;
+   &lt;attribute name=&quot;Bundle-ClassPath&quot; 
+    value=&quot;classes/, 
+ lib/hadoop-mapreduce-client-core-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-common-${hadoop.version}.jar,
+ lib/hadoop-mapreduce-client-jobclient-${hadoop.version}.jar,
+ lib/hadoop-auth-${hadoop.version}.jar,
+ lib/hadoop-common-${hadoop.version}.jar,
+ lib/hadoop-hdfs-${hadoop.version}.jar,
+ lib/protobuf-java-${protobuf.version}.jar,
+ lib/log4j-${log4j.version}.jar,
+ lib/commons-cli-${commons-cli.version}.jar,
+ lib/commons-configuration-${commons-configuration.version}.jar,
+ lib/commons-httpclient-${commons-httpclient.version}.jar,
+ lib/commons-lang-${commons-lang.version}.jar,  
+ lib/commons-collections-${commons-collections.version}.jar,  
+ lib/jackson-core-asl-${jackson.version}.jar,
+ lib/jackson-mapper-asl-${jackson.version}.jar,
+ lib/slf4j-log4j12-${slf4j-log4j12.version}.jar,
+ lib/slf4j-api-${slf4j-api.version}.jar,
+ lib/guava-${guava.version}.jar,
+ lib/netty-${netty.version}.jar,
+ lib/htrace-core-${htrace.version}.jar&quot;/&gt;
+   &lt;/manifest&gt;
+      &lt;fileset dir=&quot;${build.dir}&quot; includes=&quot;classes/ lib/&quot;/&gt;
+      &lt;!--fileset dir=&quot;${build.dir}&quot; includes=&quot;*.xml&quot;/--&gt;
+      &lt;fileset dir=&quot;${root}&quot; includes=&quot;resources/ plugin.xml&quot;/&gt;
+    &lt;/jar&gt;
+  &lt;/target&gt;
+
+&lt;/project&gt;</code></pre><pre><code></code></pre><pre><code>（提示：&lt;copy file=&quot;${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}.jar&quot;  todir=&quot;${build.dir}/lib&quot; verbose=&quot;true&quot;/&gt;</code></pre><p><img src="/.com//2_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png" alt></p>
+<pre><code>在前面的jar包里没有htrace-core-...jar只有htrace-core-3.1.0-incubating.jar，所以更改为：）</code></pre><pre><code>做法：</code></pre><p>找到<target name="jar" depends="compile" unless="skip.contrib">标签，然后添加以下内容</target></p>
+<pre><code></code></pre><p><copy file="${hadoop.home}/share/hadoop/common/lib/htrace-core-${htrace.version}-incubating.jar" todir="${build.dir}/lib" verbose="true">    <copy file="${hadoop.home}/share/hadoop/common/lib/servlet-api-${servlet-api.version}.jar" todir="${build.dir}/lib" verbose="true">    <copy file="${hadoop.home}/share/hadoop/common/lib/commons-io-${commons-io.version}.jar" todir="${build.dir}/lib" verbose="true"></copy></copy></copy></p>
+<pre><code></code></pre><p>然后找到标签&lt;attribute name=”Bundle-ClassPath”  ( 在修改之前的配置文件 build.xml 第133行 )在齐总的value的列表中对应的添加和修改lib,如下 ( 删除第154行 lib/htrace-core-${htrace.version}.jar, 添加下面3行 )</p>
+<pre><code></code></pre><pre><code>lib/servlet-api-${servlet-api.version}.jar,  
+lib/commons-io-${commons-io.version}.jar,  
+lib/htrace-core-${htrace.version}-incubating.jar&quot;/&gt;</code></pre><pre><code>当然，如果出现其他类似错误，对照更改就行（当然，如果报错，先备份后，尝试删除部分，毕竟不是每个都能用到）5、最后开始进行编译工作在hadoop2x-eclipse-plugin-master ---&gt; src ----&gt; contrib ----&gt;eclipse-plugin文件夹中执行：ant jar -Dversion=2.7.6 -Declipse.home=/opt/eclipse -Dhadoop.home=/home/gambler/hadoop-2.7.6注意 -Dversion=你的hadoop版本，-Declipse.home=你的eclipse文件路径，-Dhadoop=你的hadoop文件路径，还有关键的一点是，它创建jar包的默认路径是hadoop2x-eclipse-plugin-master  ----&gt;build ----&gt;contrib ----&gt;eclipse-plugin，如果没有的话可以提前创建一个，至少需要build文件夹，否则会报错</code></pre><pre><code></code></pre><pre><code>编译完成后出现下面这个表示成功：</code></pre><p><img src="/.com//3_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.png" alt></p>
+<p><img src="/.com//4_Ubuntu%E5%A6%82%E4%BD%95%E5%9C%A8eclipse%E4%B8%8A%E8%BF%90%E8%A1%8Chadoop%EF%BC%8C%E5%AE%89%E8%A3%85hadoop%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD.jpg" alt></p>
+<pre><code>三、使用eclipse创建MapReduce工程1、首先将编译好的jar包移动到eclipse ----&gt; plugins中去命令是： sudo mv hadoop-eclipse-plugin-2.7.6 .jar /你的eclipse文件/plugins2、启动eclipse，可以直接在search中搜索eclipse，新建一个工程，找到MapReduce，会出现下面这种问题（invalid Hadoop Runtime specified;please click&apos;Configure Hadoop install directory&apos;）点击右下边的&apos;Configure Hadoop install directory&apos;在里面填入/hadoop的绝对路径/share/hadoop/mapreduce填完之后点击完成，然后就OK了，最后放一张成功的图，博主也是刚刚建好的；好累啊，写完这个，麻烦大伙要是觉得还ok，就点个赞！！！最后的编译完成的后的jar包</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Ubuntu%E5%85%B3%E4%BA%8Eeclipse%E6%96%B0%E6%8F%92%E4%BB%B6%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="next" title="Ubuntu关于eclipse新插件不显示的解决方案">
+                <i class="fa fa-chevron-left"></i> Ubuntu关于eclipse新插件不显示的解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8VC6.0+Graphics%E5%9B%BE%E5%BD%A2%E5%BA%93%E7%94%BB%E5%87%BA%E4%BA%8C%E7%BB%B4%E5%9B%BE%E5%BD%A2%E5%85%A8%E6%95%99%E7%A8%8B/" rel="prev" title="关于如何使用VC6.0+Graphics图形库画出二维图形全教程">
+                关于如何使用VC6.0+Graphics图形库画出二维图形全教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">timegambler</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu如何在eclipse上运行hadoop，安装hadoop插件下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">timegambler</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
